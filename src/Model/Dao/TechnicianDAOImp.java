@@ -1,5 +1,5 @@
 package Model.Dao;
 
-public class TecnicianDAOImp implements TechnicianDAO{
+public class TechnicianDAOImp implements TechnicianDAO{
     public void defineOsStatus(String id){};
 }
