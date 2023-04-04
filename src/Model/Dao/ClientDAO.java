@@ -6,7 +6,10 @@ import java.util.ArrayList;
 
 public interface ClientDAO {
 
-    void insertClient(Client client, ArrayList clientList);
-    void updateClient(Client client, String atributteToChange, String newAtributte);
-    void deleteClient(Client client, ArrayList clientList);
+    //para ser considerado crud, é necessário todos esses métodos.
+    void insertClient(Client client);
+    void updateClient(Client client);
+    void deleteClient(Client client);
+    ArrayList<Client> getAllClients();
+    Client getClientById(String id);
 }
