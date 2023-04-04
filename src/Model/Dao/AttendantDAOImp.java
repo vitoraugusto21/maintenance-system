@@ -10,10 +10,10 @@ public class AttendantDAOImp {
 
     public AttendantDAOImp(){};
 
-    public void createAttendant(Attendant attendant){
-        clientList.add(attendant);
+    public void insertAttendant(Attendant attendant, ArrayList attendantList){
+        attendantList.add(attendant);
     };
-    public void updateAttendant(Attendant attendant){
+    public void updateAttendant(Attendant attendant, String atributteToChange, String newAtributte){
         if (atributteToChange == attendant.getId()){
             attendant.setId(newAtributte);
         }

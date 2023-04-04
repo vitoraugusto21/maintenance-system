@@ -16,6 +16,7 @@ public class ClientDAOImp implements ClientDAO {
     }
 
     public void updateClient(Client client, String atributteToChange, String newAtributte){
+        Client client1 = new Client();
         if (atributteToChange == client.getId()){
             client.setId(newAtributte);
         }
@@ -24,7 +25,7 @@ public class ClientDAOImp implements ClientDAO {
             client.setEmail(newAtributte);
         }
 
-        else if (atributteToChange == client.getName()){
+        else if (client.atributteToChange == client.getName()){
             client.setName(newAtributte);
         }
 

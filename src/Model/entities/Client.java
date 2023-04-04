@@ -9,8 +9,11 @@ public  class Client extends Person{
 
     ArrayList<Os> clientOs; //lista de ordens de serviços dos clientes
 
-    public Client(ArrayList<Os> clientOs) {
-        this.clientOs = clientOs;
+    public Client() {
+    }
+
+    public Client(String id, String name, String phoneNumber, String email, String adress) {
+        super(id, name, phoneNumber, email, adress);
     }
 
     public Client(String id, String name, String phoneNumber, String email, String adress, ArrayList<Os> clientOs) {
