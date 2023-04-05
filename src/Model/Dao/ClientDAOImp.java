@@ -7,7 +7,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class ClientDAOImpl implements ClientDAO {
+public class ClientDAOImp implements ClientDAO {
 
     private final Map<String, Client> clients = new HashMap<>();
 
