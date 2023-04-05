@@ -21,7 +21,7 @@ public class ClientDAOImpl implements ClientDAO {
         switch (attributeToChange.toLowerCase()) {
             case "name" -> client.setName(newAttribute);
             case "email" -> client.setEmail(newAttribute);
-            case "phone" -> client.setPhone(newAttribute);
+            case "phonenumber" -> client.setPhoneNumber(newAttribute);
             default -> throw new IllegalArgumentException("Invalid attribute name");
         }
         clients.put(client.getId(), client);
