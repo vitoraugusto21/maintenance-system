@@ -3,8 +3,13 @@ package Model.Dao;
 import Model.entities.Attendant;
 import Model.entities.Os;
 
+import java.util.ArrayList;
+
 public interface AttendantDAO {
-    public void insertAttendant(Attendant attendant);
-    public void updateAttendant(Attendant attendant, String attributeToChange, String newAttribute);
-    public void deleteAttendant(String id);
+    void insertAttendant(Attendant attendant);
+    void updateAttendant(Attendant attendant, String attributeToChange, String newAttribute);
+    void deleteAttendant(Attendant attendant);
+    ArrayList<Attendant> getAllAttendants();
+    Attendant getAttendantById(String id);
+
 }
