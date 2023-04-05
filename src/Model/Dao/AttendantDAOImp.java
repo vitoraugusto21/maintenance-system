@@ -1,42 +1,54 @@
 package Model.Dao;
 
 import Model.entities.Attendant;
-import Model.entities.Client;
-import Model.entities.Os;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public class AttendantDAOImp {
 
     public AttendantDAOImp(){};
 
-    public void insertAttendant(Attendant attendant, ArrayList attendantList){
-        attendantList.add(attendant);
-    };
-    public void updateAttendant(Attendant attendant, String atributteToChange, String newAtributte){
-        if (atributteToChange == attendant.getId()){
-            attendant.setId(newAtributte);
-        }
+    private final Map<String, Attendant> attendants = new HashMap<>();
 
-        else if (atributteToChange == attendant.getEmail()){
-            attendant.setEmail(newAtributte);
-        }
+    @Override
+    public void insertAttendant(Attendant attendant) {
+        attendants.put(attendant.getId(), attendant);
+    }
 
-        else if (atributteToChange == attendant.getName()){
-            attendant.setName(newAtributte);
+    @Override
+    public void updateAttendant(Attendant attendant, String attributeToChange, String newAttribute) {
+        switch (attributeToChange.toLowerCase()) {
+            case "name" -> attendant.setName(newAttribute);
+            case "email" -> attendant.setEmail(newAttribute);
+            case "phonenumber" -> attendant.setPhoneNumber(newAttribute);
+            case "address" -> attendant.setAdress(newAttribute);
+            default -> throw new IllegalArgumentException("Invalid attribute name");
         }
+        attendants.put(attendant.getId(), attendant);
+    }
 
-        else if (atributteToChange == attendant.getPhoneNumber()){
-            attendant.setPhoneNumber(newAtributte);
-        }
+    @Override
+    public void deleteAttendant(Attendant attendant) {
+        attendants.remove(attendant.getId());
+    }
 
-        else if (atributteToChange == attendant.getAdress()){
-            attendant.setAdress(newAtributte);
-        }
-    };
-    public void deleteAttendant(Attendant attendant, ArrayList attendantList){
-        attendantList.remove(attendant);
+    @Override
+    public ArrayList<Attendant> getAllAttendants() {
+        return new ArrayList<>(attendants.values());
+    }
 
-        //delete attendant from database
-    };
+    @Override
+    public Attendant getAttendantById(String id) {
+        return attendants.get(id);
+    }
+}
+
+
+
+
+
+
 }
