@@ -1,5 +1,20 @@
 package Model.Dao;
 
+import Model.entities.Technician;
+
+import java.util.ArrayList;
 public interface TechnicianDAO {
+
+    void insertTechnician(Technician technician);
+
+    void updateTechnician(Technician technician, String attributeToChange, String newAttribute);
+
+    void deleteTechnician(Technician technician);
+
+    ArrayList<Technician> getAllTechnicians();
+
+    Technician getTechnicianById(String id);
+
     public void defineOsStatus(String id);
+
 }

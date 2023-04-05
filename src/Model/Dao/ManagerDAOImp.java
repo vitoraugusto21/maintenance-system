@@ -8,6 +8,8 @@ import java.util.Map;
 
 
 public class ManagerDAOImp implements ManagerDAO{
+
+    public ManagerDAOImp(){};
     private final Map<String, Manager> managers = new HashMap<>();
 
     @Override
