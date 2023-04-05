@@ -9,6 +9,7 @@ import java.util.Map;
 
 public class ClientDAOImp implements ClientDAO {
 
+    public ClientDAOImp(){};
     private final Map<String, Client> clients = new HashMap<>();
 
     @Override
