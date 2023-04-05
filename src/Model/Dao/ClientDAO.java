@@ -8,7 +8,7 @@ public interface ClientDAO {
 
     //para ser considerado crud, é necessário todos esses métodos.
     void insertClient(Client client);
-    void updateClient(Client client, String atributteToChange, String newAtributte);
+    void updateClient(Client client, String attributeToChange, String newAttribute);
     void deleteClient(Client client);
     ArrayList<Client> getAllClients();
     Client getClientById(String id);
