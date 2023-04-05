@@ -3,45 +3,42 @@ package Model.Dao;
 import Model.entities.Client;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
-public class ClientDAOImp implements ClientDAO {
+public class ClientDAOImpl implements ClientDAO {
 
+    private final Map<String, Client> clients = new HashMap<>();
 
-    public ClientDAOImp(){
-        //Start Data Connection
-    }
-    public void insertClient(Client client, ArrayList clientList) {
-        clientList.add(client);
-    }
-
-    public void updateClient(Client client, String atributteToChange, String newAtributte){
-        Client client1 = new Client();
-        if (atributteToChange == client.getId()){
-            client.setId(newAtributte);
-        }
-
-        else if (atributteToChange == client.getEmail()){
-            client.setEmail(newAtributte);
-        }
-
-        else if (client.atributteToChange == client.getName()){
-            client.setName(newAtributte);
-        }
-
-        else if (atributteToChange == client.getPhoneNumber()){
-            client.setPhoneNumber(newAtributte);
-        }
-
-        else if (atributteToChange == client.getAdress()){
-            client.setAdress(newAtributte);
-        }
-
+    @Override
+    public void insertClient(Client client) {
+        clients.put(client.getId(), client);
     }
 
-    public void deleteClient(Client client, ArrayList clientList){
-        clientList.remove(client);
-        //delete customer from database
+    @Override
+    public void updateClient(Client client, String attributeToChange, String newAttribute) {
+        switch (attributeToChange.toLowerCase()) {
+            case "name" -> client.setName(newAttribute);
+            case "email" -> client.setEmail(newAttribute);
+            case "phone" -> client.setPhone(newAttribute);
+            default -> throw new IllegalArgumentException("Invalid attribute name");
+        }
+        clients.put(client.getId(), client);
     }
 
+    @Override
+    public void deleteClient(Client client) {
+        clients.remove(client.getId());
+    }
+
+    @Override
+    public ArrayList<Client> getAllClients() {
+        return new ArrayList<>(clients.values());
+    }
+
+    @Override
+    public Client getClientById(String id) {
+        return clients.get(id);
+    }
 }
