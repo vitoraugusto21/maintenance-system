@@ -1,5 +1,9 @@
 package Model.Dao;
 
+import Model.entities.Manager;
+
+import java.util.ArrayList;
+
 public interface ManagerDAO {
 
     void insertManager(Manager manager);
