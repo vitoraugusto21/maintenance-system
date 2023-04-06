@@ -15,28 +15,23 @@ public class Os {
     private String duration;
     private OsStatus status;
     private Payments typePayment;
-    private Integer installments;
+    private Integer cleaning = 70;
+    private Integer operationalSystem = 50;
+
+    private Integer programs = 10;
     private String attendantId;
     private String technicianId;
     private String clientId;
     private ArrayList<Product> usedParts;
 
-    public Os(String osId, String description, Date startTime, Date endTime, Double totalValue, String duration,
-              OsStatus status, Payments typePayment, Integer installments, String attendantId, String technicianId,
-              String clientId, ArrayList<Product> usedParts) {
+
+    public Os(String osId, String description, Date startTime, Payments typePayment, String attendantId, String clientId) {
         this.osId = osId;
         this.description = description;
         this.startTime = startTime;
-        this.endTime = endTime;
-        this.totalValue = totalValue;
-        this.duration = duration;
-        this.status = status;
         this.typePayment = typePayment;
-        this.installments = installments;
         this.attendantId = attendantId;
-        this.technicianId = technicianId;
         this.clientId = clientId;
-        this.usedParts = usedParts;
     }
 
     public String getOsId() {
@@ -103,12 +98,28 @@ public class Os {
         this.typePayment = typePayment;
     }
 
-    public Integer getInstallments() {
-        return installments;
+    public Integer getCleaning() {
+        return cleaning;
     }
 
-    public void setInstallments(Integer installments) {
-        this.installments = installments;
+    public void setCleaning(Integer cleaning) {
+        this.cleaning = cleaning;
+    }
+
+    public Integer getOperationalSystem() {
+        return operationalSystem;
+    }
+
+    public void setOperationalSystem(Integer operationalSystem) {
+        this.operationalSystem = operationalSystem;
+    }
+
+    public Integer getPrograms() {
+        return programs;
+    }
+
+    public void setPrograms(Integer programs) {
+        this.programs = programs;
     }
 
     public String getAttendantId() {
