@@ -29,9 +29,6 @@ public interface OsDAO {
     public void addDuration(Os os);
 
     public void addTechnician(Os os, Technician technician);
-
-    public void addProduct(Os os, Product product);
-
     public void viewOs(String osId);
     public void genReport(String osId);
     public void genInvoice(Invoice invoice);
