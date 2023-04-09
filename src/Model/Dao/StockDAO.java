@@ -3,7 +3,8 @@ package Model.Dao;
 import Model.entities.Product;
 
 public interface StockDAO {
-    public void addProduct(Product product);
-    public void removerProduto(Product product);
+    public void insertProduct(Product product);
+    public void deleteProduct(Product product);
+
 
 }

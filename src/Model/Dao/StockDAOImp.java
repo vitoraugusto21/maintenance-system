@@ -18,10 +18,8 @@ public class StockDAOImp implements StockDAO{
     private final Map<String, Product> stock = new HashMap<>();
 
     public List<Product> productList(){
-        return productList();
-    }
-    public void addProduct(Product product){
 
+        return productList();
     }
 
     @Override
