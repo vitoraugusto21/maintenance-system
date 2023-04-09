@@ -39,7 +39,8 @@ public class OsDAOImp implements OsDAO{
 
     public void addParts(Os os, Product part){
         os.getUsedParts().add(part);
-        Double totalValue = os.getTotalValue() + part.getProductPrice();
+        double totalValue = os.getTotalValue() + part.getProductPrice();
+        os.setTotalValue(totalValue);
     }
 
     public void updateStatus(Os os, OsStatus status){} //Mudar o status da Os
@@ -48,6 +49,11 @@ public class OsDAOImp implements OsDAO{
 
     public void addTechnician(Os os, Technician technician){ //adicionar id do tecnico que pegou a os
         os.setTechnicianId(technician.getId());
+    }
+
+    public void addProduct(Os os, Product product){
+        double totalValue = os.getTotalValue() + product.getProductPrice();
+        os.setTotalValue(totalValue);
     }
 
     public void viewOs(String osId){};
