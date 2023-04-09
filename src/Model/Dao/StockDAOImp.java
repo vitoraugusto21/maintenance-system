@@ -26,7 +26,7 @@ public class StockDAOImp implements StockDAO{
 
     @Override
     public void insertProduct(Product product) {
-        stock.put(product.getProductCode(), Product);
+        stock.put(product.getProductCode(), product);
     }
     public void removerProduto(Product product){
 
