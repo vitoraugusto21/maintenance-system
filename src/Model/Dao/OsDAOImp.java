@@ -40,6 +40,7 @@ public class OsDAOImp implements OsDAO{
     public void addParts(Os os, Product part){
         os.getUsedParts().add(part);
         Double totalValue = os.getTotalValue() + part.getProductPrice();
+        os.setTotalValue(totalValue);
     }
 
     public void updateStatus(Os os, OsStatus status){} //Mudar o status da Os
