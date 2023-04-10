@@ -2,7 +2,6 @@ package Model.Dao;
 
 import Model.entities.Client;
 import Model.entities.Product;
-import Model.Dao.
 
 import java.util.HashMap;
 import java.util.List;
