@@ -7,7 +7,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class AttendantDAOImp {
+public class AttendantDAOImp implements AttendantDAO{
 
     public AttendantDAOImp(){};
 
@@ -51,4 +51,4 @@ public class AttendantDAOImp {
 
 
 
-}
+

@@ -24,6 +24,9 @@ public class Os {
     private String clientId;
     private ArrayList<Product> usedParts;
 
+    public Os(String osId) {
+        this.osId = osId;
+    }
 
     public Os(String osId, String description, Date startTime, Payments typePayment, String attendantId, String clientId) {
         this.osId = osId;

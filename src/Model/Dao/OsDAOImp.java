@@ -3,13 +3,17 @@ package Model.Dao;
 import Model.entities.*;
 import Model.entities.enums.OsStatus;
 
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 
 public class OsDAOImp implements OsDAO{
 
     public OsDAOImp(){};
+    public Os takeOs(Queue queue, Technician technician){ //Pega a primeira Os da fila e a define para o tecnico
+        Os first = (Os) queue.peek();
+        queue.remove();
+        technician.setOs(first);
+        return first;
+    };
     public void assignOs(Os os, ArrayList clientOs){ //adicionar os ao registro
         clientOs.add(os);
     };

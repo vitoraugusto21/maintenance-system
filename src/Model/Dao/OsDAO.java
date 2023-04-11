@@ -8,8 +8,12 @@ import Model.entities.enums.OsStatus;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.LinkedList;
+import java.util.Queue;
 
 public interface OsDAO {
+
+    public Os takeOs(Queue queue, Technician technician);
     public void assignOs(Os os, ArrayList clientOs);
 
     public void deleteOs(Os os, ArrayList clientOs);
