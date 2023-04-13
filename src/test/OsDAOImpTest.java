@@ -51,6 +51,24 @@ public class OsDAOImpTest {
         assertTrue(client.getClientOs().contains(os));
     }
 
+    @Test
+    public void deleteOsTest(){
+        Client client = new Client();
+        Os os = new Os("1");
+        OsDAOImp osDAOImp = new OsDAOImp();
+        ArrayList<Os> clientOs = new ArrayList<>();
+        client.setClientOs(clientOs);
+        osDAOImp.assignOs(os, client.getClientOs());
+
+        /* verificar se a os foi adicionada a lista de os do cliente */
+        assertTrue(client.getClientOs().contains(os));
+
+        client.getClientOs().remove(os);
+
+        /* verificar se a os foi removida da lista de os do cliente */
+        assertEquals(0,client.getClientOs().size());
+    }
+
 
 
 }
