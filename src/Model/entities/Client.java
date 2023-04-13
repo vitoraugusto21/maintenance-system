@@ -7,7 +7,7 @@ import java.util.List;
 
 public  class Client extends Person{
 
-    ArrayList<Os> clientOs; //lista de ordens de serviços dos clientes
+    private ArrayList<Os> clientOs; //lista de ordens de serviços dos clientes
 
     public Client() {
     }
@@ -28,6 +28,8 @@ public  class Client extends Person{
     public void setClientOs(ArrayList<Os> clientOs) {
         this.clientOs = clientOs;
     }
+
+
 
 
 }

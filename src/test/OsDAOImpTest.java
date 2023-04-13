@@ -5,6 +5,7 @@ import static org.junit.Assert.*;
 import Model.Dao.AttendantDAOImp;
 import Model.Dao.OsDAOImp;
 import Model.entities.Attendant;
+import Model.entities.Client;
 import Model.entities.Os;
 import Model.entities.Technician;
 import org.junit.Before;
@@ -35,6 +36,19 @@ public class OsDAOImpTest {
 
         /* verificar se a os foi retirada da fila */
         assertEquals(os2, queue.peek());
+    }
+
+    @Test
+    public void assignOsTest(){
+        Client client = new Client();
+        Os os = new Os("1");
+        OsDAOImp osDAOImp = new OsDAOImp();
+        ArrayList<Os> clientOs = new ArrayList<>();
+        client.setClientOs(clientOs);
+        osDAOImp.assignOs(os, client.getClientOs());
+
+        /* verificar se a os foi adicionada a lista de os do cliente */
+        assertTrue(client.getClientOs().contains(os));
     }
 
 

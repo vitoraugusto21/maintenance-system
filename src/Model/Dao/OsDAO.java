@@ -1,9 +1,6 @@
 package Model.Dao;
 
-import Model.entities.Invoice;
-import Model.entities.Os;
-import Model.entities.Product;
-import Model.entities.Technician;
+import Model.entities.*;
 import Model.entities.enums.OsStatus;
 
 import java.util.ArrayList;
