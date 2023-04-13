@@ -8,11 +8,10 @@ import java.util.*;
 public class OsDAOImp implements OsDAO{
 
     public OsDAOImp(){};
-    public Os takeOs(Queue queue, Technician technician){ //Pega a primeira Os da fila e a define para o tecnico
+    public void takeOs(Queue queue, Technician technician){ //Pega a primeira Os da fila e a define para o tecnico
         Os first = (Os) queue.peek();
         queue.remove();
         technician.setOs(first);
-        return first;
     };
     public void assignOs(Os os, ArrayList clientOs){ //adicionar os ao registro
         clientOs.add(os);

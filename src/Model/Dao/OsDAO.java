@@ -13,7 +13,7 @@ import java.util.Queue;
 
 public interface OsDAO {
 
-    public Os takeOs(Queue queue, Technician technician);
+    public void takeOs(Queue queue, Technician technician);
     public void assignOs(Os os, ArrayList clientOs);
 
     public void deleteOs(Os os, ArrayList clientOs);
