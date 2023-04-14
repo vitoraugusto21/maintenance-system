@@ -10,9 +10,14 @@ import Model.entities.Os;
 import Model.entities.Technician;
 import org.junit.Before;
 import org.junit.Test;
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.Queue;
+
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.temporal.ChronoUnit;
+import java.time.temporal.Temporal;
+import java.util.*;
 
 
 public class OsDAOImpTest {
@@ -69,6 +74,19 @@ public class OsDAOImpTest {
         assertEquals(0,client.getClientOs().size());
     }
 
-
+    @Test
+    public void addDurationTest() throws ParseException {
+        OsDAOImp osDAOImp = new OsDAOImp();
+        Os os = new Os("1234");
+        String startTime = "20/11/2023";
+        String endTime = "22/11/2023";
+        SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
+        Date startDate = format.parse(startTime);
+        Date endDate = format.parse(endTime);
+        os.setStartTime(startDate);
+        os.setEndTime(endDate);
+        osDAOImp.addDuration(os);
+        assertEquals(2, os.getDuration());
+    }
 
 }
