@@ -21,7 +21,7 @@ public class StockDAOImp implements StockDAO{
     public void insertProduct(Product product, ArrayList stock) {
         stock.add(product);
     }
-    public void deleteProduct(Product product){
+    public void deleteProduct(Product product, ArrayList stock){
         stock.remove(product);
     }
 
