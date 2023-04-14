@@ -23,7 +23,7 @@ import java.util.*;
 public class OsDAOImpTest {
 
     @Test
-    public void takeOsTest(){
+    public void takeOsTest() {
         OsDAOImp osDao = new OsDAOImp();
         Technician tec = new Technician();
         Queue<Os> queue = new LinkedList<>();
@@ -44,7 +44,7 @@ public class OsDAOImpTest {
     }
 
     @Test
-    public void assignOsTest(){
+    public void assignOsTest() {
         Client client = new Client();
         Os os = new Os("1");
         OsDAOImp osDAOImp = new OsDAOImp();
@@ -57,7 +57,7 @@ public class OsDAOImpTest {
     }
 
     @Test
-    public void deleteOsTest(){
+    public void deleteOsTest() {
         Client client = new Client();
         Os os = new Os("1");
         OsDAOImp osDAOImp = new OsDAOImp();
@@ -71,7 +71,7 @@ public class OsDAOImpTest {
         client.getClientOs().remove(os);
 
         /* verificar se a os foi removida da lista de os do cliente */
-        assertEquals(0,client.getClientOs().size());
+        assertEquals(0, client.getClientOs().size());
     }
 
     @Test
@@ -90,7 +90,7 @@ public class OsDAOImpTest {
     }
 
     @Test
-    public void cleaningTest(){
+    public void cleaningTest() {
         OsDAOImp osDAOImp = new OsDAOImp();
         Os os = new Os("1234");
         osDAOImp.cleaning(os);
@@ -99,14 +99,23 @@ public class OsDAOImpTest {
     }
 
     @Test
-    public void addOperationalSystemTest(){
+    public void addOperationalSystemTest() {
         OsDAOImp osDAOImp = new OsDAOImp();
         Os os = new Os("1234");
         osDAOImp.addOperationalSystem(os);
 
         assertEquals(os.getOperationalSystem(), os.getTotalValue(), 0.0);
     }
-}
+
 
     @Test
-    public void
+    public void addProgramsTest() {
+
+        OsDAOImp osDAOImp = new OsDAOImp();
+        Os os = new Os("1234");
+        osDAOImp.addPrograms(os, 1);
+
+        assertEquals(os.getPrograms() * 1, os.getTotalValue(), 0.0);
+    }
+
+}
