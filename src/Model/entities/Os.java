@@ -3,14 +3,15 @@ package Model.entities;
 import Model.entities.enums.OsStatus;
 import Model.entities.enums.Payments;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
 
 public class Os {
     private String osId;
     private String description;
-    private Date startTime;
-    private Date endTime;
+    private LocalDate startTime;
+    private LocalDate endTime;
     private Double totalValue;
     private String duration;
     private OsStatus status;
@@ -28,7 +29,7 @@ public class Os {
         this.osId = osId;
     }
 
-    public Os(String osId, String description, Date startTime, Payments typePayment, String attendantId, String clientId) {
+    public Os(String osId, String description, LocalDate startTime, Payments typePayment, String attendantId, String clientId) {
         this.osId = osId;
         this.description = description;
         this.startTime = startTime;
@@ -53,19 +54,19 @@ public class Os {
         this.description = description;
     }
 
-    public Date getStartTime() {
+    public LocalDate getStartTime() {
         return startTime;
     }
 
-    public void setStartTime(Date startTime) {
+    public void setStartTime(LocalDate startTime) {
         this.startTime = startTime;
     }
 
-    public Date getEndTime() {
+    public LocalDate getEndTime() {
         return endTime;
     }
 
-    public void setEndTime(Date endTime) {
+    public void setEndTime(LocalDate endTime) {
         this.endTime = endTime;
     }
 
