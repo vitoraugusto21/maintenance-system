@@ -89,4 +89,15 @@ public class OsDAOImpTest {
         assertEquals(2, os.getDuration());
     }
 
+    @Test
+    public void cleaningTest(){
+        OsDAOImp osDAOImp = new OsDAOImp();
+        Os os = new Os("1234");
+        osDAOImp.cleaning(os);
+
+        assertEquals(70.00, os.getTotalValue(), 0.0);
+    }
+
+    
+
 }
