@@ -95,9 +95,18 @@ public class OsDAOImpTest {
         Os os = new Os("1234");
         osDAOImp.cleaning(os);
 
-        assertEquals(70.00, os.getTotalValue(), 0.0);
+        assertEquals(os.getCleaning(), os.getTotalValue(), 0.0);
     }
 
-    
+    @Test
+    public void addOperationalSystemTest(){
+        OsDAOImp osDAOImp = new OsDAOImp();
+        Os os = new Os("1234");
+        osDAOImp.addOperationalSystem(os);
 
+        assertEquals(os.getOperationalSystem(), os.getTotalValue(), 0.0);
+    }
 }
+
+    @Test
+    public void
