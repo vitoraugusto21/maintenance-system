@@ -58,6 +58,7 @@ public class OsDAOImp implements OsDAO{
         LocalDate date2 = LocalDate.of(os.getEndTime().getYear(), os.getEndTime().getMonth(), os.getEndTime().getDay());
 
         long duration = ChronoUnit.DAYS.between(date1, date2);
+        os.setDuration(duration);
     }; //adicionar qual foi o tempo de duração da OS
 
     public void addTechnician(Os os, Technician technician){ //adicionar id do tecnico que pegou a os
