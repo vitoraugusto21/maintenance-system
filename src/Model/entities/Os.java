@@ -10,10 +10,10 @@ import java.util.Date;
 public class Os {
     private String osId;
     private String description;
-    private LocalDate startTime;
-    private LocalDate endTime;
+    private Date startTime;
+    private Date endTime;
     private Double totalValue;
-    private String duration;
+    private long duration;
     private OsStatus status;
     private Payments typePayment;
     private Integer cleaning = 70;
@@ -29,7 +29,7 @@ public class Os {
         this.osId = osId;
     }
 
-    public Os(String osId, String description, LocalDate startTime, Payments typePayment, String attendantId, String clientId) {
+    public Os(String osId, String description, Date startTime, Payments typePayment, String attendantId, String clientId) {
         this.osId = osId;
         this.description = description;
         this.startTime = startTime;
@@ -54,19 +54,19 @@ public class Os {
         this.description = description;
     }
 
-    public LocalDate getStartTime() {
+    public Date getStartTime() {
         return startTime;
     }
 
-    public void setStartTime(LocalDate startTime) {
+    public void setStartTime(Date startTime) {
         this.startTime = startTime;
     }
 
-    public LocalDate getEndTime() {
+    public Date getEndTime() {
         return endTime;
     }
 
-    public void setEndTime(LocalDate endTime) {
+    public void setEndTime(Date endTime) {
         this.endTime = endTime;
     }
 
@@ -78,11 +78,11 @@ public class Os {
         this.totalValue = totalValue;
     }
 
-    public String getDuration() {
+    public long getDuration() {
         return duration;
     }
 
-    public void setDuration(String duration) {
+    public void setDuration(long duration) {
         this.duration = duration;
     }
 
