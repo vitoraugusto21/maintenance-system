@@ -15,6 +15,6 @@ public interface TechnicianDAO {
 
     Technician getTechnicianById(String id);
 
-    public void defineOsStatus(String id);
+
 
 }

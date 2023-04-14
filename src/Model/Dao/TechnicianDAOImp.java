@@ -14,11 +14,6 @@ public class TechnicianDAOImp implements TechnicianDAO {
     private final Map<String, Technician> technicians = new HashMap<>();
 
     @Override
-    public void defineOsStatus(String id) {
-        //Implementação do método para definir status da Ordem de Serviço
-    }
-
-    @Override
     public void insertTechnician(Technician technician) {
         technicians.put(technician.getId(), technician);
     }
