@@ -18,9 +18,12 @@ public class StockDAOImp implements StockDAO{
 
     private final Map<String, Product> stock = new HashMap<>();
 
+    @Override
     public void insertProduct(Product product, ArrayList stock) {
         stock.add(product);
     }
+
+    @Override
     public void deleteProduct(Product product, ArrayList stock){
         stock.remove(product);
     }
