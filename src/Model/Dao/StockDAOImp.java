@@ -22,7 +22,7 @@ public class StockDAOImp implements StockDAO{
         stock.add(product);
     }
     public void deleteProduct(Product product){
-        stock.remove(product.getProductCode());
+        stock.remove(product);
     }
 
     @Override
