@@ -24,5 +24,18 @@ public class StockDAOImpTest {
         assertTrue(stock.getListProducts().contains(product));
     }
 
+    @Test
+    public  void deleteProductTest(){
+        Product product = new Product();
+        Stock stock = new Stock();
+        StockDAOImp stockDAOImp = new StockDAOImp();
+        ArrayList<Product> stockProducts = new ArrayList<>();
+        stock.setListProducts(stockProducts);
+
+        stockDAOImp.insertProduct(product, stock.getListProducts());
+        stockDAOImp.deleteProduct(product, stock.getListProducts());
+        assertFalse(stock.getListProducts().contains(product));
+    }
+
 
 }
