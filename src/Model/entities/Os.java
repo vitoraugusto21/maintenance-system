@@ -12,7 +12,7 @@ public class Os {
     private String description;
     private Date startTime;
     private Date endTime;
-    private Double totalValue;
+    private Double totalValue = 0.00;
     private long duration;
     private OsStatus status;
     private Payments typePayment;
