@@ -3,6 +3,8 @@ package Model.Dao;
 import Model.entities.*;
 import Model.entities.enums.OsStatus;
 
+import java.time.temporal.ChronoUnit;
+import java.time.temporal.Temporal;
 import java.util.*;
 
 public class OsDAOImp implements OsDAO{
@@ -46,9 +48,13 @@ public class OsDAOImp implements OsDAO{
         os.setTotalValue(totalValue);
     }
 
-    public void updateStatus(Os os, OsStatus status){} //Mudar o status da Os
+    public void updateStatus(Os os, OsStatus status){
+        os.setStatus(OsStatus.valueOf(String.valueOf(status)));
+    } //Mudar o status da Os
 
-    public void addDuration(Os os){}; //adicionar qual foi o tempo de duração da OS
+    public void addDuration(Os os){
+        long durationInDays = ChronoUnit.DAYS.between((Temporal) os.getStartTime(), (Temporal) os.getEndTime());
+    }; //adicionar qual foi o tempo de duração da OS
 
     public void addTechnician(Os os, Technician technician){ //adicionar id do tecnico que pegou a os
         os.setTechnicianId(technician.getId());
