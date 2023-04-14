@@ -5,6 +5,9 @@ import java.util.ArrayList;
 public class Stock extends Product{
     private ArrayList<Product> listProducts;
 
+    public Stock() {
+    }
+
     public ArrayList<Product> getListProducts() {
         return listProducts;
     }
