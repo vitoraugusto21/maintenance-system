@@ -10,6 +10,8 @@ public interface StockDAO {
     public void insertProduct(Product product, ArrayList stock);
     public void deleteProduct(Product product, ArrayList stock);
 
+
+
     ArrayList<Product> getAllProducts();
 
 }
