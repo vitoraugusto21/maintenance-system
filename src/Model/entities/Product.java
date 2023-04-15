@@ -1,11 +1,22 @@
 package Model.entities;
 
+/**
+ * Classe que representa um produto.
+ */
 public class Product {
     private String productCode;
     private String productName;
     private Double productPrice;
     private Integer productQuantity;
 
+    /**
+     * Construtor que recebe os dados do produto.
+     *
+     * @param productCode - código do produto.
+     * @param productName - nome do produto.
+     * @param productPrice - preço do produto.
+     * @param productQuantity - quantidade do produto em estoque.
+     */
     public Product(String productCode, String productName, Double productPrice, Integer productQuantity) {
         this.productCode = productCode;
         this.productName = productName;
