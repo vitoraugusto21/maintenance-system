@@ -1,15 +1,32 @@
 package Model.entities;
 
+/**
+ * A classe abstrata Person representa uma pessoa genérica.
+ * @author Vitor Augusto, Gabriel Vitor
+ */
 public abstract class Person {
+
     private String id;
     private String name;
     private String phoneNumber;
     private String email;
     private String address;
 
+    /**
+     * Constrói um objeto Person vazio.
+     */
     public Person() {
     }
 
+    /**
+     * Constrói um objeto Person com os campos especificados.
+     *
+     * @param id - o ID da pessoa
+     * @param name - o nome da pessoa
+     * @param phoneNumber - o número de telefone da pessoa
+     * @param email - o e-mail da pessoa
+     * @param address - o endereço da pessoa
+     */
     public Person(String id, String name, String phoneNumber, String email, String address) {
         this.id = id;
         this.name = name;
@@ -58,6 +75,11 @@ public abstract class Person {
         this.address = address;
     }
 
+    /**
+     * Método para retornar uma representação em string do objeto Person.
+     *
+     * @return - retorna uma representação em string do objeto Person.
+     */
     @Override
     public String toString() {
         return "Person{" +
