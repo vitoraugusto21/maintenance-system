@@ -29,7 +29,7 @@ public class TechnicianDAOImp implements TechnicianDAO {
             case "name" -> technician.setName(newAttribute);
             case "email" -> technician.setEmail(newAttribute);
             case "phonenumber" -> technician.setPhoneNumber(newAttribute);
-            case "address" -> technician.setAdress(newAttribute);
+            case "address" -> technician.setAddress(newAttribute);
             case "password" -> technician.settPassword(newAttribute);
             default -> throw new IllegalArgumentException("Invalid attribute name");
         }
