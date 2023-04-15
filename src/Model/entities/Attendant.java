@@ -17,12 +17,12 @@ public class Attendant extends Person{
     /**
      * Constrói um objeto Attendant com os campos especificados.
      *
-     * @param id o ID do atendente
-     * @param name o nome do atendente
-     * @param phoneNumber o número de telefone do atendente
-     * @param email o e-mail do atendente
-     * @param adress o endereço do atendente
-     * @param aPassword a senha do atendente
+     * @param id - o ID do atendente
+     * @param name - o nome do atendente
+     * @param phoneNumber - o número de telefone do atendente
+     * @param email - o e-mail do atendente
+     * @param address - o endereço do atendente
+     * @param aPassword - a senha do atendente
      */
     public Attendant(String id, String name, String phoneNumber, String email, String adress, String aPassword) {
         super(id, name, phoneNumber, email, adress);
