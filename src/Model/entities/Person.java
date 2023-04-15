@@ -5,17 +5,17 @@ public abstract class Person {
     private String name;
     private String phoneNumber;
     private String email;
-    private String adress;
+    private String address;
 
     public Person() {
     }
 
-    public Person(String id, String name, String phoneNumber, String email, String adress) {
+    public Person(String id, String name, String phoneNumber, String email, String address) {
         this.id = id;
         this.name = name;
         this.phoneNumber = phoneNumber;
         this.email = email;
-        this.adress = adress;
+        this.adress = address;
     }
 
     public String getId() {
