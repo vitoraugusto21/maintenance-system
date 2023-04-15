@@ -4,6 +4,7 @@ package Model.entities;
 /**
  * A classe Attendant representa um atendente que trabalha na empresa de manutenção de computadores.
  * Esta classe herda da classe Person e adiciona um campo de senha.
+ * @author Vitor Augusto, Gabriel Vitor
  */
 public class Attendant extends Person{
 
