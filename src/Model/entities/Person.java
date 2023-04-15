@@ -15,7 +15,7 @@ public abstract class Person {
         this.name = name;
         this.phoneNumber = phoneNumber;
         this.email = email;
-        this.adress = address;
+        this.address = address;
     }
 
     public String getId() {
@@ -50,12 +50,12 @@ public abstract class Person {
         this.email = email;
     }
 
-    public String getAdress() {
-        return adress;
+    public String getAddress() {
+        return address;
     }
 
-    public void setAdress(String adress) {
-        this.adress = adress;
+    public void setAddress(String address) {
+        this.address = address;
     }
 
     @Override
@@ -65,7 +65,7 @@ public abstract class Person {
                 ", name='" + name + '\'' +
                 ", phoneNumber='" + phoneNumber + '\'' +
                 ", email='" + email + '\'' +
-                ", adress='" + adress + '\'' +
+                ", address='" + address + '\'' +
                 '}';
     }
 }
