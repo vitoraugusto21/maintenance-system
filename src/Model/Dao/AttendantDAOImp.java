@@ -24,7 +24,7 @@ public class AttendantDAOImp implements AttendantDAO{
             case "name" -> attendant.setName(newAttribute);
             case "email" -> attendant.setEmail(newAttribute);
             case "phonenumber" -> attendant.setPhoneNumber(newAttribute);
-            case "address" -> attendant.setAdress(newAttribute);
+            case "address" -> attendant.setAddress(newAttribute);
             default -> throw new IllegalArgumentException("Invalid attribute name");
         }
         attendants.put(attendant.getId(), attendant);
