@@ -22,7 +22,7 @@ class ClientDAOImpTest {
 
     //O método anotado com @AfterEach é executado após cada teste, e é
     // usado para limpar as variáveis usadas nos testes.
-    // Isso ajuda a garantir que os testes não afetem uns aos outros
+    // Isso ajuda a garantir que os testes não afetem uns aos outros.
 
     /**
      * O método setUp() é executado antes de cada teste e é usado para
