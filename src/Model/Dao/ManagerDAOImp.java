@@ -33,7 +33,7 @@ public class ManagerDAOImp implements ManagerDAO{
             case "name" -> manager.setName(newAttribute);
             case "email" -> manager.setEmail(newAttribute);
             case "phonenumber" -> manager.setPhoneNumber(newAttribute);
-            case "address" -> manager.setAdress(newAttribute);
+            case "address" -> manager.setAddress(newAttribute);
             case "password" -> manager.setPassword(newAttribute);
             default -> throw new IllegalArgumentException("Invalid attribute name");
         }

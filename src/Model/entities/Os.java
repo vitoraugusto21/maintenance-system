@@ -7,6 +7,9 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
 
+/**
+ * Classe que representa uma Ordem de Serviço (OS) no sistema de gerenciamento.
+ */
 public class Os {
     private String osId;
     private String description;
@@ -25,10 +28,26 @@ public class Os {
     private String clientId;
     private ArrayList<Product> usedParts;
 
+    /**
+     * Construtor que recebe o identificador da OS (Ordem de serviço) como parâmetro.
+     *
+     * @param osId - identificador da OS (Ordem de serviço)
+     */
     public Os(String osId) {
         this.osId = osId;
     }
 
+
+    /**
+     * Construtor que recebe alguns dados da OS como parâmetros.
+     *
+     * @param osId - identificador da OS
+     * @param description - descrição da OS
+     * @param startTime - data e hora de início da OS
+     * @param typePayment - forma de pagamento da OS
+     * @param attendantId - identificador do atendente responsável pela OS
+     * @param clientId - identificador do cliente associado à OS
+     */
     public Os(String osId, String description, Date startTime, Payments typePayment, String attendantId, String clientId) {
         this.osId = osId;
         this.description = description;

@@ -23,7 +23,7 @@ public class ClientDAOImp implements ClientDAO {
             case "name" -> client.setName(newAttribute);
             case "email" -> client.setEmail(newAttribute);
             case "phonenumber" -> client.setPhoneNumber(newAttribute);
-            case "address" -> client.setAdress(newAttribute);
+            case "address" -> client.setAddress(newAttribute);
             default -> throw new IllegalArgumentException("Invalid attribute name");
         }
         clients.put(client.getId(), client);

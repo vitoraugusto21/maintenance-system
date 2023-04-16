@@ -1,19 +1,46 @@
 package Model.entities;
 
+/**
+ * Representa um técnico no sistema de gerenciamento de ordens de serviço.
+ * @author Vitor Augusto, Gabriel Vitor
+ */
 public class Technician extends  Person{
     private String tPassword;
     private Os os;
 
+    /**
+     * Construtor padrão.
+     */
     public Technician() {
     }
 
-    public Technician(String id, String name, String phoneNumber, String email, String adress, String tPassword) {
-        super(id, name, phoneNumber, email, adress);
+
+    /**
+     * Cria um técnico sem especificar uma ordem de serviço.
+     * @param id - o identificador do técnico
+     * @param name - o nome do técnico
+     * @param phoneNumber - o número de telefone do técnico
+     * @param email - o endereço de email do técnico
+     * @param address - o endereço do técnico
+     * @param tPassword - a senha do técnico
+     */
+    public Technician(String id, String name, String phoneNumber, String email, String address, String tPassword) {
+        super(id, name, phoneNumber, email, address);
         this.tPassword = tPassword;
     }
 
-    public Technician(String id, String name, String phoneNumber, String email, String adress, String tPassword, Os os) {
-        super(id, name, phoneNumber, email, adress);
+    /**
+     * Cria um técnico especificando uma ordem de serviço.
+     * @param id - o identificador do técnico
+     * @param name - o nome do técnico
+     * @param phoneNumber - o número de telefone do técnico
+     * @param email - o endereço de email do técnico
+     * @param address - o endereço do técnico
+     * @param tPassword - a senha do técnico
+     * @param os - a ordem de serviço atribuída ao técnico
+     */
+    public Technician(String id, String name, String phoneNumber, String email, String address, String tPassword, Os os) {
+        super(id, name, phoneNumber, email, address);
         this.tPassword = tPassword;
         this.os = os;
     }
@@ -34,6 +61,10 @@ public class Technician extends  Person{
         this.os = os;
     }
 
+    /**
+     * Método para retornar uma representação em string do técnico.
+     * @return - retorna uma representação em string do técnico
+     */
     @Override
     public String toString() {
         return  "Technician{" +

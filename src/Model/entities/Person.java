@@ -1,21 +1,38 @@
 package Model.entities;
 
+/**
+ * A classe abstrata Person representa uma pessoa genérica.
+ * @author Vitor Augusto, Gabriel Vitor
+ */
 public abstract class Person {
+
     private String id;
     private String name;
     private String phoneNumber;
     private String email;
-    private String adress;
+    private String address;
 
+    /**
+     * Constrói um objeto Person vazio.
+     */
     public Person() {
     }
 
-    public Person(String id, String name, String phoneNumber, String email, String adress) {
+    /**
+     * Constrói um objeto Person com os campos especificados.
+     *
+     * @param id - o ID da pessoa
+     * @param name - o nome da pessoa
+     * @param phoneNumber - o número de telefone da pessoa
+     * @param email - o e-mail da pessoa
+     * @param address - o endereço da pessoa
+     */
+    public Person(String id, String name, String phoneNumber, String email, String address) {
         this.id = id;
         this.name = name;
         this.phoneNumber = phoneNumber;
         this.email = email;
-        this.adress = adress;
+        this.address = address;
     }
 
     public String getId() {
@@ -50,14 +67,19 @@ public abstract class Person {
         this.email = email;
     }
 
-    public String getAdress() {
-        return adress;
+    public String getAddress() {
+        return address;
     }
 
-    public void setAdress(String adress) {
-        this.adress = adress;
+    public void setAddress(String address) {
+        this.address = address;
     }
 
+    /**
+     * Método para retornar uma representação em string do objeto Person.
+     *
+     * @return - retorna uma representação em string do objeto Person.
+     */
     @Override
     public String toString() {
         return "Person{" +
@@ -65,7 +87,7 @@ public abstract class Person {
                 ", name='" + name + '\'' +
                 ", phoneNumber='" + phoneNumber + '\'' +
                 ", email='" + email + '\'' +
-                ", adress='" + adress + '\'' +
+                ", address='" + address + '\'' +
                 '}';
     }
 }
