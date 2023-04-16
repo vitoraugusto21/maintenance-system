@@ -2,10 +2,9 @@ package Model.Dao;
 
 import Model.entities.*;
 import Model.entities.enums.OsStatus;
-
+import Model.Dao.ClientDAOImp;
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
-import java.time.temporal.Temporal;
 import java.util.*;
 
 public class OsDAOImp implements OsDAO{
@@ -65,8 +64,37 @@ public class OsDAOImp implements OsDAO{
         os.setTechnicianId(technician.getId());
     }
 
-    public void viewOs(String osId){};
-    public void genReport(String osId){};
-    public void genInvoice(Invoice invoice){};
+    public Os viewOs(String osId, Queue<Os> osQueue){
+        for (Os os : osQueue) {
+            if (os.getOsId().equals(osId)) {
+                System.out.println(os);
+
+            }
+        }
+        System.out.println("Ordem de serviço não encontrada");
+        return null;
+    }
+
+    //INCOMPLETO
+    public void genReport(String osId, Queue<Os> osQueue) {
+        Os os = viewOs(osId, osQueue);   //Encontrar ordem de serviço
+        if (os == null) {
+            System.out.println("Ordem de serviço não encontrada");
+        }
+        else {
+            System.out.println("Ordem de serviço não encontrada");
+            System.out.println("Relatório da Ordem de Serviço #" + " ");
+            System.out.println("Cliente: " + ;
+            System.out.println("Data de criação: " + " " );
+            System.out.println("Status atual: " + " ");
+            System.out.println("Tempo de duração: " + " " + " dias");
+            System.out.println("Peças:");
+
+        }
+        
+    };
+    public void genInvoice(Invoice invoice){
+
+    };
 
 }
