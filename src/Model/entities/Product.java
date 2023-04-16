@@ -9,11 +9,9 @@ public class Product {
     private Double productPrice;
     private Integer productQuantity;
 
-<<<<<<< HEAD
     public Product() {
     }
-
-=======
+    
     /**
      * Construtor que recebe os dados do produto.
      *
@@ -22,7 +20,6 @@ public class Product {
      * @param productPrice - preço do produto.
      * @param productQuantity - quantidade do produto em estoque.
      */
->>>>>>> ca8a8caddb079b8572960e00cb78016e8592d218
     public Product(String productCode, String productName, Double productPrice, Integer productQuantity) {
         this.productCode = productCode;
         this.productName = productName;
