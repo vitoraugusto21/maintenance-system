@@ -11,7 +11,7 @@ public class Product {
 
     public Product() {
     }
-    
+
     /**
      * Construtor que recebe os dados do produto.
      *
