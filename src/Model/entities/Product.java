@@ -8,6 +8,7 @@ public class Product {
     private String productName;
     private Double productPrice;
     private Integer productQuantity;
+    private Double productCost;
 
     public Product() {
     }
@@ -20,11 +21,12 @@ public class Product {
      * @param productPrice - preço do produto.
      * @param productQuantity - quantidade do produto em estoque.
      */
-    public Product(String productCode, String productName, Double productPrice, Integer productQuantity) {
+    public Product(String productCode, String productName, Double productPrice, Integer productQuantity, Double productCost) {
         this.productCode = productCode;
         this.productName = productName;
         this.productPrice = productPrice;
         this.productQuantity = productQuantity;
+        this.productCost = productCost;
     }
 
     public String getProductCode() {
@@ -57,5 +59,13 @@ public class Product {
 
     public void setProductQuantity(Integer productQuantity) {
         this.productQuantity = productQuantity;
+    }
+
+    public Double getProductCost() {
+        return productCost;
+    }
+
+    public void setProductCost(Double productCost) {
+        this.productCost = productCost;
     }
 }
