@@ -7,28 +7,7 @@
     <list default="true" id="8b7eb8de-49c6-4245-aa7f-0644bc29ea04" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/maintenance-system.iml" beforeDir="false" afterPath="$PROJECT_DIR$/maintenance-system.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/maintenance-system/Model/Dao/StockDAOImp.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/maintenance-system/Model/Dao/StockDAOImp.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/maintenance-system/Model/Dao/TechnicianDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/maintenance-system/Model/Dao/TechnicianDAO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/maintenance-system/Model/Dao/TechnicianDAOImp.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/maintenance-system/Model/Dao/TechnicianDAOImp.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/maintenance-system/Model/entities/Os.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/maintenance-system/Model/entities/Os.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Model/Dao/AttendantDAOImp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/Dao/AttendantDAOImp.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Model/Dao/ClientDAOImp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/Dao/ClientDAOImp.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Model/Dao/ManagerDAOImp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/Dao/ManagerDAOImp.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Model/Dao/TechnicianDAOImp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/Dao/TechnicianDAOImp.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Model/entities/Attendant.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/entities/Attendant.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Model/entities/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/entities/Client.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Model/entities/Invoice.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/entities/Invoice.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Model/entities/Manager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/entities/Manager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Model/entities/Os.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/entities/Os.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Model/entities/Person.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/entities/Person.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Model/entities/Product.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/entities/Product.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Model/entities/Stock.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/entities/Stock.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Model/entities/Technician.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/entities/Technician.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Model/entities/enums/OsStatus.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/entities/enums/OsStatus.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Model/entities/enums/Payments.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/entities/enums/Payments.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/ClientDAOImpTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/ClientDAOImpTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Model/Dao/OsDAOImp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/Dao/OsDAOImp.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
