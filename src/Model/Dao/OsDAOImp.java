@@ -11,9 +11,14 @@ public class OsDAOImp implements OsDAO{
 
     public OsDAOImp(){};
     public void takeOs(Queue queue, Technician technician){ //Pega a primeira Os da fila e a define para o tecnico
-        Os first = (Os) queue.peek();
-        queue.remove();
-        technician.setOs(first);
+        if (technician.getOs() != null){
+            System.out.println("Finalize a Os atual antes de pegar outra");
+        }
+        else {
+            Os first = (Os) queue.peek();
+            queue.remove();
+            technician.setOs(first);
+        }
     };
     public void assignOs(Os os, ArrayList clientOs){ //adicionar os ao registro
         clientOs.add(os);
