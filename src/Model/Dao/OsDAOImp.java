@@ -112,7 +112,7 @@ public class OsDAOImp implements OsDAO{
         else {
             System.out.println("Ordem de serviço não encontrada");
             System.out.println("Relatório da Ordem de Serviço #" + " ");
-            System.out.println("Cliente: " + ;
+            System.out.println("Cliente: " + "1");
             System.out.println("Data de criação: " + " " );
             System.out.println("Status atual: " + " ");
             System.out.println("Tempo de duração: " + " " + " dias");
