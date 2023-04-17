@@ -6,6 +6,7 @@ import static org.junit.Assert.*;
 import Model.Dao.OsDAOImp;
 import Model.entities.Client;
 import Model.entities.Os;
+import Model.entities.Product;
 import Model.entities.Technician;
 import org.junit.Test;
 
@@ -130,6 +131,23 @@ public class OsDAOImpTest {
         osDAOImp.addPrograms(os, 1);
 
         assertEquals(os.getPrograms() * 1, os.getTotalValue(), 0.0);
+    }
+
+    @Test
+    public void addPartsTest(){
+        OsDAOImp osDAOImp = new OsDAOImp();
+        Os os = new Os("1234");
+        Product product = new Product("1234", "Memoria RAM", 40.00, 2, 20.00);
+        osDAOImp.addParts(os, product);
+
+        /* verificar se o produto foi adicionado a lista de produtos utilizados na os*/
+        assertTrue(os.getUsedParts().contains(product));
+
+        /* verificar se a quantidade de produtos em estoque diminuiu*/
+        assertEquals(1, product.getProductQuantity(), 0);
+
+        /* verificar se foi adicionado o valor do produto na os*/
+        assertEquals(40, os.getTotalValue(), 0);
     }
 
 }
