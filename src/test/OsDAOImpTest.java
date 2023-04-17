@@ -2,21 +2,14 @@ package test;
 
 import static org.junit.Assert.*;
 
-import Model.Dao.AttendantDAOImp;
 import Model.Dao.OsDAOImp;
-import Model.entities.Attendant;
 import Model.entities.Client;
 import Model.entities.Os;
 import Model.entities.Technician;
-import org.junit.Before;
 import org.junit.Test;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
-import java.time.temporal.ChronoUnit;
-import java.time.temporal.Temporal;
 import java.util.*;
 
 
@@ -25,7 +18,7 @@ public class OsDAOImpTest {
     @Test
     public void takeOsTest() {
         OsDAOImp osDao = new OsDAOImp();
-        Technician tec = new Technician();
+        Technician tec = new Technician("1", "John", "john@test.com", "123456", "1234");
         Queue<Os> queue = new LinkedList<>();
         Os os1 = new Os("1");
         Os os2 = new Os("2");
