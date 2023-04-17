@@ -24,9 +24,12 @@ public class Attendant extends Person{
      * @param address - o endereço do atendente
      * @param aPassword - a senha do atendente
      */
-    public Attendant(String id, String name, String phoneNumber, String email, String adress, String aPassword) {
-        super(id, name, phoneNumber, email, adress);
+    public Attendant(String id, String name, String phoneNumber, String email, String address, String aPassword) {
+        super(id, name, phoneNumber, email, address);
         this.aPassword = aPassword;
+    }
+
+    public Attendant(String number, String paulWalker, String number1, String mail, String address) {
     }
 
     public String getaPassword() {
