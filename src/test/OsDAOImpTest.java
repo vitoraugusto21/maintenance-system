@@ -1,7 +1,6 @@
 package test;
 
-import static Model.entities.enums.OsStatus.CANCELED;
-import static Model.entities.enums.OsStatus.IN_PROGRESS;
+import static Model.entities.enums.OsStatus.*;
 import static org.junit.Assert.*;
 
 import Model.Dao.OsDAOImp;
@@ -67,6 +66,27 @@ public class OsDAOImpTest {
         /* verificar se o status da os foi atualizado */
         assertEquals(CANCELED, os.getStatus());
     }
+
+    @Test
+    public void finishOsTest() {
+        Os os = new Os("1");
+        OsDAOImp osDAOImp = new OsDAOImp();
+        Technician technician = new Technician("1", "John", "john@test.com", "123456", "1234");
+        technician.setOs(os);
+        osDAOImp.cancelOs(technician);
+
+        /* verificar se a os saiu do tecnico */
+        assertNull(technician.getOs());
+
+        /* verificar se a foi inserida na lista de os cancelada*/
+        assertTrue(osDAOImp.osFinishedList.contains(os));
+
+        /* verificar se o status da os foi atualizado */
+        assertEquals(FINISH, os.getStatus());
+    }
+
+
+
 
     @Test
     public void addDurationTest() throws ParseException {
