@@ -2,7 +2,6 @@ import Model.Dao.OsDAOImp;
 import Model.entities.Os;
 import Model.entities.Technician;
 
-import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.Queue;
 
@@ -11,7 +10,7 @@ public class Main {
 
         Queue<Os> queue = new LinkedList<>();
         OsDAOImp dao = new OsDAOImp();
-        Technician tec = new Technician();
+        Technician tec = new Technician("1", "John", "john@test.com", "123456", "1234");
 
         queue.add(new Os("1"));
         queue.add(new Os("2"));
