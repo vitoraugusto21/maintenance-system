@@ -1,5 +1,7 @@
 package test;
 
+import static Model.entities.enums.OsStatus.CANCELED;
+import static Model.entities.enums.OsStatus.IN_PROGRESS;
 import static org.junit.Assert.*;
 
 import Model.Dao.OsDAOImp;
@@ -19,52 +21,51 @@ public class OsDAOImpTest {
     public void takeOsTest() {
         OsDAOImp osDao = new OsDAOImp();
         Technician tec = new Technician("1", "John", "john@test.com", "123456", "1234");
-        Queue<Os> queue = new LinkedList<>();
         Os os1 = new Os("1");
         Os os2 = new Os("2");
-        queue.add(os1);
-        queue.add(os2);
-        queue.add(new Os("3"));
-        queue.add(new Os("4"));
-        osDao.takeOs(queue, tec);
+        osDao.queue.add(os1);
+        osDao. queue.add(os2);
+        osDao.queue.add(new Os("3"));
+        osDao.queue.add(new Os("4"));
+        osDao.takeOs(tec);
         System.out.println(tec.getOs());
 
         /* verificar se foi atrubuida ao tecnico corretamente */
         assertEquals(os1, tec.getOs());
 
         /* verificar se a os foi retirada da fila */
-        assertEquals(os2, queue.peek());
+        assertEquals(os2, osDao.queue.peek());
+
+        /* verificar se o status da os foi inserido */
+        assertEquals(IN_PROGRESS, tec.getOs().getStatus());
+    }
+
+   @Test
+    public void insertOsTest() {
+        Os os = new Os("1");
+        OsDAOImp osDAOImp = new OsDAOImp();
+        osDAOImp.insertOs(os);
+
+        /* verificar se a os foi adicionada a lista de os do cliente */
+        assertTrue(osDAOImp.queue.contains(os));
     }
 
     @Test
-    public void assignOsTest() {
-        Client client = new Client();
+    public void cancelOsTest() {
         Os os = new Os("1");
         OsDAOImp osDAOImp = new OsDAOImp();
-        ArrayList<Os> clientOs = new ArrayList<>();
-        client.setClientOs(clientOs);
-        osDAOImp.assignOs(os, client.getClientOs());
+        Technician technician = new Technician("1", "John", "john@test.com", "123456", "1234");
+        technician.setOs(os);
+        osDAOImp.cancelOs(technician);
 
-        /* verificar se a os foi adicionada a lista de os do cliente */
-        assertTrue(client.getClientOs().contains(os));
-    }
+        /* verificar se a os saiu do tecnico */
+        assertNull(technician.getOs());
 
-    @Test
-    public void deleteOsTest() {
-        Client client = new Client();
-        Os os = new Os("1");
-        OsDAOImp osDAOImp = new OsDAOImp();
-        ArrayList<Os> clientOs = new ArrayList<>();
-        client.setClientOs(clientOs);
-        osDAOImp.assignOs(os, client.getClientOs());
+        /* verificar se a foi inserida na lista de os cancelada*/
+        assertTrue(osDAOImp.osCanceledList.contains(os));
 
-        /* verificar se a os foi adicionada a lista de os do cliente */
-        assertTrue(client.getClientOs().contains(os));
-
-        client.getClientOs().remove(os);
-
-        /* verificar se a os foi removida da lista de os do cliente */
-        assertEquals(0, client.getClientOs().size());
+        /* verificar se o status da os foi atualizado */
+        assertEquals(CANCELED, os.getStatus());
     }
 
     @Test
