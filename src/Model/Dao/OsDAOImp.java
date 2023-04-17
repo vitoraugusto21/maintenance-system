@@ -9,8 +9,13 @@ import java.util.*;
 
 public class OsDAOImp implements OsDAO{
 
+    public Queue<Os> queue = new LinkedList<>();
+    public ArrayList<Os> osCanceledList = new ArrayList<>();
+    public ArrayList<Os> osFinishedList = new ArrayList<>();
+
+
     public OsDAOImp(){};
-    public void takeOs(Queue queue, Technician technician){ //Pega a primeira Os da fila e a define para o tecnico
+    public void takeOs(Technician technician){ //Pega a primeira Os da fila e a define para o tecnico
         if (technician.getOs() != null){
             System.out.println("Finalize a Os atual antes de pegar outra");
         }
@@ -20,13 +25,19 @@ public class OsDAOImp implements OsDAO{
             technician.setOs(first);
         }
     };
-    public void assignOs(Os os, ArrayList clientOs){ //adicionar os ao registro
-        clientOs.add(os);
+    public void insertOs(Os os){ //adicionar os a fila
+        queue.add(os);
     };
      
-    public void deleteOs(Os os, ArrayList clientOs){ //deletar os do registro
-        clientOs.remove(os);
+    public void cancelOs(Os os, Technician technician){ //deletar os do registro
+        osCanceledList.add(os);
+        technician.setOs(null);
     };
+
+    public  void finishOs(Os os, Technician technician){
+        osFinishedList.add(os);
+        technician.setOs(null);
+    }
 
     public void assignEndTime(Os os, Date endTime){
         os.setEndTime(endTime);
