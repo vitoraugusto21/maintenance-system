@@ -26,8 +26,6 @@ public interface OsDAO {
 
     public void addParts(Os os, Product part);
 
-    public void updateStatus(Os os, OsStatus status);
-
     public void addDuration(Os os);
 
     public void addTechnician(Os os, Technician technician);
