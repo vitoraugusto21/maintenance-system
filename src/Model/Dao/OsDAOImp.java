@@ -41,7 +41,7 @@ public class OsDAOImp implements OsDAO{
     public  void finishOs(Technician technician){
         osFinishedList.add(technician.getOs());
         technician.getOs().setStatus(FINISH);
-        technician.getOs().setEndTime(new Date());
+        technician.getOs().setEndTime(new Date()); // Adicionar dia de finalização da os
         technician.setOs(null);
 
     }
