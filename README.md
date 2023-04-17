@@ -39,9 +39,3 @@ O sistema conta com as seguintes classes:
 
 - Java 17 ou superior instalado na máquina
 
-## Como executar
-
-1. Clone o repositório em sua máquina local
-2. Abra o terminal e navegue até a pasta do projeto
-3. Compile o código com o comando `javac *.java`
-4. Execute o sistema com o comando `java Main`
