@@ -7,8 +7,7 @@ import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
 import java.util.*;
 
-import static Model.entities.enums.OsStatus.CANCELED;
-import static Model.entities.enums.OsStatus.IN_PROGRESS;
+import static Model.entities.enums.OsStatus.*;
 
 public class OsDAOImp implements OsDAO{
 
@@ -39,8 +38,9 @@ public class OsDAOImp implements OsDAO{
         technician.setOs(null);
     };
 
-    public  void finishOs(Os os, Technician technician){
-        osFinishedList.add(os);
+    public  void finishOs(Technician technician){
+        osFinishedList.add(technician.getOs());
+        technician.getOs().setStatus(FINISH);
         technician.setOs(null);
     }
 
