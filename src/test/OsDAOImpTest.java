@@ -73,7 +73,7 @@ public class OsDAOImpTest {
         OsDAOImp osDAOImp = new OsDAOImp();
         Technician technician = new Technician("1", "John", "john@test.com", "123456", "1234");
         technician.setOs(os);
-        osDAOImp.cancelOs(technician);
+        osDAOImp.finishOs(technician);
 
         /* verificar se a os saiu do tecnico */
         assertNull(technician.getOs());
@@ -83,10 +83,10 @@ public class OsDAOImpTest {
 
         /* verificar se o status da os foi atualizado */
         assertEquals(FINISH, os.getStatus());
+
+        /* verificar se o dia de finalização foi criado*/
+        assertEquals(new Date(), os.getEndTime());
     }
-
-
-
 
     @Test
     public void addDurationTest() throws ParseException {
