@@ -11,7 +11,7 @@ public class Technician extends  Person{
     /**
      * Construtor padrão.
      */
-    public Technician() {
+    public Technician(String number, String john, String mail, String id, String s) {
     }
 
 
