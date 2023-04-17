@@ -45,11 +45,6 @@ public class OsDAOImp implements OsDAO{
         technician.setOs(null);
 
     }
-
-    public void assignEndTime(Os os, Date endTime){
-        os.setEndTime(endTime);
-    }
-
     public void cleaning(Os os){ //adicionar limpeza a OS
         Double totalValue = os.getTotalValue() + os.getCleaning();
         os.setTotalValue(totalValue);
