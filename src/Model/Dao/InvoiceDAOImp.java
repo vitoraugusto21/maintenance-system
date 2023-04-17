@@ -1,5 +1,6 @@
 package Model.Dao;
 
+import Model.entities.Client;
 import Model.entities.Invoice;
 
 import java.util.ArrayList;
@@ -16,15 +17,9 @@ public class InvoiceDAOImp implements InvoiceDAO{
     }
 
     @Override
-    public void updateInvoice(Invoice invoice, String attributteToChange, String newAttributte) {
-        switch (attributteToChange.toLowerCase()) {
-            case "client" -> invoice.setClient(newAttributte);
-            case "technician" -> invoice.setTechnician(newAttributte);
-            case "attendant" -> invoice.setAttendant(newAttributte);
-            case "os" -> invoice.setOs(newAttributte);
-            default -> throw new IllegalArgumentException("Invalid attribute name");
-        }
-    }*/
+    public void updateInvoiceClient(Invoice invoice, Client client) {
+        invoice.setClient(client);
+    }
 
     @Override
     public void deleteInvoice(Invoice invoice) {
