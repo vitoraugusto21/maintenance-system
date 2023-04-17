@@ -1,5 +1,7 @@
 package Model.entities;
 
+import Model.entities.enums.Payments;
+
 import java.util.Date;
 
 /**
@@ -8,12 +10,68 @@ import java.util.Date;
  * @author Vitor Augusto, Gabriel Vitor
  */
 public class Invoice {
-    private String idInvoice;
-    private String nameCompany;
-    private String cnpj;
-    private String idClient;
-    private String nameClient;
-    //product list
-    private Date issueDate;
-    private Date vality;
+    private Client client;
+    private Technician technician;
+    private Attendant attendant;
+    private Os os;
+    private Payments payment;
+
+    public Invoice(Client client, Technician technician, Attendant attendant, Os os, Payments payment) {
+        this.client = client;
+        this.technician = technician;
+        this.attendant = attendant;
+        this.os = os;
+        this.payment = payment;
+    }
+
+    public Client getClient() {
+        return client;
+    }
+
+    public void setClient(Client client) {
+        this.client = client;
+    }
+
+    public Technician getTechnician() {
+        return technician;
+    }
+
+    public void setTechnician(Technician technician) {
+        this.technician = technician;
+    }
+
+    public Attendant getAttendant() {
+        return attendant;
+    }
+
+    public void setAttendant(Attendant attendant) {
+        this.attendant = attendant;
+    }
+
+    public Os getOs() {
+        return os;
+    }
+
+    public void setOs(Os os) {
+        this.os = os;
+    }
+
+    public Payments getPayment() {
+        return payment;
+    }
+
+    public void setPayment(Payments payment) {
+        this.payment = payment;
+    }
+
+    @Override
+    public String toString() {
+        return "Fatura: " +
+                "Cliente: " + client.getName() +
+                ", Tecnico: " + technician.getName() +
+                ", Atendente: " + attendant.getName() +
+                ", Valor Total: " + os.getTotalValue() +
+                ", Forma de pagamento: " + payment +
+                os.getDescription();
+    }
 }
