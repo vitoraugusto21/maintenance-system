@@ -81,10 +81,6 @@ public class OsDAOImp implements OsDAO{
         os.setDuration(duration);
     }; //adicionar qual foi o tempo de duração da OS
 
-    public void addTechnician(Os os, Technician technician){ //adicionar id do tecnico que pegou a os
-        os.setTechnicianId(technician.getId());
-    }
-
     public Os viewOs(String osId, Queue<Os> osQueue){
         for (Os os : osQueue) {
             if (os.getOsId().equals(osId)) {
