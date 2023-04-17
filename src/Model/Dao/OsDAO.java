@@ -11,10 +11,12 @@ import java.util.Queue;
 
 public interface OsDAO {
 
-    public void takeOs(Queue queue, Technician technician);
-    public void assignOs(Os os, ArrayList clientOs);
+    public void takeOs(Technician technician);
+    public void insertOs(Os os);
 
-    public void deleteOs(Os os, ArrayList clientOs);
+    public void cancelOs(Technician technician);
+
+    public  void finishOs(Technician technician);
 
     public void assignEndTime(Os os, Date endTime);
 
@@ -31,7 +33,7 @@ public interface OsDAO {
     public void addDuration(Os os);
 
     public void addTechnician(Os os, Technician technician);
-    public void viewOs(String osId);
-    public void genReport(String osId);
+    public Os viewOs(String osId, Queue<Os> osQueue);
+    public void genReport(String osId, Queue<Os> osQueue);
     public void genInvoice(Invoice invoice);
 }
