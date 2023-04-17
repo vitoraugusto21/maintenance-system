@@ -7,6 +7,9 @@ import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
 import java.util.*;
 
+import static Model.entities.enums.OsStatus.CANCELED;
+import static Model.entities.enums.OsStatus.IN_PROGRESS;
+
 public class OsDAOImp implements OsDAO{
 
     public Queue<Os> queue = new LinkedList<>();
@@ -23,14 +26,16 @@ public class OsDAOImp implements OsDAO{
             Os first = (Os) queue.peek();
             queue.remove();
             technician.setOs(first);
+            first.setStatus(IN_PROGRESS);
         }
     };
     public void insertOs(Os os){ //adicionar os a fila
         queue.add(os);
     };
      
-    public void cancelOs(Os os, Technician technician){ //deletar os do registro
-        osCanceledList.add(os);
+    public void cancelOs(Technician technician){ //Cancelar a os, deixando assim o tecnico livre
+        osCanceledList.add(technician.getOs());
+        technician.getOs().setStatus(CANCELED);
         technician.setOs(null);
     };
 
@@ -59,9 +64,16 @@ public class OsDAOImp implements OsDAO{
     }
 
     public void addParts(Os os, Product part){
-        os.getUsedParts().add(part);
-        Double totalValue = os.getTotalValue() + part.getProductPrice();
-        os.setTotalValue(totalValue);
+        if (part.getProductQuantity() < 1){
+            System.out.println("Produto indisponivel!");
+        }
+        else {
+            os.getUsedParts().add(part);
+            Double totalValue = os.getTotalValue() + part.getProductPrice();
+            int quantity = part.getProductQuantity() - 1;
+            part.setProductQuantity(quantity);
+            os.setTotalValue(totalValue);
+        }
     }
 
     public void updateStatus(Os os, OsStatus status){
