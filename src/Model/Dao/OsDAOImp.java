@@ -73,10 +73,6 @@ public class OsDAOImp implements OsDAO{
         }
     }
 
-    public void updateStatus(Os os, OsStatus status){
-        os.setStatus(OsStatus.valueOf(String.valueOf(status)));
-    } //Mudar o status da Os
-
     public void addDuration(Os os){
         LocalDate date1 = LocalDate.of(os.getStartTime().getYear(), os.getStartTime().getMonth(), os.getStartTime().getDay());
         LocalDate date2 = LocalDate.of(os.getEndTime().getYear(), os.getEndTime().getMonth(), os.getEndTime().getDay());
