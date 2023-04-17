@@ -28,6 +28,4 @@ public interface OsDAO {
 
     public void addDuration(Os os);
     public Os viewOs(String osId, Queue<Os> osQueue);
-    public void genReport(String osId, Queue<Os> osQueue);
-    public void genInvoice(Invoice invoice);
 }
