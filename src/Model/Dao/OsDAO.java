@@ -27,8 +27,6 @@ public interface OsDAO {
     public void addParts(Os os, Product part);
 
     public void addDuration(Os os);
-
-    public void addTechnician(Os os, Technician technician);
     public Os viewOs(String osId, Queue<Os> osQueue);
     public void genReport(String osId, Queue<Os> osQueue);
     public void genInvoice(Invoice invoice);
