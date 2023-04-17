@@ -18,8 +18,6 @@ public interface OsDAO {
 
     public  void finishOs(Technician technician);
 
-    public void assignEndTime(Os os, Date endTime);
-
     public void cleaning(Os os);
 
     public void addOperationalSystem(Os os);
