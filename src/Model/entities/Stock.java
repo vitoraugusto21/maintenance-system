@@ -34,7 +34,6 @@ public class Stock extends Product{
      * @param listProducts - lista de produtos
      */
     public Stock(String productCode, String productName, Double productPrice, Integer productQuantity, ArrayList<Product> listProducts) {
-        super(productCode, productName, productPrice, productQuantity);
         this.listProducts = listProducts;
 
 
