@@ -32,7 +32,7 @@ public class InvoiceDAOImp implements InvoiceDAO{
     }
 
     @Override
-    public void viewInvoice(Invoice invoice) {
+    public Invoice viewInvoice(Invoice invoice) {
         return invoice;
     }
 
