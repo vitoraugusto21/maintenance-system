@@ -26,7 +26,7 @@ public class Os {
     private String attendantId;
     private String technicianId;
     private String clientId;
-    private ArrayList<Product> usedParts;
+    private ArrayList<Product> usedParts = new ArrayList<>();
 
     /**
      * Construtor que recebe o identificador da OS (Ordem de serviço) como parâmetro.
