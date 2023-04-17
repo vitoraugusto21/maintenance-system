@@ -1,7 +1,7 @@
 package Model.Dao;
 
-import Model.entities.Client;
-import Model.entities.Invoice;
+import Model.entities.*;
+import Model.entities.enums.Payments;
 
 import java.util.ArrayList;
 
@@ -19,6 +19,26 @@ public class InvoiceDAOImp implements InvoiceDAO{
     @Override
     public void updateInvoiceClient(Invoice invoice, Client client) {
         invoice.setClient(client);
+    }
+
+    @Override
+    public void updateInvoiceAttendant(Invoice invoice, Attendant attendant) {
+        
+    }
+
+    @Override
+    public void updateInvoiceClient(Invoice invoice, Technician technician) {
+
+    }
+
+    @Override
+    public void updateInvoiceOs(Invoice invoice, Os os) {
+
+    }
+
+    @Override
+    public void updateInvoicePayment(Invoice invoice, Payments payment) {
+
     }
 
     @Override
