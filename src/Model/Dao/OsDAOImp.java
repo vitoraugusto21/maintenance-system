@@ -91,27 +91,4 @@ public class OsDAOImp implements OsDAO{
         System.out.println("Ordem de serviço não encontrada");
         return null;
     }
-
-    //INCOMPLETO
-    public void genReport(String osId, Queue<Os> osQueue) {
-        Os os = viewOs(osId, osQueue);   //Encontrar ordem de serviço
-        if (os == null) {
-            System.out.println("Ordem de serviço não encontrada");
-        }
-        else {
-            System.out.println("Ordem de serviço não encontrada");
-            System.out.println("Relatório da Ordem de Serviço #" + " ");
-            System.out.println("Cliente: " + "1");
-            System.out.println("Data de criação: " + " " );
-            System.out.println("Status atual: " + " ");
-            System.out.println("Tempo de duração: " + " " + " dias");
-            System.out.println("Peças:");
-
-        }
-        
-    };
-    public void genInvoice(Invoice invoice){
-
-    };
-
 }
