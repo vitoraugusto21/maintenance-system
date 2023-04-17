@@ -6,14 +6,16 @@ import java.util.ArrayList;
 
 public class InvoiceDAOImp implements InvoiceDAO{
 
+    public ArrayList<Invoice> invoiceList = new ArrayList<>();
+
     public InvoiceDAOImp(){};
 
     @Override
-    public void insertInvoice(Invoice invoice, ArrayList invoicesList) {
-        invoicesList.add(invoice);
+    public void insertInvoice(Invoice invoice) {
+        invoiceList.add(invoice);
     }
 
-    @Override
+ /*   @Override
     public void updateInvoice(Invoice invoice, String attributteToChange, String newAttributte) {
         switch (attributteToChange.toLowerCase()) {
             case "client" -> invoice.setClient(newAttributte);
@@ -22,7 +24,7 @@ public class InvoiceDAOImp implements InvoiceDAO{
             case "os" -> invoice.setOs(newAttributte);
             default -> throw new IllegalArgumentException("Invalid attribute name");
         }
-    }
+    }*/
 
     @Override
     public void deleteInvoice(Invoice invoice) {
