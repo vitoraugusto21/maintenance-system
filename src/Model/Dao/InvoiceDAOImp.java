@@ -15,7 +15,7 @@ public class InvoiceDAOImp implements InvoiceDAO{
         invoiceList.add(invoice);
     }
 
- /*   @Override
+    @Override
     public void updateInvoice(Invoice invoice, String attributteToChange, String newAttributte) {
         switch (attributteToChange.toLowerCase()) {
             case "client" -> invoice.setClient(newAttributte);
@@ -28,16 +28,16 @@ public class InvoiceDAOImp implements InvoiceDAO{
 
     @Override
     public void deleteInvoice(Invoice invoice) {
-
+        invoiceList.remove(invoice);
     }
 
     @Override
-    public void getInvoice(Invoice invoice) {
-
+    public void viewInvoice(Invoice invoice) {
+        return invoice;
     }
 
     @Override
     public ArrayList<Invoice> getAllInvoices() {
-        return null;
+        return invoiceList;
     }
 }
