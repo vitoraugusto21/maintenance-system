@@ -17,23 +17,23 @@ public class InvoiceDAOImp implements InvoiceDAO{
     }
 
     @Override
-    public void updateInvoiceClient(Invoice invoice, Client client) {
-        invoice.setClient(client);
+    public void updateInvoiceClient(Invoice invoice, Client newClient) {
+        invoice.setClient(newClient);
     }
 
     @Override
-    public void updateInvoiceAttendant(Invoice invoice, Attendant attendant) {
-        
+    public void updateInvoiceAttendant(Invoice invoice, Attendant newAttendant) {
+        invoice.setAttendant(newAttendant);
     }
 
     @Override
-    public void updateInvoiceClient(Invoice invoice, Technician technician) {
-
+    public void updateInvoiceClient(Invoice invoice, Technician newTechnician) {
+        invoice.setTechnician(newTechnician);
     }
 
     @Override
-    public void updateInvoiceOs(Invoice invoice, Os os) {
-
+    public void updateInvoiceOs(Invoice invoice, Os newOs) {
+        invoice.setOs(newOs);
     }
 
     @Override
