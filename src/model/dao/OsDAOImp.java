@@ -95,25 +95,6 @@ public class OsDAOImp implements OsDAO{
         os.setTotalValue(totalValue);
     }
 
-    /**
-     * Adiciona as partes utilizadas à Os.
-     *
-     * @param os - Os a receber as partes utilizadas.
-     * @param part - Parte a ser adicionada à Os.
-     */
-    public void addParts(Os os, Product part){
-        if (part.getProductQuantity() < 1){
-            System.out.println("Produto indisponivel!");
-        }
-        else {
-            os.getUsedParts().add(part);
-            Double totalValue = os.getTotalValue() + part.getProductPrice();
-            int quantity = part.getProductQuantity() - 1;
-            part.setProductQuantity(quantity);
-            os.setTotalValue(totalValue);
-        }
-    }
-
     public void addDuration(Os os){
         LocalDate date1 = LocalDate.of(os.getStartTime().getYear(), os.getStartTime().getMonth(), os.getStartTime().getDay());
         LocalDate date2 = LocalDate.of(os.getEndTime().getYear(), os.getEndTime().getMonth(), os.getEndTime().getDay());

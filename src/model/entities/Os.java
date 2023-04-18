@@ -56,6 +56,23 @@ public class Os {
         this.clientId = clientId;
     }
 
+    /**
+     * Adiciona as partes utilizadas à Os.
+     *
+     * @param part - Parte a ser adicionada à Os.
+     */
+    public void addParts(Product part){
+        if (part.getProductQuantity() < 1){
+            System.out.println("Produto indisponivel!");
+        }
+        else {
+            this.getUsedParts().add(part);
+            Double totalValue = this.getTotalValue() + part.getProductPrice();
+            int quantity = part.getProductQuantity() - 1;
+            part.setProductQuantity(quantity);
+            this.setTotalValue(totalValue);
+        }
+    }
     public String getOsId() {
         return osId;
     }

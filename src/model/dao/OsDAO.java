@@ -22,8 +22,6 @@ public interface OsDAO {
 
     public void addPrograms(Os os, int quantity);
 
-    public void addParts(Os os, Product part);
-
     public void addDuration(Os os);
     public Os viewOs(String osId, Queue<Os> osQueue);
 }
