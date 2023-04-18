@@ -5,6 +5,9 @@ import Model.entities.enums.Payments;
 
 import java.util.ArrayList;
 
+/**
+ * Interface responsável por definir as operações de acesso aos dados de Fatura no banco de dados.
+ */
 public interface InvoiceDAO{
     public void insertInvoice(Invoice invoice);
     public void updateInvoiceClient(Invoice invoice, Client client);

@@ -3,6 +3,10 @@ package Model.Dao;
 import Model.entities.Technician;
 
 import java.util.ArrayList;
+
+/**
+ * Interface que define as operações básicas para o DAO de técnicos.
+ */
 public interface TechnicianDAO {
 
     void insertTechnician(Technician technician);

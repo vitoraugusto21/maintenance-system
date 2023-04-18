@@ -9,6 +9,9 @@ import java.util.*;
 
 import static Model.entities.enums.OsStatus.*;
 
+/**
+ * Classe OsDAOImp representa a implementação da interface OsDAO, responsável por gerenciar as ordens de serviço (Os) do sistema.
+ */
 public class OsDAOImp implements OsDAO{
 
     public Queue<Os> queue = new LinkedList<>();
@@ -17,6 +20,12 @@ public class OsDAOImp implements OsDAO{
 
 
     public OsDAOImp(){};
+
+    /**
+     * Pega a primeira Os da fila e a define para o técnico.
+     *
+     * @param technician - Técnico que irá receber a Os.
+     */
     public void takeOs(Technician technician){ //Pega a primeira Os da fila e a define para o tecnico
         if (technician.getOs() != null){
             System.out.println("Finalize a Os atual antes de pegar outra");
@@ -28,16 +37,32 @@ public class OsDAOImp implements OsDAO{
             first.setStatus(IN_PROGRESS);
         }
     };
+
+    /**
+     * Adiciona uma Os à fila.
+     *
+     * @param os - Os a ser adicionada.
+     */
     public void insertOs(Os os){ //adicionar os a fila
         queue.add(os);
     };
-     
+
+    /**
+     * Cancela uma Os, deixando assim o técnico livre.
+     *
+     * @param technician Técnico que está com a Os a ser cancelada.
+     */
     public void cancelOs(Technician technician){ //Cancelar a os, deixando assim o tecnico livre
         osCanceledList.add(technician.getOs());
         technician.getOs().setStatus(CANCELED);
         technician.setOs(null);
     };
 
+    /**
+     * Finaliza uma Os, adicionando-a à lista de Os finalizadas.
+     *
+     * @param technician Técnico que está com a Os a ser finalizada.
+     */
     public  void finishOs(Technician technician){
         osFinishedList.add(technician.getOs());
         technician.getOs().setStatus(FINISH);
@@ -45,11 +70,22 @@ public class OsDAOImp implements OsDAO{
         technician.setOs(null);
 
     }
+
+    /**
+     * Adiciona o valor de limpeza à Os.
+     *
+     * @param os - Os a receber o valor de limpeza.
+     */
     public void cleaning(Os os){ //adicionar limpeza a OS
         Double totalValue = os.getTotalValue() + os.getCleaning();
         os.setTotalValue(totalValue);
     }
 
+    /**
+     * Adiciona o valor do sistema operacional à Os.
+     *
+     * @param os - Os a receber o valor do sistema operacional.
+     */
     public void addOperationalSystem(Os os){
         Double totalValue = os.getTotalValue() + os.getOperationalSystem();
         os.setTotalValue(totalValue);
@@ -60,6 +96,12 @@ public class OsDAOImp implements OsDAO{
         os.setTotalValue(totalValue);
     }
 
+    /**
+     * Adiciona as partes utilizadas à Os.
+     *
+     * @param os - Os a receber as partes utilizadas.
+     * @param part - Parte a ser adicionada à Os.
+     */
     public void addParts(Os os, Product part){
         if (part.getProductQuantity() < 1){
             System.out.println("Produto indisponivel!");
@@ -81,6 +123,12 @@ public class OsDAOImp implements OsDAO{
         os.setDuration(duration);
     }; //adicionar qual foi o tempo de duração da OS
 
+    /**
+     * Mostra a OS
+     * @param osId - id da os a ser mostrada
+     * @param osQueue - fila que contem a os
+     * @return - retorna a OS
+     */
     public Os viewOs(String osId, Queue<Os> osQueue){
         for (Os os : osQueue) {
             if (os.getOsId().equals(osId)) {

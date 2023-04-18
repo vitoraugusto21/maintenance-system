@@ -7,6 +7,10 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * Implementação da interface AttendantDAO responsável pelas operações de acesso aos dados de Atendente no banco de dados.
+ * @author Vitor Augusto, Gabriel Vitor
+ */
 public class AttendantDAOImp implements AttendantDAO{
 
     public AttendantDAOImp(){};

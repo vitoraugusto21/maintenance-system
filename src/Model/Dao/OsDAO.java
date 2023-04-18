@@ -9,6 +9,9 @@ import java.util.Date;
 import java.util.LinkedList;
 import java.util.Queue;
 
+/**
+ * Interface para manipulação de ordens de serviço
+ */
 public interface OsDAO {
 
     public void takeOs(Technician technician);
