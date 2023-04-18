@@ -1,7 +1,7 @@
 package test;
 
-import model.dao.ClientDAOImp;
-import model.entities.Client;
+import main.model.dao.ClientDAOImp;
+import main.model.entities.Client;
 import org.junit.jupiter.api.*;
 
 import java.util.ArrayList;
@@ -31,7 +31,7 @@ class ClientDAOImpTest {
     @BeforeEach
     void setUp() {
         dao = new ClientDAOImp();
-        client1 = new Client("1", "John Rambo", "1234567890", "johnrambo@example.com", "123 Main St");
+        client1 = new Client("1", "John Rambo", "1234567890", "johnrambo@example.com", "123 main.Main St");
         client2 = new Client("2", "Sylvester Stallone", "0987654321", "stallone@example.com", "456 Elm St");
         dao.insertClient(client1);
         dao.insertClient(client2);

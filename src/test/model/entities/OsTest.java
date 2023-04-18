@@ -1,8 +1,7 @@
 package test.model.entities;
 
-import model.dao.OsDAOImp;
-import model.entities.Os;
-import model.entities.Product;
+import main.model.entities.Os;
+import main.model.entities.Product;
 import org.junit.Assert;
 import org.junit.Test;
 

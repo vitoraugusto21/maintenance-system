@@ -2,9 +2,9 @@ package test;
 
 import static org.junit.Assert.*;
 
-import model.dao.StockDAOImp;
-import model.entities.Product;
-import model.entities.Stock;
+import main.model.dao.StockDAOImp;
+import main.model.entities.Product;
+import main.model.entities.Stock;
 import org.junit.Test;
 import java.util.ArrayList;
 

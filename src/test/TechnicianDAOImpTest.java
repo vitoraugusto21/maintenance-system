@@ -1,8 +1,8 @@
 package test;
 
-import model.dao.TechnicianDAO;
-import model.dao.TechnicianDAOImp;
-import model.entities.Technician;
+import main.model.dao.TechnicianDAO;
+import main.model.dao.TechnicianDAOImp;
+import main.model.entities.Technician;
 import org.junit.jupiter.api.*;
 
 import java.util.ArrayList;

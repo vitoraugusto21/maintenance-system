@@ -1,7 +1,7 @@
 package test;
 
-import model.dao.ManagerDAOImp;
-import model.entities.Manager;
+import main.model.dao.ManagerDAOImp;
+import main.model.entities.Manager;
 import org.junit.jupiter.api.*;
 
 import java.util.ArrayList;

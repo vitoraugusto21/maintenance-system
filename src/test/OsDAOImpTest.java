@@ -1,17 +1,14 @@
 package test;
 
-import static model.entities.enums.OsStatus.*;
-import static org.junit.Assert.*;
-
-import model.dao.OsDAOImp;
-import model.entities.Os;
-import model.entities.Product;
-import model.entities.Technician;
+import main.model.dao.OsDAOImp;
+import main.model.entities.Os;
+import main.model.entities.Technician;
 import org.junit.Test;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.*;
+import java.util.Date;
+
+import static main.model.entities.enums.OsStatus.*;
+import static org.junit.Assert.*;
 
 
 public class OsDAOImpTest {
@@ -87,8 +84,5 @@ public class OsDAOImpTest {
         /* verificar se o dia de finalização foi criado*/
         assertEquals(new Date(), os.getEndTime());
     }
-
-
-
 
 }

@@ -1,7 +1,7 @@
 package test;
 
-import model.dao.AttendantDAOImp;
-import model.entities.Attendant;
+import main.model.dao.AttendantDAOImp;
+import main.model.entities.Attendant;
 import org.junit.jupiter.api.*;
 
 import java.util.ArrayList;
@@ -16,7 +16,7 @@ class AttendantDAOImpTest {
     @BeforeEach
     void setUp() {
         dao = new AttendantDAOImp();
-        attendant1 = new Attendant("1", "Paul Walker", "1234567890", "paulwalker@gmail.com", "123 Main St");
+        attendant1 = new Attendant("1", "Paul Walker", "1234567890", "paulwalker@gmail.com", "123 main.Main St");
         attendant2 = new Attendant("2", "Willen Dafoe", "1234567880", "willendafoe@gmail.com", "456 Elm St");
         dao.insertAttendant(attendant1);
         dao.insertAttendant(attendant2);
