@@ -19,7 +19,7 @@ O sistema oferece as seguintes funcionalidades:
 ## Tecnologias utilizadas
 
 - Java 17
-- JUnit  (para testes unitários)
+- JUnit 5.8.1 
 
 ## Classes
 
