@@ -1,14 +1,11 @@
 package main.model.dao;
 
-import main.model.entities.Os;
+import main.model.entities.Report;
 
 public class ReportDAOImp implements ReportDAO{
     @Override
-    public String genReport(Os os) {
-        return "Relatório: \n" +
-                "Ordem de Serviço: " +
-                "Tempo médio de espera: " +
-                "Custo das peças: " ;
+    public void saveReport(Report report) {
+
     }
 
 }

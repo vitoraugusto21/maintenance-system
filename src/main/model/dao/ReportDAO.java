@@ -1,7 +1,7 @@
 package main.model.dao;
 
-import main.model.entities.Os;
+import main.model.entities.Report;
 
 public interface ReportDAO {
-    public String genReport(Os os);
+    public void saveReport(Report report);
 }

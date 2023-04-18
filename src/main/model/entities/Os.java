@@ -17,12 +17,10 @@ public class Os {
     private Date startTime;
     private Date endTime;
     private Double totalValue = 0.00;
-    private long duration;
     private OsStatus status;
     private Payments typePayment;
     private Integer cleaning = 70;
     private Integer operationalSystem = 50;
-
     private Integer programs = 10;
     private String attendantId;
     private String technicianId;
@@ -78,12 +76,11 @@ public class Os {
     /**
      * adicionar qual foi o tempo de duração da OS
      */
-    public void addDuration() {
+    public long calculateAverageAwait() {
         LocalDate date1 = LocalDate.of(this.getStartTime().getYear(), this.getStartTime().getMonth(), this.getStartTime().getDay());
         LocalDate date2 = LocalDate.of(this.getEndTime().getYear(), this.getEndTime().getMonth(), this.getEndTime().getDay());
 
-        long duration = ChronoUnit.DAYS.between(date1, date2);
-        this.setDuration(duration);
+        return ChronoUnit.DAYS.between(date1, date2);
     }
 
     public void addPrograms(int quantity) { //adicionar os programas (e quantos) a os
@@ -148,13 +145,7 @@ public class Os {
         this.totalValue = totalValue;
     }
 
-    public long getDuration() {
-        return duration;
-    }
 
-    public void setDuration(long duration) {
-        this.duration = duration;
-    }
 
     public OsStatus getStatus() {
         return status;

@@ -30,7 +30,7 @@ public class OsTest {
     }
 
     @Test
-    public void addDurationTest() throws ParseException {
+    public void calculateAverageAwaitTimeTest() throws ParseException {
         Os os = new Os("1234");
         String startTime = "20/11/2023";
         String endTime = "22/11/2023";
@@ -39,17 +39,17 @@ public class OsTest {
         Date endDate = format.parse(endTime);
         os.setStartTime(startDate);
         os.setEndTime(endDate);
-        os.addDuration();
-        assertEquals(2, os.getDuration());
-    }
 
+        long result = os.calculateAverageAwait();
+        assertEquals(2, result);
+    }
 
     @Test
     public void addProgramsTest() {
         Os os = new Os("1234");
         os.addPrograms(1);
 
-        assertEquals(os.getPrograms() * 1, os.getTotalValue(), 0.0);
+        assertEquals(os.getPrograms(), os.getTotalValue(), 0.0);
     }
 
 
