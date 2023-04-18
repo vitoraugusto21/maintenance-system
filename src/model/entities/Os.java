@@ -3,6 +3,8 @@ package model.entities;
 import model.entities.enums.OsStatus;
 import model.entities.enums.Payments;
 
+import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -40,12 +42,12 @@ public class Os {
     /**
      * Construtor que recebe alguns dados da OS como parâmetros.
      *
-     * @param osId - identificador da OS
+     * @param osId        - identificador da OS
      * @param description - descrição da OS
-     * @param startTime - data e hora de início da OS
+     * @param startTime   - data e hora de início da OS
      * @param typePayment - forma de pagamento da OS
      * @param attendantId - identificador do atendente responsável pela OS
-     * @param clientId - identificador do cliente associado à OS
+     * @param clientId    - identificador do cliente associado à OS
      */
     public Os(String osId, String description, Date startTime, Payments typePayment, String attendantId, String clientId) {
         this.osId = osId;
@@ -61,11 +63,10 @@ public class Os {
      *
      * @param part - Parte a ser adicionada à Os.
      */
-    public void addParts(Product part){
-        if (part.getProductQuantity() < 1){
+    public void addParts(Product part) {
+        if (part.getProductQuantity() < 1) {
             System.out.println("Produto indisponivel!");
-        }
-        else {
+        } else {
             this.getUsedParts().add(part);
             Double totalValue = this.getTotalValue() + part.getProductPrice();
             int quantity = part.getProductQuantity() - 1;
@@ -73,6 +74,40 @@ public class Os {
             this.setTotalValue(totalValue);
         }
     }
+
+    /**
+     * adicionar qual foi o tempo de duração da OS
+     */
+    public void addDuration() {
+        LocalDate date1 = LocalDate.of(this.getStartTime().getYear(), this.getStartTime().getMonth(), this.getStartTime().getDay());
+        LocalDate date2 = LocalDate.of(this.getEndTime().getYear(), this.getEndTime().getMonth(), this.getEndTime().getDay());
+
+        long duration = ChronoUnit.DAYS.between(date1, date2);
+        this.setDuration(duration);
+    }
+
+    public void addPrograms(int quantity) { //adicionar os programas (e quantos) a os
+        Double totalValue = this.getTotalValue() + (this.getPrograms() * quantity);
+        this.setTotalValue(totalValue);
+    }
+
+
+    /**
+     * Adiciona o valor de limpeza à Os.
+     */
+    public void cleaning() { //adicionar limpeza a OS
+        Double totalValue = this.getTotalValue() + this.getCleaning();
+        this.setTotalValue(totalValue);
+    }
+
+    /**
+     * Adiciona o valor do sistema operacional à Os.
+     */
+    public void addOperationalSystem() {
+        Double totalValue = this.getTotalValue() + this.getOperationalSystem();
+        this.setTotalValue(totalValue);
+    }
+
     public String getOsId() {
         return osId;
     }

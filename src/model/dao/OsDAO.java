@@ -16,12 +16,6 @@ public interface OsDAO {
 
     public  void finishOs(Technician technician);
 
-    public void cleaning(Os os);
 
-    public void addOperationalSystem(Os os);
-
-    public void addPrograms(Os os, int quantity);
-
-    public void addDuration(Os os);
     public Os viewOs(String osId, Queue<Os> osQueue);
 }

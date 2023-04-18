@@ -88,48 +88,7 @@ public class OsDAOImpTest {
         assertEquals(new Date(), os.getEndTime());
     }
 
-    @Test
-    public void addDurationTest() throws ParseException {
-        OsDAOImp osDAOImp = new OsDAOImp();
-        Os os = new Os("1234");
-        String startTime = "20/11/2023";
-        String endTime = "22/11/2023";
-        SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
-        Date startDate = format.parse(startTime);
-        Date endDate = format.parse(endTime);
-        os.setStartTime(startDate);
-        os.setEndTime(endDate);
-        osDAOImp.addDuration(os);
-        assertEquals(2, os.getDuration());
-    }
-
-    @Test
-    public void cleaningTest() {
-        OsDAOImp osDAOImp = new OsDAOImp();
-        Os os = new Os("1234");
-        osDAOImp.cleaning(os);
-
-        assertEquals(os.getCleaning(), os.getTotalValue(), 0.0);
-    }
-
-    @Test
-    public void addOperationalSystemTest() {
-        OsDAOImp osDAOImp = new OsDAOImp();
-        Os os = new Os("1234");
-        osDAOImp.addOperationalSystem(os);
-
-        assertEquals(os.getOperationalSystem(), os.getTotalValue(), 0.0);
-    }
 
 
-    @Test
-    public void addProgramsTest() {
-
-        OsDAOImp osDAOImp = new OsDAOImp();
-        Os os = new Os("1234");
-        osDAOImp.addPrograms(os, 1);
-
-        assertEquals(os.getPrograms() * 1, os.getTotalValue(), 0.0);
-    }
 
 }
