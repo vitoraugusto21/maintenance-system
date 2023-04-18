@@ -9,8 +9,8 @@ public class Report {
 
     public String generateAsString() {
         return "Relatório: \n" +
-                "Ordem de Serviço: " + this.os.getOsId() +
-                "Tempo médio de espera: " + this.os.calculateAverageAwait() +
+                "Ordem de Serviço: " + this.os.getOsId() + "\n" +
+                "Tempo médio de espera: " + this.os.calculateAverageAwait() + "\n" +
                 "Custo das peças: ";
     }
 
