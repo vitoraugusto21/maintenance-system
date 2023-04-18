@@ -1,8 +1,6 @@
-package Model.entities;
+package model.entities;
 
-import Model.entities.enums.Payments;
-
-import java.util.Date;
+import model.entities.enums.Payments;
 
 /**
  * Classe que representa uma fatura emitida pela empresa para um cliente

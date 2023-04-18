@@ -1,4 +1,4 @@
-package Model.entities;
+package model.entities;
 
 /**
  * Representa um técnico no sistema de gerenciamento de ordens de serviço.

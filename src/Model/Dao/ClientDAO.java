@@ -1,6 +1,6 @@
-package Model.Dao;
+package model.dao;
 
-import Model.entities.Client;
+import model.entities.Client;
 
 import java.util.ArrayList;
 

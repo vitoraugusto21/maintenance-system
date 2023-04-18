@@ -1,6 +1,6 @@
-package Model.Dao;
+package model.dao;
 
-import Model.entities.Technician;
+import model.entities.Technician;
 
 import java.util.ArrayList;
 

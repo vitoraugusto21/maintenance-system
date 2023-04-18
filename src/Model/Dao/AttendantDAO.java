@@ -1,7 +1,6 @@
-package Model.Dao;
+package model.dao;
 
-import Model.entities.Attendant;
-import Model.entities.Os;
+import model.entities.Attendant;
 
 import java.util.ArrayList;
 

@@ -1,8 +1,7 @@
-package Model.Dao;
+package model.dao;
 
-import Model.entities.Os;
-import Model.entities.Report;
+import model.entities.Os;
 
 public interface ReportDAO {
-    public String genReport();
+    public String genReport(Os os);
 }

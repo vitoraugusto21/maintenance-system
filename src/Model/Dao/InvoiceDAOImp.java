@@ -1,7 +1,7 @@
-package Model.Dao;
+package model.dao;
 
-import Model.entities.*;
-import Model.entities.enums.Payments;
+import model.entities.*;
+import model.entities.enums.Payments;
 
 import java.util.ArrayList;
 

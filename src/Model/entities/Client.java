@@ -1,9 +1,6 @@
-package Model.entities;
-
-import Model.Dao.ClientDAO;
+package model.entities;
 
 import java.util.ArrayList;
-import java.util.List;
 
 /**
  * A classe Client é responsável por representar um cliente e suas informações no sistema. É uma subclasse da classe Person.

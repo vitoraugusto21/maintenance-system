@@ -1,4 +1,4 @@
-package Model.entities.enums;
+package model.entities.enums;
 
 /**
  * Enumeração dos tipos de pagamentos disponíveis.

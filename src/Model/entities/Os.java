@@ -1,9 +1,8 @@
-package Model.entities;
+package model.entities;
 
-import Model.entities.enums.OsStatus;
-import Model.entities.enums.Payments;
+import model.entities.enums.OsStatus;
+import model.entities.enums.Payments;
 
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
 

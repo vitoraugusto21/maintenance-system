@@ -1,10 +1,9 @@
-package Model.Dao;
+package model.dao;
 
-import Model.entities.Attendant;
+import model.entities.Attendant;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 /**

@@ -1,4 +1,4 @@
-package Model.entities;
+package model.entities;
 
 /**
  * A classe abstrata Person representa uma pessoa genérica.

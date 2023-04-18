@@ -1,7 +1,7 @@
 package test;
 
-import Model.Dao.ClientDAOImp;
-import Model.entities.Client;
+import model.dao.ClientDAOImp;
+import model.entities.Client;
 import org.junit.jupiter.api.*;
 
 import java.util.ArrayList;

@@ -1,7 +1,7 @@
 package test;
 
-import Model.Dao.AttendantDAOImp;
-import Model.entities.Attendant;
+import model.dao.AttendantDAOImp;
+import model.entities.Attendant;
 import org.junit.jupiter.api.*;
 
 import java.util.ArrayList;

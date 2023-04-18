@@ -1,4 +1,4 @@
-package Model.entities;
+package model.entities;
 
 /**
  * A classe Manager representa um gerente que trabalha na empresa de manutenção.

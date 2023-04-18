@@ -1,12 +1,9 @@
-package Model.Dao;
+package model.dao;
 
-import Model.entities.Client;
-import Model.entities.Product;
-import Model.entities.Stock;
+import model.entities.Product;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 

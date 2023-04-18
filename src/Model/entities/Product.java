@@ -1,4 +1,4 @@
-package Model.entities;
+package model.entities;
 
 /**
  * Classe que representa um produto.

@@ -1,8 +1,6 @@
-package Model.Dao;
+package model.dao;
 
-import Model.entities.Client;
-import Model.entities.Product;
-import Model.entities.Stock;
+import model.entities.Product;
 
 import java.util.ArrayList;
 

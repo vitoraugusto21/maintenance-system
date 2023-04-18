@@ -1,13 +1,12 @@
-package Model.Dao;
+package model.dao;
 
-import Model.entities.*;
-import Model.entities.enums.OsStatus;
-import Model.Dao.ClientDAOImp;
+import model.entities.*;
+
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
 import java.util.*;
 
-import static Model.entities.enums.OsStatus.*;
+import static model.entities.enums.OsStatus.*;
 
 /**
  * Classe OsDAOImp representa a implementação da interface OsDAO, responsável por gerenciar as ordens de serviço (Os) do sistema.

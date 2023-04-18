@@ -1,13 +1,12 @@
 package test;
 
-import static Model.entities.enums.OsStatus.*;
+import static model.entities.enums.OsStatus.*;
 import static org.junit.Assert.*;
 
-import Model.Dao.OsDAOImp;
-import Model.entities.Client;
-import Model.entities.Os;
-import Model.entities.Product;
-import Model.entities.Technician;
+import model.dao.OsDAOImp;
+import model.entities.Os;
+import model.entities.Product;
+import model.entities.Technician;
 import org.junit.Test;
 
 import java.text.ParseException;
@@ -24,7 +23,7 @@ public class OsDAOImpTest {
         Os os1 = new Os("1");
         Os os2 = new Os("2");
         osDao.queue.add(os1);
-        osDao. queue.add(os2);
+        osDao.queue.add(os2);
         osDao.queue.add(new Os("3"));
         osDao.queue.add(new Os("4"));
         osDao.takeOs(tec);
@@ -40,7 +39,7 @@ public class OsDAOImpTest {
         assertEquals(IN_PROGRESS, tec.getOs().getStatus());
     }
 
-   @Test
+    @Test
     public void insertOsTest() {
         Os os = new Os("1");
         OsDAOImp osDAOImp = new OsDAOImp();
