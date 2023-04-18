@@ -34,6 +34,7 @@ public class Os {
      */
     public Os(String osId) {
         this.osId = osId;
+        this.startTime = new Date();
     }
 
 
