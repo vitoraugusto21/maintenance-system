@@ -20,5 +20,4 @@ public interface TechnicianDAO {
     Technician getTechnicianById(String id);
 
 
-
 }

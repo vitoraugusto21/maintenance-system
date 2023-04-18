@@ -3,13 +3,14 @@ package test;
 import main.model.dao.TechnicianDAO;
 import main.model.dao.TechnicianDAOImp;
 import main.model.entities.Technician;
-import org.junit.jupiter.api.*;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 
 class TechnicianDAOImpTest {

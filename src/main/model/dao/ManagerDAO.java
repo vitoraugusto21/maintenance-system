@@ -19,6 +19,7 @@ public interface ManagerDAO {
 
     Manager getManagerById(String id);
 
-    public void manageStock();
-    public void viewReports();
+    void manageStock();
+
+    void viewReports();
 }

@@ -2,7 +2,9 @@ package test;
 
 import main.model.dao.ManagerDAOImp;
 import main.model.entities.Manager;
-import org.junit.jupiter.api.*;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 

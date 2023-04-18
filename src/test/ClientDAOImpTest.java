@@ -2,7 +2,9 @@ package test;
 
 import main.model.dao.ClientDAOImp;
 import main.model.entities.Client;
-import org.junit.jupiter.api.*;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 
@@ -10,6 +12,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 /**
  * Classe de testes para ClientDAOImp
+ *
  * @author Vitor Augusto, Gabriel Vitor
  */
 class ClientDAOImpTest {

@@ -8,16 +8,17 @@ import java.util.ArrayList;
 /**
  * Esta classe implementa a interface InvoiceDAO e fornece as operações de CRUD (Create, Read, Update, Delete)
  * para a entidade Invoice (Fatura).
- *
  */
-public class InvoiceDAOImp implements InvoiceDAO{
+public class InvoiceDAOImp implements InvoiceDAO {
 
     public ArrayList<Invoice> invoiceList = new ArrayList<>();
 
-    public InvoiceDAOImp(){};
+    public InvoiceDAOImp() {
+    }
 
     /**
      * Insere uma nova fatura na lista de faturas.
+     *
      * @param invoice - a fatura a ser inserida.
      */
     @Override
@@ -27,7 +28,8 @@ public class InvoiceDAOImp implements InvoiceDAO{
 
     /**
      * Atualiza o cliente associado a uma fatura.
-     * @param invoice - a fatura a ser atualizada.
+     *
+     * @param invoice   - a fatura a ser atualizada.
      * @param newClient - o novo cliente associado à fatura.
      */
     @Override
@@ -37,7 +39,8 @@ public class InvoiceDAOImp implements InvoiceDAO{
 
     /**
      * Atualiza o atendente associado a uma fatura.
-     * @param invoice - a fatura a ser atualizada.
+     *
+     * @param invoice      - a fatura a ser atualizada.
      * @param newAttendant - o novo atendente associado à fatura.
      */
     @Override
@@ -47,7 +50,8 @@ public class InvoiceDAOImp implements InvoiceDAO{
 
     /**
      * Atualiza o técnico associado a uma fatura.
-     * @param invoice - a fatura a ser atualizada.
+     *
+     * @param invoice       - a fatura a ser atualizada.
      * @param newTechnician - o novo técnico associado à fatura.
      */
     @Override
@@ -57,7 +61,8 @@ public class InvoiceDAOImp implements InvoiceDAO{
 
     /**
      * Atualiza o técnico associado a uma fatura.
-     * @param invoice - a fatura a ser atualizada.
+     *
+     * @param invoice       - a fatura a ser atualizada.
      * @param newTechnician - o novo técnico associado à fatura.
      */
     @Override
@@ -67,6 +72,7 @@ public class InvoiceDAOImp implements InvoiceDAO{
 
     /**
      * Atualiza o método de pagamento associado a uma fatura.
+     *
      * @param invoice - a fatura a ser atualizada.
      * @param payment - o novo método de pagamento associado à fatura.
      */
@@ -77,6 +83,7 @@ public class InvoiceDAOImp implements InvoiceDAO{
 
     /**
      * Exclui uma fatura da lista de faturas.
+     *
      * @param invoice - a fatura a ser excluída.
      */
     @Override
@@ -86,6 +93,7 @@ public class InvoiceDAOImp implements InvoiceDAO{
 
     /**
      * Retorna a fatura fornecida como parâmetro.
+     *
      * @param invoice - a fatura a ser retornada.
      * @return - a fatura fornecida como parâmetro.
      */
@@ -93,8 +101,10 @@ public class InvoiceDAOImp implements InvoiceDAO{
     public Invoice viewInvoice(Invoice invoice) {
         return invoice;
     }
+
     /**
      * Método para retornar todas as faturas presentes na lista de faturas.
+     *
      * @return - todas as faturas presentes na lista de faturas.
      */
     @Override

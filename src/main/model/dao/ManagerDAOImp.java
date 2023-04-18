@@ -1,6 +1,7 @@
 package main.model.dao;
 
 import main.model.entities.Manager;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -10,10 +11,12 @@ import java.util.Map;
  * Classe que implementa a interface ManagerDAO e realiza operações de CRUD (criação, leitura, atualização e exclusão)
  * em objetos da classe Manager utilizando uma estrutura de mapeamento em hash.
  */
-public class ManagerDAOImp implements ManagerDAO{
+public class ManagerDAOImp implements ManagerDAO {
 
-    public ManagerDAOImp(){};
     private final Map<String, Manager> managers = new HashMap<>();
+
+    public ManagerDAOImp() {
+    }
 
     /**
      * Método que realiza o gerenciamento de estoque.
@@ -33,6 +36,7 @@ public class ManagerDAOImp implements ManagerDAO{
 
     /**
      * Método que realiza o gerenciamento de estoque.
+     *
      * @param manager - objeto da classe Manager a ser inserido
      */
     @Override
@@ -41,11 +45,11 @@ public class ManagerDAOImp implements ManagerDAO{
     }
 
     /**
-     *
      * Método que atualiza um objeto da classe Manager na estrutura de mapeamento em hash.
-     * @param manager - objeto da classe Manager a ser atualizado.
+     *
+     * @param manager           - objeto da classe Manager a ser atualizado.
      * @param attributeToChange - nome do atributo a ser alterado.
-     * @param newAttribute - novo valor do atributo a ser alterado.
+     * @param newAttribute      - novo valor do atributo a ser alterado.
      * @throws IllegalArgumentException - se o nome do atributo fornecido não for válido.
      */
     @Override
@@ -63,6 +67,7 @@ public class ManagerDAOImp implements ManagerDAO{
 
     /**
      * Método que exclui um objeto da classe Manager da estrutura de mapeamento em hash.
+     *
      * @param manager objeto da classe Manager a ser excluído.
      * @param manager
      */
@@ -73,8 +78,8 @@ public class ManagerDAOImp implements ManagerDAO{
 
     /**
      * Método que retorna uma lista contendo todos os objetos da classe Manager presentes na estrutura de mapeamento em hash.
-     * @return lista contendo todos os objetos da classe Manager presentes na estrutura de mapeamento em hash.
      *
+     * @return lista contendo todos os objetos da classe Manager presentes na estrutura de mapeamento em hash.
      */
     @Override
     public ArrayList<Manager> getAllManagers() {
@@ -83,9 +88,9 @@ public class ManagerDAOImp implements ManagerDAO{
 
     /**
      * Método que retorna um objeto da classe Manager presente na estrutura de mapeamento em hash a partir do seu identificador.
+     *
      * @param id - identificador do objeto da classe Manager a ser retornado.
      * @return - objeto da classe Manager presente na estrutura de mapeamento em hash a partir do seu identificador.
-     *
      */
     @Override
     public Manager getManagerById(String id) {

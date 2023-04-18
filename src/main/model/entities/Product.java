@@ -16,9 +16,9 @@ public class Product {
     /**
      * Construtor que recebe os dados do produto.
      *
-     * @param productCode - código do produto.
-     * @param productName - nome do produto.
-     * @param productPrice - preço do produto.
+     * @param productCode     - código do produto.
+     * @param productName     - nome do produto.
+     * @param productPrice    - preço do produto.
      * @param productQuantity - quantidade do produto em estoque.
      */
     public Product(String productCode, String productName, Double productPrice, Integer productQuantity, Double productCost) {

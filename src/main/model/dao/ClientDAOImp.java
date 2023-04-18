@@ -8,11 +8,14 @@ import java.util.Map;
 
 public class ClientDAOImp implements ClientDAO {
 
-    public ClientDAOImp(){};
     private final Map<String, Client> clients = new HashMap<>();
+
+    public ClientDAOImp() {
+    }
 
     /**
      * Insere um novo Cliente no banco de dados.
+     *
      * @param client o Cliente a ser inserido.
      */
     @Override
@@ -22,9 +25,10 @@ public class ClientDAOImp implements ClientDAO {
 
     /**
      * Atualiza as informações de um Cliente no banco de dados.
-     * @param client - o Cliente a ser atualizado.
+     *
+     * @param client            - o Cliente a ser atualizado.
      * @param attributeToChange - o atributo a ser alterado.
-     * @param newAttribute - o novo valor do atributo.
+     * @param newAttribute      - o novo valor do atributo.
      */
     @Override
     public void updateClient(Client client, String attributeToChange, String newAttribute) {
@@ -40,6 +44,7 @@ public class ClientDAOImp implements ClientDAO {
 
     /**
      * Exclui um Cliente do banco de dados.
+     *
      * @param client - o Cliente a ser excluído.
      */
     @Override
@@ -49,6 +54,7 @@ public class ClientDAOImp implements ClientDAO {
 
     /**
      * Obtém todos os Clientes cadastrados no banco de dados.
+     *
      * @return - uma lista de todos os Clientes.
      */
     @Override
@@ -58,6 +64,7 @@ public class ClientDAOImp implements ClientDAO {
 
     /**
      * Obtém um Cliente específico do banco de dados a partir de seu ID.
+     *
      * @param id - o ID do Cliente a ser buscado.
      * @return - o Cliente correspondente ao ID especificado.
      */

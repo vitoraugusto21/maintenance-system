@@ -8,5 +8,5 @@ public enum Payments {
     CREDIT,
     DEBIT,
     PIX,
-    CASH;
+    CASH
 }

@@ -2,6 +2,7 @@ package main.model.entities;
 
 /**
  * A classe abstrata Person representa uma pessoa genérica.
+ *
  * @author Vitor Augusto, Gabriel Vitor
  */
 public abstract class Person {
@@ -21,11 +22,11 @@ public abstract class Person {
     /**
      * Constrói um objeto Person com os campos especificados.
      *
-     * @param id - o ID da pessoa
-     * @param name - o nome da pessoa
+     * @param id          - o ID da pessoa
+     * @param name        - o nome da pessoa
      * @param phoneNumber - o número de telefone da pessoa
-     * @param email - o e-mail da pessoa
-     * @param address - o endereço da pessoa
+     * @param email       - o e-mail da pessoa
+     * @param address     - o endereço da pessoa
      */
     public Person(String id, String name, String phoneNumber, String email, String address) {
         this.id = id;

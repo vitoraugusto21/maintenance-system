@@ -5,6 +5,7 @@ import main.model.entities.enums.Payments;
 /**
  * Classe que representa uma fatura emitida pela empresa para um cliente
  * com as informações dos produtos comprados e os valores
+ *
  * @author Vitor Augusto, Gabriel Vitor
  */
 public class Invoice {

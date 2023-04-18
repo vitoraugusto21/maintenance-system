@@ -1,6 +1,7 @@
 package main.model.dao;
 
-import main.model.entities.*;
+import main.model.entities.Os;
+import main.model.entities.Technician;
 
 import java.util.Queue;
 
@@ -9,12 +10,13 @@ import java.util.Queue;
  */
 public interface OsDAO {
 
-    public void takeOs(Technician technician);
-    public void insertOs(Os os);
+    void takeOs(Technician technician);
 
-    public void cancelOs(Technician technician);
+    void insertOs(Os os);
 
-    public  void finishOs(Technician technician);
+    void cancelOs(Technician technician);
 
-    public Os viewOs(String osId, Queue<Os> osQueue);
+    void finishOs(Technician technician);
+
+    Os viewOs(String osId, Queue<Os> osQueue);
 }

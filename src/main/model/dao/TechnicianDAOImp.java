@@ -1,4 +1,3 @@
-
 package main.model.dao;
 
 import main.model.entities.Technician;
@@ -10,8 +9,10 @@ import java.util.Map;
 
 public class TechnicianDAOImp implements TechnicianDAO {
 
-    public TechnicianDAOImp(){};
     private final Map<String, Technician> technicians = new HashMap<>();
+
+    public TechnicianDAOImp() {
+    }
 
     /**
      * Insere um objeto Technician no banco de dados.
@@ -26,9 +27,9 @@ public class TechnicianDAOImp implements TechnicianDAO {
     /**
      * Atualiza um objeto Technician no banco de dados.
      *
-     * @param technician - O objeto Technician a ser atualizado.
+     * @param technician        - O objeto Technician a ser atualizado.
      * @param attributeToChange - O atributo do objeto a ser modificado.
-     * @param newAttribute - O novo valor do atributo modificado.
+     * @param newAttribute      - O novo valor do atributo modificado.
      */
     @Override
     public void updateTechnician(Technician technician, String attributeToChange, String newAttribute) {
@@ -55,6 +56,7 @@ public class TechnicianDAOImp implements TechnicianDAO {
 
     /**
      * Método que retorna uma lista com todos os técnicos cadastrados no banco de dados.
+     *
      * @return -  Uma lista com todos os técnicos cadastrados no banco de dados.
      */
     @Override

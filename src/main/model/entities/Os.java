@@ -145,8 +145,6 @@ public class Os {
         this.totalValue = totalValue;
     }
 
-
-
     public OsStatus getStatus() {
         return status;
     }
