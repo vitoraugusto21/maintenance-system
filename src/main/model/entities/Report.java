@@ -7,10 +7,14 @@ public class Report {
         this.os = os;
     }
 
-    String generateAsString() {
+    public String generateAsString() {
         return "Relatório: \n" +
                 "Ordem de Serviço: " + this.os.getOsId() +
                 "Tempo médio de espera: " + this.os.calculateAverageAwait() +
                 "Custo das peças: ";
+    }
+
+    public String getName() {
+        return this.os.getOsId();
     }
 }

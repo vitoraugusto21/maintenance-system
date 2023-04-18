@@ -1,4 +1,4 @@
-package test;
+package test.model.dao;
 
 import main.model.dao.ManagerDAOImp;
 import main.model.entities.Manager;

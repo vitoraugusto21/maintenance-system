@@ -1,4 +1,4 @@
-package test;
+package test.model.dao;
 
 import main.model.dao.TechnicianDAO;
 import main.model.dao.TechnicianDAOImp;

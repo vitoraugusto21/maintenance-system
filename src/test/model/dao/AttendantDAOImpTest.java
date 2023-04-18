@@ -1,4 +1,4 @@
-package test;
+package test.model.dao;
 
 import main.model.dao.AttendantDAOImp;
 import main.model.entities.Attendant;
