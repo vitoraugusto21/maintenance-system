@@ -5,24 +5,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8b7eb8de-49c6-4245-aa7f-0644bc29ea04" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Model/Dao/AttendantDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/Dao/AttendantDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Model/Dao/AttendantDAOImp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/Dao/AttendantDAOImp.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Model/Dao/ClientDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/Dao/ClientDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Model/Dao/ClientDAOImp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/Dao/ClientDAOImp.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Model/Dao/InvoiceDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/Dao/InvoiceDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Model/Dao/InvoiceDAOImp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/Dao/InvoiceDAOImp.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Model/Dao/ManagerDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/Dao/ManagerDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Model/Dao/ManagerDAOImp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/Dao/ManagerDAOImp.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Model/Dao/OsDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/Dao/OsDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Model/Dao/OsDAOImp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/Dao/OsDAOImp.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Model/Dao/ReportDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/Dao/ReportDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Model/Dao/ReportDAOImp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/Dao/ReportDAOImp.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Model/Dao/StockDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/Dao/StockDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Model/Dao/StockDAOImp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/Dao/StockDAOImp.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Model/Dao/TechnicianDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/Dao/TechnicianDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Model/Dao/TechnicianDAOImp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/Dao/TechnicianDAOImp.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Model/entities/Report.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/entities/Report.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/model/dao/AttendantDAOImpTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/model/dao/AttendantDAOImpTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/model/dao/ClientDAOImpTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/model/dao/ClientDAOImpTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/model/dao/ManagerDAOImpTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/model/dao/ManagerDAOImpTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/model/dao/OsDAOImpTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/model/dao/OsDAOImpTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/model/dao/ReportDAOImpTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/model/dao/ReportDAOImpTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/model/dao/StockDAOImpTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/model/dao/StockDAOImpTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/model/dao/TechnicianDAOImpTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/model/dao/TechnicianDAOImpTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/model/entities/OsTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/model/entities/OsTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
