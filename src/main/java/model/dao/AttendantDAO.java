@@ -3,6 +3,7 @@ package model.dao;
 import model.entities.Attendant;
 
 import java.io.IOException;
+import java.util.Map;
 
 /**
  * Interface responsável por definir as operações de acesso aos dados de Atendente no banco de dados.
@@ -16,7 +17,7 @@ public interface AttendantDAO {
 
     void deleteAttendant(Attendant attendant) throws IOException;
 
-    String readAttendants() throws IOException;
+    Map<String, Attendant> readAttendants() throws IOException;
 
     Attendant getAttendantById(String id);
 

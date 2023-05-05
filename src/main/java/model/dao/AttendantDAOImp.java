@@ -82,8 +82,11 @@ public class AttendantDAOImp implements AttendantDAO {
     }
 
     @Override
-    public String readAttendants() throws IOException {
-        return "";
+    public Map<String, Attendant> readAttendants() throws IOException {
+        Gson gson = new GsonBuilder().setPrettyPrinting().create();
+        Reader reader = Files.newBufferedReader(Paths.get("attendants.json"));
+        Map<String, Attendant> attendants = gson.fromJson(reader, new TypeToken<Map<String, Attendant>>(){}.getType());
+        return attendants;
     }
 
     @Override
