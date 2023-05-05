@@ -2,7 +2,7 @@ package model.dao;
 
 import model.entities.Attendant;
 
-import java.util.ArrayList;
+import java.io.IOException;
 
 /**
  * Interface responsável por definir as operações de acesso aos dados de Atendente no banco de dados.
@@ -10,13 +10,13 @@ import java.util.ArrayList;
  * @author Vitor Augusto, Gabriel Vitor
  */
 public interface AttendantDAO {
-    void insertAttendant(Attendant attendant);
+    void createAttendant(Attendant attendant) throws IOException;
 
     void updateAttendant(Attendant attendant, String attributeToChange, String newAttribute);
 
     void deleteAttendant(Attendant attendant);
 
-    ArrayList<Attendant> getAllAttendants();
+    String readAttendants() throws IOException;
 
     Attendant getAttendantById(String id);
 

@@ -1,8 +1,10 @@
 package model.dao;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import model.entities.Attendant;
 
-import java.util.ArrayList;
+import java.io.*;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -15,12 +17,24 @@ public class AttendantDAOImp implements AttendantDAO {
 
     private final Map<String, Attendant> attendants = new HashMap<>();
 
+    File file = new File(System.getProperty("user.dir") + File.separator + "attedants.json");
+
     public AttendantDAOImp() {
     }
 
     @Override
-    public void insertAttendant(Attendant attendant) {
+    public void createAttendant(Attendant attendant) throws IOException {
         attendants.put(attendant.getId(), attendant);
+        Gson gson = new GsonBuilder().setPrettyPrinting().create();
+        if (file.exists()){
+
+        }
+            String jsonAttendant = gson.toJson(attendant);
+        FileWriter writer = new FileWriter(file);
+        writer.write(jsonAttendant);
+        writer.flush();
+        writer.close();
+
     }
 
     @Override
@@ -41,8 +55,15 @@ public class AttendantDAOImp implements AttendantDAO {
     }
 
     @Override
-    public ArrayList<Attendant> getAllAttendants() {
-        return new ArrayList<>(attendants.values());
+    public String readAttendants() throws IOException {
+        StringBuilder sb = new StringBuilder();
+        BufferedReader br = new BufferedReader(new FileReader(file));
+        String line;
+        while ((line = br.readLine()) != null){
+            sb.append(line);
+        }
+        br.close();
+        return sb.toString();
     }
 
     @Override
