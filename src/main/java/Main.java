@@ -40,8 +40,8 @@ public class Main {
         Reader reader = Files.newBufferedReader(Paths.get("attendants.json"));
         Type type = new TypeToken<Map<String, Attendant>>(){}.getType();
         Map<String, Attendant> attendantsFromJson = gson.fromJson(reader, type);
-        Attendant attendant= attendantsFromJson.get("001");
-        attendantDAOImp.deleteAttendant(attendant2);
+        Attendant attendant= attendantsFromJson.get("003");
+        attendantDAOImp.updateAttendant(attendant, "name", "cuzin");
     }
 
 

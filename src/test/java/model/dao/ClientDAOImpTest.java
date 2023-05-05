@@ -36,8 +36,8 @@ class ClientDAOImpTest {
         dao = new ClientDAOImp();
         client1 = new Client("1", "John Rambo", "1234567890", "johnrambo@example.com", "123 main.Main St");
         client2 = new Client("2", "Sylvester Stallone", "0987654321", "stallone@example.com", "456 Elm St");
-        dao.insertClient(client1);
-        dao.insertClient(client2);
+        dao.createClient(client1);
+        dao.createClient(client2);
     }
 
     /**
@@ -57,7 +57,7 @@ class ClientDAOImpTest {
     @Test
     void testInsertClient() {
         Client client3 = new Client("3", "Bob Smith", "1112223333", "bobsmith@example.com", "789 Oak St");
-        dao.insertClient(client3);
+        dao.createClient(client3);
         assertEquals(client3, dao.getClientById(client3.getId()));
     }
 
@@ -87,7 +87,7 @@ class ClientDAOImpTest {
         ArrayList<Client> expected = new ArrayList<>();
         expected.add(client1);
         expected.add(client2);
-        assertEquals(expected, dao.getAllClients());
+        assertEquals(expected, dao.readClients());
     }
 
     /**

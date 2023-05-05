@@ -52,7 +52,7 @@ public class AttendantDAOImp implements AttendantDAO {
 
     @Override
     public void updateAttendant(Attendant attendant, String attributeToChange, String newAttribute) throws IOException {
-        Gson gson = new GsonBuilder().setPrettyPrinting().create();        
+        Gson gson = new GsonBuilder().setPrettyPrinting().create();
         Map<String, Attendant> attendantsFromJson = readAttendants();
         switch (attributeToChange.toLowerCase()) {
             case "name" -> attendantsFromJson.get(attendant.getId()).setName(newAttribute);

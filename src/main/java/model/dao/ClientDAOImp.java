@@ -2,9 +2,16 @@ package model.dao;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.google.gson.reflect.TypeToken;
+import model.entities.Attendant;
 import model.entities.Client;
 
 import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.Reader;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -12,7 +19,7 @@ import java.util.Map;
 public class ClientDAOImp implements ClientDAO {
 
     private final Map<String, Client> clients = new HashMap<>();
-    String curDir = System.getProperty("user.dir");
+    File file = new File(System.getProperty("user.dir") + File.separator + "clients.json");
 
     public ClientDAOImp() {
     }
@@ -23,11 +30,26 @@ public class ClientDAOImp implements ClientDAO {
      * @param client o Cliente a ser inserido.
      */
     @Override
-    public void insertClient(Client client) {
-        clients.put(client.getId(), client);
+    public void createClient(Client client) throws IOException {
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
-        String jsonClient =gson.toJson(client);
-
+        if (file.exists()){
+            Reader reader = Files.newBufferedReader(Paths.get("clients.json"));
+            Map<String, Client> clientsFromJson = gson.fromJson(reader, Map.class);
+            clientsFromJson.put(client.getId(), client);
+            String updateJson = gson.toJson(clientsFromJson);
+            FileWriter writer = new FileWriter(file);
+            writer.write(updateJson);
+            writer.flush();
+            writer.close();
+        }
+        else {
+            clients.put(client.getId(), client);
+            String clientsJson = gson.toJson(client);
+            FileWriter writer = new FileWriter(file);
+            writer.write(clientsJson);
+            writer.flush();
+            writer.close();
+        }
 
     }
 
@@ -39,15 +61,20 @@ public class ClientDAOImp implements ClientDAO {
      * @param newAttribute      - o novo valor do atributo.
      */
     @Override
-    public void updateClient(Client client, String attributeToChange, String newAttribute) {
+    public void updateClient(Client client, String attributeToChange, String newAttribute) throws IOException {
+        Gson gson = new GsonBuilder().setPrettyPrinting().create();
+        Map<String, Client> clientsFromJson = readClients();
         switch (attributeToChange.toLowerCase()) {
-            case "name" -> client.setName(newAttribute);
-            case "email" -> client.setEmail(newAttribute);
-            case "phonenumber" -> client.setPhoneNumber(newAttribute);
-            case "address" -> client.setAddress(newAttribute);
+            case "name" -> clientsFromJson.get(client.getId()).setName(newAttribute);
+            case "email" -> clientsFromJson.get(client.getId()).setEmail(newAttribute);
+            case "phoneNumber" -> clientsFromJson.get(client.getId()).setPhoneNumber(newAttribute);
+            case "address" -> clientsFromJson.get(client.getId()).setAddress(newAttribute);
             default -> throw new IllegalArgumentException("Invalid attribute name");
         }
-        clients.put(client.getId(), client);
+        String clientsToJson = gson.toJson(clientsFromJson);
+        FileWriter writer = new FileWriter("clients.json");
+        writer.write(clientsToJson);
+        writer.close();
     }
 
     /**
@@ -56,8 +83,14 @@ public class ClientDAOImp implements ClientDAO {
      * @param client - o Cliente a ser excluído.
      */
     @Override
-    public void deleteClient(Client client) {
-        clients.remove(client.getId());
+    public void deleteClient(Client client) throws IOException {
+        Gson gson = new GsonBuilder().setPrettyPrinting().create();
+        Map<String, Client> clientsFromJson = readClients();
+        clientsFromJson.remove(client.getId());
+        String clientsToJson = gson.toJson(clientsFromJson);
+        FileWriter writer = new FileWriter("clients.json");
+        writer.write(clientsToJson);
+        writer.close();
     }
 
     /**
@@ -66,8 +99,11 @@ public class ClientDAOImp implements ClientDAO {
      * @return - uma lista de todos os Clientes.
      */
     @Override
-    public ArrayList<Client> getAllClients() {
-        return new ArrayList<>(clients.values());
+    public Map<String, Client> readClients() throws IOException {
+        Gson gson = new GsonBuilder().setPrettyPrinting().create();
+        Reader reader = Files.newBufferedReader(Paths.get("attendants.json"));
+        Map<String, Client> clients = gson.fromJson(reader, new TypeToken<Map<String, Attendant>>(){}.getType());
+        return clients;
     }
 
     /**

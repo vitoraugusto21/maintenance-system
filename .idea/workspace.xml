@@ -5,17 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8b7eb8de-49c6-4245-aa7f-0644bc29ea04" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/model/dao/AttendantDAOImpTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/model/dao/AttendantDAOImpTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/model/dao/ClientDAOImpTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/model/dao/ClientDAOImpTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/model/dao/ManagerDAOImpTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/model/dao/ManagerDAOImpTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/model/dao/OsDAOImpTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/model/dao/OsDAOImpTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/model/dao/ReportDAOImpTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/model/dao/ReportDAOImpTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/model/dao/StockDAOImpTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/model/dao/StockDAOImpTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/model/dao/TechnicianDAOImpTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/model/dao/TechnicianDAOImpTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/model/entities/OsTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/model/entities/OsTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/attendants.json" beforeDir="false" afterPath="$PROJECT_DIR$/attendants.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/dao/AttendantDAOImp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/dao/AttendantDAOImp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/dao/ClientDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/dao/ClientDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/dao/ClientDAOImp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/dao/ClientDAOImp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/model/dao/ClientDAOImpTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/model/dao/ClientDAOImpTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
