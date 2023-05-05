@@ -70,8 +70,15 @@ public class AttendantDAOImp implements AttendantDAO {
     }
 
     @Override
-    public void deleteAttendant(Attendant attendant) {
-        attendants.remove(attendant.getId());
+    public void removeAttendant(Attendant attendant) throws IOException {
+        Gson gson = new GsonBuilder().setPrettyPrinting().create();
+        Reader reader = Files.newBufferedReader(Paths.get("attendants.json"));
+        Map<String, Attendant> attendantsFromJson = gson.fromJson(reader, Map.class);
+        attendantsFromJson.remove(attendant.getId());
+        String attendantsToJson = gson.toJson(attendantsFromJson);
+        FileWriter writer = new FileWriter("attendants.json");
+        writer.write(attendantsToJson);
+        writer.close();
     }
 
     @Override

@@ -1,12 +1,4 @@
 {
-  "001": {
-    "aPassword": "password123",
-    "id": "001",
-    "name": "Junin",
-    "phoneNumber": "555-1234",
-    "email": "john@example.com",
-    "address": "123 Main St"
-  },
   "002": {
     "aPassword": "mypassword",
     "id": "002",

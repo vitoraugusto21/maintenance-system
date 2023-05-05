@@ -42,7 +42,7 @@ public class Main {
         Type type = new TypeToken<Map<String, Attendant>>(){}.getType();
         Map<String, Attendant> attendantsFromJson = gson.fromJson(reader, type);
         Attendant attendant= attendantsFromJson.get("001");
-        attendantDAOImp.updateAttendant(attendant, "name", "Junin");
+        attendantDAOImp.removeAttendant(attendant1);
     }
 
 
