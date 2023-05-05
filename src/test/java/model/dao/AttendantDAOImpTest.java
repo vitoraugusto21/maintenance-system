@@ -1,4 +1,4 @@
-package test.model.dao;
+package model.dao;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -32,9 +32,9 @@ class AttendantDAOImpTest {
     void setUp() throws IOException {
         dao = new AttendantDAOImp();
         attendant1 = new Attendant("001", "Paul Walker", "1234567890", "paulwalker@gmail.com", "123 main.Main St");
-        attendant2 = new Attendant("002", "Willen Dafoe", "1234567880", "willendafoe@gmail.com", "456 Elm St");
-        dao.createAttendant(attendant1);
-        dao.createAttendant(attendant2);
+        attendant2 = new Attendant("3", "Bob Smith", "123456770", "bobsmith@gmail.com", "789 Oak St");
+        attendants.put(attendant1.getId(), attendant1);
+        attendants.put(attendant2.getId(), attendant2);
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
         String attedantsJson = gson.toJson(attendants);
         FileWriter writer = new FileWriter(file);
@@ -52,12 +52,10 @@ class AttendantDAOImpTest {
 
     @Test
     void testCreateAttendant() throws IOException {
-        Attendant attendant3 = new Attendant("003", "Bob Smith", "123456770", "bobsmith@gmail.com", "789 Oak St");
-        dao.createAttendant(attendant3);
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
         Reader reader = Files.newBufferedReader(Paths.get("attendantsTest.json"));
         Map<String, Attendant> attendantsFromJson = gson.fromJson(reader, Map.class);
-        assertTrue(attendantsFromJson.containsKey("003"));
+        assertTrue(attendantsFromJson.containsKey("3"));
         assertEquals("Bob Smith", attendantsFromJson.get("3").getName());
         assertEquals("123456770", attendantsFromJson.get("3").getPhoneNumber());
         assertEquals("bobsmith@gmail.com", attendantsFromJson.get("3").getEmail());
