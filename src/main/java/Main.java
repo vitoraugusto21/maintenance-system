@@ -13,7 +13,6 @@ import java.lang.reflect.Type;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.Date;
-import java.util.HashMap;
 import java.util.Map;
 
 public class Main {
@@ -42,7 +41,7 @@ public class Main {
         Type type = new TypeToken<Map<String, Attendant>>(){}.getType();
         Map<String, Attendant> attendantsFromJson = gson.fromJson(reader, type);
         Attendant attendant= attendantsFromJson.get("001");
-        attendantDAOImp.removeAttendant(attendant1);
+        attendantDAOImp.deleteAttendant(attendant1);
     }
 
 

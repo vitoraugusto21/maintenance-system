@@ -14,7 +14,7 @@ public interface AttendantDAO {
 
     void updateAttendant(Attendant attendant, String attributeToChange, String newAttribute) throws IOException;
 
-    void removeAttendant(Attendant attendant) throws IOException;
+    void deleteAttendant(Attendant attendant) throws IOException;
 
     String readAttendants() throws IOException;
 
