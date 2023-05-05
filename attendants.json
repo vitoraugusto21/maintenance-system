@@ -1,0 +1,18 @@
+{
+  "001": {
+    "aPassword": "password123",
+    "id": "001",
+    "name": "John",
+    "phoneNumber": "555-1234",
+    "email": "john@example.com",
+    "address": "123 Main St"
+  },
+  "002": {
+    "aPassword": "mypassword",
+    "id": "002",
+    "name": "Jane",
+    "phoneNumber": "555-5678",
+    "email": "jane@example.com",
+    "address": "456 Elm St"
+  }
+}

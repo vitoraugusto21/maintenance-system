@@ -1,7 +1,7 @@
-package test.model.entities;
+package model.entities;
 
-import main.model.entities.Os;
-import main.model.entities.Product;
+import model.entities.Os;
+import model.entities.Product;
 import org.junit.Assert;
 import org.junit.Test;
 

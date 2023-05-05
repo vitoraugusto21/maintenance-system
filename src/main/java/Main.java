@@ -1,3 +1,4 @@
+import model.dao.AttendantDAOImp;
 import model.dao.OsDAOImp;
 import model.dao.ReportDAOImp;
 import model.entities.*;
@@ -26,8 +27,9 @@ public class Main {
         var report = new Report(os);
         var reportDAO = new ReportDAOImp();
         reportDAO.saveReport(report);
-        String curDir = System.getProperty("user.dir");
-        System.out.println(curDir);
+        AttendantDAOImp attendantDAOImp = new AttendantDAOImp();
+        attendantDAOImp.createAttendant(attendant1);
+        attendantDAOImp.createAttendant(attendant2);
     }
 
 

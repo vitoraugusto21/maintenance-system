@@ -30,7 +30,7 @@ public class Attendant extends Person {
         this.aPassword = aPassword;
     }
 
-    public Attendant(String number, String paulWalker, String number1, String mail, String address) {
+    public Attendant(String id, String name, String phoneNumber, String email, String address) {
     }
 
     public String getaPassword() {

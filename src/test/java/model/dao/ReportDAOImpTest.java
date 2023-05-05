@@ -1,8 +1,8 @@
 package test.model.dao;
 
-import main.model.dao.ReportDAOImp;
-import main.model.entities.Os;
-import main.model.entities.Report;
+import model.dao.ReportDAOImp;
+import model.entities.Os;
+import model.entities.Report;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

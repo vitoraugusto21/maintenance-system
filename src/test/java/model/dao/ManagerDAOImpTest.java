@@ -1,7 +1,7 @@
 package test.model.dao;
 
-import main.model.dao.ManagerDAOImp;
-import main.model.entities.Manager;
+import model.dao.ManagerDAOImp;
+import model.entities.Manager;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

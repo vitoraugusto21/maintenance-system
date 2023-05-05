@@ -1,13 +1,13 @@
-package test.model.dao;
+package model.dao;
 
-import main.model.dao.OsDAOImp;
-import main.model.entities.Os;
-import main.model.entities.Technician;
+import model.dao.OsDAOImp;
+import model.entities.Os;
+import model.entities.Technician;
 import org.junit.Test;
 
 import java.util.Date;
 
-import static main.model.entities.enums.OsStatus.*;
+import static model.entities.enums.OsStatus.*;
 import static org.junit.Assert.*;
 
 

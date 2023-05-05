@@ -1,8 +1,8 @@
-package test.model.dao;
+package model.dao;
 
-import main.model.dao.TechnicianDAO;
-import main.model.dao.TechnicianDAOImp;
-import main.model.entities.Technician;
+import model.dao.TechnicianDAO;
+import model.dao.TechnicianDAOImp;
+import model.entities.Technician;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 

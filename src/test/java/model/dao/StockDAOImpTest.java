@@ -1,8 +1,8 @@
 package test.model.dao;
 
-import main.model.dao.StockDAOImp;
-import main.model.entities.Product;
-import main.model.entities.Stock;
+import model.dao.StockDAOImp;
+import model.entities.Product;
+import model.entities.Stock;
 import org.junit.Test;
 
 import java.util.ArrayList;

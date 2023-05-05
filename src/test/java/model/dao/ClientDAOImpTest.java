@@ -1,7 +1,7 @@
 package test.model.dao;
 
-import main.model.dao.ClientDAOImp;
-import main.model.entities.Client;
+import model.dao.ClientDAOImp;
+import model.entities.Client;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

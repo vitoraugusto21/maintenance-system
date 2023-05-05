@@ -5,6 +5,8 @@ import com.google.gson.GsonBuilder;
 import model.entities.Attendant;
 
 import java.io.*;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -17,23 +19,32 @@ public class AttendantDAOImp implements AttendantDAO {
 
     private final Map<String, Attendant> attendants = new HashMap<>();
 
-    File file = new File(System.getProperty("user.dir") + File.separator + "attedants.json");
+    File file = new File(System.getProperty("user.dir") + File.separator + "attendants.json");
 
     public AttendantDAOImp() {
     }
 
     @Override
     public void createAttendant(Attendant attendant) throws IOException {
-        attendants.put(attendant.getId(), attendant);
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
         if (file.exists()){
-
+            Reader reader = Files.newBufferedReader(Paths.get("attendants.json"));
+            Map<String, Attendant> attendantsFromJson = gson.fromJson(reader, Map.class);
+            attendantsFromJson.put(attendant.getId(), attendant);
+            String updateJson = gson.toJson(attendantsFromJson);
+            FileWriter writer = new FileWriter(file);
+            writer.write(updateJson);
+            writer.flush();
+            writer.close();
         }
-            String jsonAttendant = gson.toJson(attendant);
-        FileWriter writer = new FileWriter(file);
-        writer.write(jsonAttendant);
-        writer.flush();
-        writer.close();
+        else {
+            attendants.put(attendant.getId(), attendant);
+            String attedantsJson = gson.toJson(attendants);
+            FileWriter writer = new FileWriter(file);
+            writer.write(attedantsJson);
+            writer.flush();
+            writer.close();
+        }
 
     }
 
@@ -56,14 +67,7 @@ public class AttendantDAOImp implements AttendantDAO {
 
     @Override
     public String readAttendants() throws IOException {
-        StringBuilder sb = new StringBuilder();
-        BufferedReader br = new BufferedReader(new FileReader(file));
-        String line;
-        while ((line = br.readLine()) != null){
-            sb.append(line);
-        }
-        br.close();
-        return sb.toString();
+        return "";
     }
 
     @Override
