@@ -52,10 +52,8 @@ public class AttendantDAOImp implements AttendantDAO {
 
     @Override
     public void updateAttendant(Attendant attendant, String attributeToChange, String newAttribute) throws IOException {
-        Gson gson = new GsonBuilder().setPrettyPrinting().create();
-        Reader reader = Files.newBufferedReader(Paths.get("attendants.json"));
-        Type type = new TypeToken<Map<String, Attendant>>(){}.getType();
-        Map<String, Attendant> attendantsFromJson = gson.fromJson(reader, type);
+        Gson gson = new GsonBuilder().setPrettyPrinting().create();        
+        Map<String, Attendant> attendantsFromJson = readAttendants();
         switch (attributeToChange.toLowerCase()) {
             case "name" -> attendantsFromJson.get(attendant.getId()).setName(newAttribute);
             case "email" -> attendantsFromJson.get(attendant.getId()).setEmail(newAttribute);
@@ -72,8 +70,7 @@ public class AttendantDAOImp implements AttendantDAO {
     @Override
     public void deleteAttendant(Attendant attendant) throws IOException {
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
-        Reader reader = Files.newBufferedReader(Paths.get("attendants.json"));
-        Map<String, Attendant> attendantsFromJson = gson.fromJson(reader, Map.class);
+        Map<String, Attendant> attendantsFromJson = readAttendants();
         attendantsFromJson.remove(attendant.getId());
         String attendantsToJson = gson.toJson(attendantsFromJson);
         FileWriter writer = new FileWriter("attendants.json");
