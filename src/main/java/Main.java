@@ -1,3 +1,6 @@
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.reflect.TypeToken;
 import model.dao.AttendantDAOImp;
 import model.dao.OsDAOImp;
 import model.dao.ReportDAOImp;
@@ -5,7 +8,13 @@ import model.entities.*;
 import model.entities.enums.Payments;
 import model.entities.Attendant;
 
+import java.io.Reader;
+import java.lang.reflect.Type;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 
 public class Main {
     public static void main(String[] args) throws Exception {
@@ -28,8 +37,12 @@ public class Main {
         var reportDAO = new ReportDAOImp();
         reportDAO.saveReport(report);
         AttendantDAOImp attendantDAOImp = new AttendantDAOImp();
-        attendantDAOImp.createAttendant(attendant1);
-        attendantDAOImp.createAttendant(attendant2);
+        Gson gson = new GsonBuilder().setPrettyPrinting().create();
+        Reader reader = Files.newBufferedReader(Paths.get("attendants.json"));
+        Type type = new TypeToken<Map<String, Attendant>>(){}.getType();
+        Map<String, Attendant> attendantsFromJson = gson.fromJson(reader, type);
+        Attendant attendant= attendantsFromJson.get("001");
+        attendantDAOImp.updateAttendant(attendant, "name", "Junin");
     }
 
 

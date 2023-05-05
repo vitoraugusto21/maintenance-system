@@ -12,7 +12,7 @@ import java.io.IOException;
 public interface AttendantDAO {
     void createAttendant(Attendant attendant) throws IOException;
 
-    void updateAttendant(Attendant attendant, String attributeToChange, String newAttribute);
+    void updateAttendant(Attendant attendant, String attributeToChange, String newAttribute) throws IOException;
 
     void deleteAttendant(Attendant attendant);
 

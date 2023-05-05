@@ -2,9 +2,11 @@ package model.dao;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.google.gson.reflect.TypeToken;
 import model.entities.Attendant;
 
 import java.io.*;
+import java.lang.reflect.Type;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.HashMap;
@@ -49,15 +51,22 @@ public class AttendantDAOImp implements AttendantDAO {
     }
 
     @Override
-    public void updateAttendant(Attendant attendant, String attributeToChange, String newAttribute) {
+    public void updateAttendant(Attendant attendant, String attributeToChange, String newAttribute) throws IOException {
+        Gson gson = new GsonBuilder().setPrettyPrinting().create();
+        Reader reader = Files.newBufferedReader(Paths.get("attendants.json"));
+        Type type = new TypeToken<Map<String, Attendant>>(){}.getType();
+        Map<String, Attendant> attendantsFromJson = gson.fromJson(reader, type);
         switch (attributeToChange.toLowerCase()) {
-            case "name" -> attendant.setName(newAttribute);
-            case "email" -> attendant.setEmail(newAttribute);
-            case "phonenumber" -> attendant.setPhoneNumber(newAttribute);
-            case "address" -> attendant.setAddress(newAttribute);
+            case "name" -> attendantsFromJson.get(attendant.getId()).setName(newAttribute);
+            case "email" -> attendantsFromJson.get(attendant.getId()).setEmail(newAttribute);
+            case "phonenumber" -> attendantsFromJson.get(attendant.getId()).setPhoneNumber(newAttribute);
+            case "address" -> attendantsFromJson.get(attendant.getId()).setAddress(newAttribute);
             default -> throw new IllegalArgumentException("Invalid attribute name");
         }
-        attendants.put(attendant.getId(), attendant);
+        String attendantsToJson = gson.toJson(attendantsFromJson);
+        FileWriter writer = new FileWriter("attendants.json");
+        writer.write(attendantsToJson);
+        writer.close();
     }
 
     @Override
