@@ -27,6 +27,7 @@ public class ClientDAOImp implements ClientDAO {
     /**
      * Insere um novo Cliente no banco de dados.
      *
+     *
      * @param client o Cliente a ser inserido.
      */
     @Override
