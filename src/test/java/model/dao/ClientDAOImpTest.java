@@ -6,6 +6,7 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.io.IOException;
 import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -55,7 +56,7 @@ class ClientDAOImpTest {
      * Testa o método insertClient.
      */
     @Test
-    void testInsertClient() {
+    void testInsertClient() throws IOException {
         Client client3 = new Client("3", "Bob Smith", "1112223333", "bobsmith@example.com", "789 Oak St");
         dao.createClient(client3);
         assertEquals(client3, dao.getClientById(client3.getId()));
@@ -65,7 +66,7 @@ class ClientDAOImpTest {
      * Testa o método updateClient.
      */
     @Test
-    void testUpdateClient() {
+    void testUpdateClient() throws IOException {
         dao.updateClient(client1, "name", "John Smith");
         assertEquals("John Smith", dao.getClientById(client1.getId()).getName());
     }
@@ -74,7 +75,7 @@ class ClientDAOImpTest {
      * Testa o método deleteClient.
      */
     @Test
-    void testDeleteClient() {
+    void testDeleteClient() throws IOException {
         dao.deleteClient(client2);
         assertNull(dao.getClientById(client2.getId()));
     }
@@ -94,7 +95,7 @@ class ClientDAOImpTest {
      * Testa o método getClientById.
      */
     @Test
-    void testGetClientById() {
+    void testGetClientById() throws IOException {
         assertEquals(client1, dao.getClientById(client1.getId()));
     }
 

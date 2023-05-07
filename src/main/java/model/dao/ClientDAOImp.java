@@ -114,7 +114,10 @@ public class ClientDAOImp implements ClientDAO {
      * @return - o Cliente correspondente ao ID especificado.
      */
     @Override
-    public Client getClientById(String id) {
+    public Client getClientById(String id) throws IOException {
+        Gson gson = new GsonBuilder().setPrettyPrinting().create();
+        Reader reader = Files.newBufferedReader(Paths.get("clients.json"));
+        Map<String, Client> clients = gson.fromJson(reader, new TypeToken<Map<String, Client>>(){}.getType());
         return clients.get(id);
     }
 }

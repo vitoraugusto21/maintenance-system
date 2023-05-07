@@ -1,4 +1,4 @@
-package test.model.dao;
+package model.dao;
 
 import model.dao.ManagerDAOImp;
 import model.entities.Manager;
@@ -40,19 +40,19 @@ class ManagerDAOImpTest {
     }
 
     @Test
-    void testUpdateManager() {
+    void testUpdateManager() throws IOException {
         dao.updateManager(manager1, "name", "Carlos Dilan");
         assertEquals("John Smith", dao.getManagerById(manager1.getId()).getName());
     }
 
     @Test
-    void testDeleteManager() {
+    void testDeleteManager() throws IOException {
         dao.deleteManager(manager2);
         assertNull(dao.getManagerById(manager2.getId()));
     }
 
     @Test
-    void testGetAllManagers() {
+    void testGetAllManagers() throws IOException {
         ArrayList<Manager> expected = new ArrayList<>();
         expected.add(manager1);
         expected.add(manager2);
@@ -60,7 +60,7 @@ class ManagerDAOImpTest {
     }
 
     @Test
-    void testGetManagerById() {
+    void testGetManagerById() throws IOException {
         assertEquals(manager1, dao.getManagerById(manager1.getId()));
     }
 
