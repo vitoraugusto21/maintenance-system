@@ -1,7 +1,17 @@
 package model.dao;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.reflect.TypeToken;
+import model.entities.Attendant;
 import model.entities.Technician;
 
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.Reader;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -10,6 +20,8 @@ import java.util.Map;
 public class TechnicianDAOImp implements TechnicianDAO {
 
     private final Map<String, Technician> technicians = new HashMap<>();
+
+    File file = new File(System.getProperty("user.dir") + File.separator + "technicians.json");
 
     public TechnicianDAOImp() {
     }
@@ -20,8 +32,27 @@ public class TechnicianDAOImp implements TechnicianDAO {
      * @param technician - O objeto Technician a ser inserido.
      */
     @Override
-    public void insertTechnician(Technician technician) {
-        technicians.put(technician.getId(), technician);
+    public void createTechnician(Technician technician) throws IOException {
+        Gson gson = new GsonBuilder().setPrettyPrinting().create();
+        if (file.exists()){
+            Reader reader = Files.newBufferedReader(Paths.get("technicians.json"));
+            Map<String, Technician> techniciansFromJson = gson.fromJson(reader, Map.class);
+            techniciansFromJson.put(technician.getId(), technician);
+            String updateJson = gson.toJson(techniciansFromJson);
+            FileWriter writer = new FileWriter(file);
+            writer.write(updateJson);
+            writer.flush();
+            writer.close();
+        }
+        else {
+            technicians.put(technician.getId(), technician);
+            String techniciansJson = gson.toJson(technician);
+            FileWriter writer = new FileWriter(file);
+            writer.write(techniciansJson);
+            writer.flush();
+            writer.close();
+        }
+
     }
 
     /**
@@ -32,16 +63,20 @@ public class TechnicianDAOImp implements TechnicianDAO {
      * @param newAttribute      - O novo valor do atributo modificado.
      */
     @Override
-    public void updateTechnician(Technician technician, String attributeToChange, String newAttribute) {
+    public void updateTechnician(Technician technician, String attributeToChange, String newAttribute) throws IOException {
+        Gson gson = new GsonBuilder().setPrettyPrinting().create();
+        Map<String, Technician> techniciansFromJson = readTechnicians();
         switch (attributeToChange.toLowerCase()) {
-            case "name" -> technician.setName(newAttribute);
-            case "email" -> technician.setEmail(newAttribute);
-            case "phonenumber" -> technician.setPhoneNumber(newAttribute);
-            case "address" -> technician.setAddress(newAttribute);
-            case "password" -> technician.settPassword(newAttribute);
+            case "name" -> techniciansFromJson.get(technician.getId()).setName(newAttribute);
+            case "email" -> techniciansFromJson.get(technician.getId()).setEmail(newAttribute);
+            case "phoneNumber" -> techniciansFromJson.get(technician.getId()).setPhoneNumber(newAttribute);
+            case "address" -> techniciansFromJson.get(technician.getId()).setAddress(newAttribute);
             default -> throw new IllegalArgumentException("Invalid attribute name");
         }
-        technicians.put(technician.getId(), technician);
+        String techniciansToJson = gson.toJson(techniciansFromJson);
+        FileWriter writer = new FileWriter("technicians.json");
+        writer.write(techniciansToJson);
+        writer.close();
     }
 
     /**
@@ -50,8 +85,14 @@ public class TechnicianDAOImp implements TechnicianDAO {
      * @param technician - O objeto Technician a ser removido.
      */
     @Override
-    public void deleteTechnician(Technician technician) {
-        technicians.remove(technician.getId());
+    public void deleteTechnician(Technician technician) throws IOException {
+        Gson gson = new GsonBuilder().setPrettyPrinting().create();
+        Map<String, Technician> techniciansFromJson = readTechnicians();
+        techniciansFromJson.remove(technician.getId());
+        String techniciansToJson = gson.toJson(techniciansFromJson);
+        FileWriter writer = new FileWriter("technicians.json");
+        writer.write(techniciansToJson);
+        writer.close();
     }
 
     /**
@@ -60,8 +101,11 @@ public class TechnicianDAOImp implements TechnicianDAO {
      * @return -  Uma lista com todos os técnicos cadastrados no banco de dados.
      */
     @Override
-    public ArrayList<Technician> getAllTechnicians() {
-        return new ArrayList<>(technicians.values());
+    public Map<String, Technician> readTechnicians() throws IOException{
+        Gson gson = new GsonBuilder().setPrettyPrinting().create();
+        Reader reader = Files.newBufferedReader(Paths.get("technicians.json"));
+        Map<String, Technician> technicians = gson.fromJson(reader, new TypeToken<Map<String, Attendant>>(){}.getType());
+        return technicians;
     }
 
     /**
@@ -71,7 +115,10 @@ public class TechnicianDAOImp implements TechnicianDAO {
      * @return - O objeto Technician com o ID fornecido.
      */
     @Override
-    public Technician getTechnicianById(String id) {
+    public Technician getTechnicianById(String id) throws IOException {
+        Gson gson = new GsonBuilder().setPrettyPrinting().create();
+        Reader reader = Files.newBufferedReader(Paths.get("technicians.json"));
+        Map<String, Technician> technicians = gson.fromJson(reader, new TypeToken<Map<String, Attendant>>(){}.getType());
         return technicians.get(id);
     }
 

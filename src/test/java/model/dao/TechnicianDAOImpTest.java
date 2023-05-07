@@ -6,6 +6,7 @@ import model.entities.Technician;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -25,9 +26,9 @@ class TechnicianDAOImpTest {
     }
 
     @Test
-    void insertTechnician() {
+    void insertTechnician() throws IOException {
         Technician technician = new Technician("1", "John", "john@test.com", "123456", "1234");
-        technicianDAO.insertTechnician(technician);
+        technicianDAO.createTechnician(technician);
         technicians.put(technician.getId(), technician);
 
         assertEquals(technicians, technicianDAO.getAllTechnicians().stream().collect(
@@ -36,9 +37,9 @@ class TechnicianDAOImpTest {
     }
 
     @Test
-    void updateTechnician() {
+    void updateTechnician() throws IOException {
         Technician technician = new Technician("1", "John", "john@test.com", "123456", "1234");
-        technicianDAO.insertTechnician(technician);
+        technicianDAO.createTechnician(technician);
         technicians.put(technician.getId(), technician);
 
         technician.setName("Mary");
@@ -51,9 +52,9 @@ class TechnicianDAOImpTest {
     }
 
     @Test
-    void deleteTechnician() {
+    void deleteTechnician() throws IOException {
         Technician technician = new Technician("1", "John", "john@test.com", "123456", "1234");
-        technicianDAO.insertTechnician(technician);
+        technicianDAO.createTechnician(technician);
         technicians.put(technician.getId(), technician);
 
         technicianDAO.deleteTechnician(technician);
@@ -65,12 +66,12 @@ class TechnicianDAOImpTest {
     }
 
     @Test
-    void getAllTechnicians() {
+    void getAllTechnicians() throws IOException {
         Technician technician1 = new Technician("1", "John", "john@test.com", "123456", "1234");
         Technician technician2 = new Technician("2", "Mary", "mary@test.com", "654321", "5678");
 
-        technicianDAO.insertTechnician(technician1);
-        technicianDAO.insertTechnician(technician2);
+        technicianDAO.createTechnician(technician1);
+        technicianDAO.createTechnician(technician2);
         technicians.put(technician1.getId(), technician1);
         technicians.put(technician2.getId(), technician2);
 
@@ -81,12 +82,12 @@ class TechnicianDAOImpTest {
     }
 
     @Test
-    void getTechnicianById() {
+    void getTechnicianById() throws IOException {
         Technician technician1 = new Technician("1", "John", "john@test.com", "123456", "1234");
         Technician technician2 = new Technician("2", "Mary", "mary@test.com", "654321", "5678");
 
-        technicianDAO.insertTechnician(technician1);
-        technicianDAO.insertTechnician(technician2);
+        technicianDAO.createTechnician(technician1);
+        technicianDAO.createTechnician(technician2);
         technicians.put(technician1.getId(), technician1);
         technicians.put(technician2.getId(), technician2);
 

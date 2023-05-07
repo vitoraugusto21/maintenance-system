@@ -2,22 +2,24 @@ package model.dao;
 
 import model.entities.Technician;
 
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Map;
 
 /**
  * Interface que define as operações básicas para o DAO de técnicos.
  */
 public interface TechnicianDAO {
 
-    void insertTechnician(Technician technician);
+    void createTechnician(Technician technician) throws IOException;
 
-    void updateTechnician(Technician technician, String attributeToChange, String newAttribute);
+    void updateTechnician(Technician technician, String attributeToChange, String newAttribute) throws IOException;
 
-    void deleteTechnician(Technician technician);
+    void deleteTechnician(Technician technician) throws IOException;
 
-    ArrayList<Technician> getAllTechnicians();
+    Map<String, Technician> readTechnicians() throws IOException;
 
-    Technician getTechnicianById(String id);
+    Technician getTechnicianById(String id) throws IOException;
 
 
 }
