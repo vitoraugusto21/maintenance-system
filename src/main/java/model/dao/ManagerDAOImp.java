@@ -1,7 +1,17 @@
 package model.dao;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.reflect.TypeToken;
+import model.entities.Attendant;
 import model.entities.Manager;
 
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.Reader;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -14,6 +24,8 @@ import java.util.Map;
 public class ManagerDAOImp implements ManagerDAO {
 
     private final Map<String, Manager> managers = new HashMap<>();
+
+    File file = new File(System.getProperty("user.dir") + File.separator + "managers.json");
 
     public ManagerDAOImp() {
     }
@@ -40,8 +52,18 @@ public class ManagerDAOImp implements ManagerDAO {
      * @param manager - objeto da classe Manager a ser inserido
      */
     @Override
-    public void insertManager(Manager manager) {
-        managers.put(manager.getId(), manager);
+    public void createManager(Manager manager) throws IOException {
+        Gson gson = new GsonBuilder().setPrettyPrinting().create();
+        if (file.exists()) {
+            Reader reader = Files.newBufferedReader(Paths.get("managers.json"));
+            Map<String, Manager> managersFromJson = gson.fromJson(reader, Map.class);
+            managersFromJson.put(manager.getId(), manager);
+            String updateJson = gson.toJson(managersFromJson);
+            FileWriter writer = new FileWriter(file);
+            writer.write(updateJson);
+            writer.flush();
+            writer.close();
+        }
     }
 
     /**
@@ -53,16 +75,21 @@ public class ManagerDAOImp implements ManagerDAO {
      * @throws IllegalArgumentException - se o nome do atributo fornecido não for válido.
      */
     @Override
-    public void updateManager(Manager manager, String attributeToChange, String newAttribute) {
+    public void updateManager(Manager manager, String attributeToChange, String newAttribute) throws IOException {
+        Gson gson = new GsonBuilder().setPrettyPrinting().create();
+        Map<String, Manager> managersFromJson = readManagers();
+
         switch (attributeToChange.toLowerCase()) {
-            case "name" -> manager.setName(newAttribute);
-            case "email" -> manager.setEmail(newAttribute);
-            case "phonenumber" -> manager.setPhoneNumber(newAttribute);
-            case "address" -> manager.setAddress(newAttribute);
-            case "password" -> manager.setPassword(newAttribute);
+            case "email" -> managersFromJson.get(manager.getId()).setEmail(newAttribute);
+            case "phonenumber" -> managersFromJson.get(manager.getId()).setPhoneNumber(newAttribute);
+            case "address" -> managersFromJson.get(manager.getId()).setAddress(newAttribute);
+            case "password" -> managersFromJson.get(manager.getId()).setPassword(newAttribute);
             default -> throw new IllegalArgumentException("Invalid attribute name");
         }
-        managers.put(manager.getId(), manager);
+        String managersToJson = gson.toJson(managersFromJson);
+        FileWriter writer = new FileWriter("managers.json");
+        writer.write(managersToJson);
+        writer.close();
     }
 
     /**
@@ -72,8 +99,14 @@ public class ManagerDAOImp implements ManagerDAO {
      * @param manager
      */
     @Override
-    public void deleteManager(Manager manager) {
-        managers.remove(manager.getId());
+    public void deleteManager(Manager manager) throws IOException {
+        Gson gson = new GsonBuilder().setPrettyPrinting().create();
+        Map<String, Manager> managersFromJson = readManagers();
+        managersFromJson.remove(manager.getId());
+        String managersToJson = gson.toJson(managersFromJson);
+        FileWriter writer = new FileWriter("managers.json");
+        writer.write(managersToJson);
+        writer.close();
     }
 
     /**
@@ -82,8 +115,11 @@ public class ManagerDAOImp implements ManagerDAO {
      * @return lista contendo todos os objetos da classe Manager presentes na estrutura de mapeamento em hash.
      */
     @Override
-    public ArrayList<Manager> getAllManagers() {
-        return new ArrayList<>(managers.values());
+    public Map<String, Manager> readManagers() throws IOException {
+        Gson gson = new GsonBuilder().setPrettyPrinting().create();
+        Reader reader = Files.newBufferedReader(Paths.get("managers.json"));
+        Map<String, Manager> managers = gson.fromJson(reader, new TypeToken<Map<String, Manager>>(){}.getType());
+        return managers;
     }
 
     /**
@@ -93,7 +129,10 @@ public class ManagerDAOImp implements ManagerDAO {
      * @return - objeto da classe Manager presente na estrutura de mapeamento em hash a partir do seu identificador.
      */
     @Override
-    public Manager getManagerById(String id) {
+    public Manager getManagerById(String id) throws IOException {
+        Gson gson = new GsonBuilder().setPrettyPrinting().create();
+        Reader reader = Files.newBufferedReader(Paths.get("managers.json"));
+        Map<String, Manager> managers = gson.fromJson(reader, new TypeToken<Map<String, Manager>>(){}.getType());
         return managers.get(id);
     }
 

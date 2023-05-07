@@ -6,7 +6,11 @@
   <component name="ChangeListManager">
     <list default="true" id="8b7eb8de-49c6-4245-aa7f-0644bc29ea04" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/dao/ClientDAOImp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/dao/ClientDAOImp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/dao/AttendantDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/dao/AttendantDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/dao/ClientDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/dao/ClientDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/dao/ManagerDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/dao/ManagerDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/dao/ManagerDAOImp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/dao/ManagerDAOImp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/model/dao/ManagerDAOImpTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/model/dao/ManagerDAOImpTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

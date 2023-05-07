@@ -20,5 +20,5 @@ public interface ClientDAO {
 
     Map<String, Client> readClients() throws IOException;
 
-    Client getClientById(String id);
+    Client getClientById(String id) throws IOException;
 }

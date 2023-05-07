@@ -19,6 +19,6 @@ public interface AttendantDAO {
 
     Map<String, Attendant> readAttendants() throws IOException;
 
-    Attendant getAttendantById(String id);
+    Attendant getAttendantById(String id) throws IOException;
 
 }
