@@ -1,5 +1,6 @@
 package model.dao;
 
+import model.entities.Os;
 import model.entities.Technician;
 
 import java.io.IOException;
@@ -21,5 +22,6 @@ public interface TechnicianDAO {
 
     Technician getTechnicianById(String id) throws IOException;
 
+    void updateTechnicianOs(Os os) throws IOException;
 
 }
