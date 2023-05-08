@@ -111,11 +111,29 @@ public class OsDAOImp implements OsDAO {
      *
      * @param technician Técnico que está com a Os a ser finalizada.
      */
-    public void finishOs(Technician technician) {
-        osFinishedList.add(technician.getOs());
+    public void finishOs(Technician technician) throws IOException {
         technician.getOs().setStatus(FINISH);
         technician.getOs().setEndTime(new Date()); // Adicionar dia de finalização da os
         technician.setOs(null);
+        Gson gson = new GsonBuilder().setPrettyPrinting().create();
+        if (fileFinished.exists()){
+            Reader reader = Files.newBufferedReader(Paths.get("osFinished.json"));
+            ArrayList<Os> osFinished = gson.fromJson(reader, ArrayList.class);
+            osFinished.add(technician.getOs());
+            String updateJson = gson.toJson(osFinished);
+            FileWriter writer = new FileWriter(fileFinished);
+            writer.write(updateJson);
+            writer.flush();
+            writer.close();
+        }
+        else{
+            osFinishedList.add(technician.getOs());
+            String finishedJson = gson.toJson(osFinishedList);
+            FileWriter writer = new FileWriter(fileCanceled);
+            writer.write(finishedJson);
+            writer.flush();
+            writer.close();
+        }
     }
 
     /**
