@@ -41,9 +41,9 @@ public class AttendantDAOImp implements AttendantDAO {
         }
         else {
             attendants.put(attendant.getId(), attendant);
-            String attedantsJson = gson.toJson(attendants);
+            String attendantsJson = gson.toJson(attendants);
             FileWriter writer = new FileWriter(file);
-            writer.write(attedantsJson);
+            writer.write(attendantsJson);
             writer.flush();
             writer.close();
         }
