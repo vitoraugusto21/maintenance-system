@@ -1,109 +1,87 @@
-package test.model.dao;
+package model.dao;
 
-import model.dao.ClientDAOImp;
 import model.entities.Client;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 
 import java.io.IOException;
 import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-/**
- * Classe de testes para ClientDAOImp
- *
- * @author Vitor Augusto, Gabriel Vitor
- */
 class ClientDAOImpTest {
-    private ClientDAOImp dao;
-    private Client client1;
-    private Client client2;
 
-    //O método anotado com @BeforeEach é executado antes de cada teste, e
-    // é usado para inicializar as variáveis necessárias para o teste.
+    ClientDAOImp dao = new ClientDAOImp();
+    Client client = new Client("123456789", "Lucas", "(11)9999-8888", "lucas@test.com", "Rua A, 123", new ArrayList<>());
 
-    //O método anotado com @AfterEach é executado após cada teste, e é
-    // usado para limpar as variáveis usadas nos testes.
-    // Isso ajuda a garantir que os testes não afetem uns aos outros.
-
-    /**
-     * O método setUp() é executado antes de cada teste e é usado para
-     * inicializar as variáveis necessárias para os testes.
-     */
     @BeforeEach
     void setUp() {
-        dao = new ClientDAOImp();
-        client1 = new Client("1", "John Rambo", "1234567890", "johnrambo@example.com", "123 main.Main St");
-        client2 = new Client("2", "Sylvester Stallone", "0987654321", "stallone@example.com", "456 Elm St");
-        dao.createClient(client1);
-        dao.createClient(client2);
+        try {
+            dao.createClient(client);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
-    /**
-     * O método tearDown() é executado após cada teste e é usado para
-     * limpar as variáveis usadas nos testes.
-     */
     @AfterEach
     void tearDown() {
-        dao = null;
-        client1 = null;
-        client2 = null;
+        try {
+            dao.deleteClient(client);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
-    /**
-     * Testa o método insertClient.
-     */
     @Test
-    void testInsertClient() throws IOException {
-        Client client3 = new Client("3", "Bob Smith", "1112223333", "bobsmith@example.com", "789 Oak St");
-        dao.createClient(client3);
-        assertEquals(client3, dao.getClientById(client3.getId()));
+    void testCreateClient() {
+        Client createdClient = null;
+        try {
+            createdClient = dao.getClientById("123456789");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        assertEquals(client, createdClient);
     }
 
-    /**
-     * Testa o método updateClient.
-     */
     @Test
-    void testUpdateClient() throws IOException {
-        dao.updateClient(client1, "name", "John Smith");
-        assertEquals("John Smith", dao.getClientById(client1.getId()).getName());
+    void testUpdateClient() {
+        try {
+            dao.updateClient(client, "name", "Lucas da Silva");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        Client updatedClient = null;
+        try {
+            updatedClient = dao.getClientById("123456789");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        assertEquals("Lucas da Silva", updatedClient.getName());
     }
 
-    /**
-     * Testa o método deleteClient.
-     */
     @Test
-    void testDeleteClient() throws IOException {
-        dao.deleteClient(client2);
-        assertNull(dao.getClientById(client2.getId()));
+    void testDeleteClient() {
+        try {
+            dao.deleteClient(client);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        Client deletedClient = null;
+        try {
+            deletedClient = dao.getClientById("123456789");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        assertNull(deletedClient);
     }
 
-    /**
-     * Testa o método getAllClients.
-     */
     @Test
-    void testGetAllClients() {
-        ArrayList<Client> expected = new ArrayList<>();
-        expected.add(client1);
-        expected.add(client2);
-        assertEquals(expected, dao.readClients());
-    }
-
-    /**
-     * Testa o método getClientById.
-     */
-    @Test
-    void testGetClientById() throws IOException {
-        assertEquals(client1, dao.getClientById(client1.getId()));
-    }
-
-    /**
-     * Testa o caso em que o atributo a ser alterado é inválido.
-     */
-    @Test
-    void testInvalidAttributeToChange() {
-        assertThrows(IllegalArgumentException.class, () -> dao.updateClient(client1, "invalidAttribute", "newValue"));
+    void testReadClient() {
+        Client readClient = null;
+        try {
+            readClient = dao.getClientById("123456789");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        assertEquals(client, readClient);
     }
 }

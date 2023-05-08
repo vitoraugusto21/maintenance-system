@@ -26,19 +26,17 @@ class TechnicianDAOImpTest {
     }
 
     @Test
-    void insertTechnician() throws IOException {
-        Technician technician = new Technician("1", "John", "john@test.com", "123456", "1234");
+    void insertTechnicianTest() throws IOException {
+        Technician technician = new Technician("3", "Joao", "123456789", "123456joao@test.com", "Paraguai", "1323@23");
         technicianDAO.createTechnician(technician);
         technicians.put(technician.getId(), technician);
 
-        assertEquals(technicians, technicianDAO.getAllTechnicians().stream().collect(
-                HashMap::new, (map, obj) -> map.put(obj.getId(), obj), HashMap::putAll)
-        );
+        assertEquals(technicians, technicianDAO.readTechnicians());
     }
 
     @Test
-    void updateTechnician() throws IOException {
-        Technician technician = new Technician("1", "John", "john@test.com", "123456", "1234");
+    void updateTechnicianTest() throws IOException {
+        Technician technician = new Technician("4", "John", "123456789", "john@test.com", "Paraguai","sdfdsf");
         technicianDAO.createTechnician(technician);
         technicians.put(technician.getId(), technician);
 
@@ -46,39 +44,33 @@ class TechnicianDAOImpTest {
         technicianDAO.updateTechnician(technician, "name", "Mary");
         technicians.put(technician.getId(), technician);
 
-        assertEquals(technicians, technicianDAO.getAllTechnicians().stream().collect(
-                HashMap::new, (map, obj) -> map.put(obj.getId(), obj), HashMap::putAll)
-        );
+        assertEquals(technicians, technicianDAO.readTechnicians());
     }
 
+
     @Test
-    void deleteTechnician() throws IOException {
-        Technician technician = new Technician("1", "John", "john@test.com", "123456", "1234");
+    void deleteTechnicianTest() throws IOException {
+        Technician technician = new Technician("5", "Johnie", "123456789", "johnie@test.com", "Paraguai","sdfdsf");
         technicianDAO.createTechnician(technician);
         technicians.put(technician.getId(), technician);
 
         technicianDAO.deleteTechnician(technician);
         technicians.remove(technician.getId());
 
-        assertEquals(technicians, technicianDAO.getAllTechnicians().stream().collect(
-                HashMap::new, (map, obj) -> map.put(obj.getId(), obj), HashMap::putAll)
-        );
+        assertEquals(technicians, technicianDAO.readTechnicians());
     }
 
     @Test
     void getAllTechnicians() throws IOException {
-        Technician technician1 = new Technician("1", "John", "john@test.com", "123456", "1234");
-        Technician technician2 = new Technician("2", "Mary", "mary@test.com", "654321", "5678");
+        Technician technician1 = new Technician("6", "Jo", "1234564789", "jo@test.com", "Paraguai","sdfdsf");
+        Technician technician2 = new Technician("7", "Joie", "1234456789", "joie@test.com", "Paraguai","sdfdsf");
 
         technicianDAO.createTechnician(technician1);
         technicianDAO.createTechnician(technician2);
         technicians.put(technician1.getId(), technician1);
         technicians.put(technician2.getId(), technician2);
 
-        ArrayList<Technician> expected = new ArrayList<>(technicians.values());
-        ArrayList<Technician> actual = technicianDAO.getAllTechnicians();
-
-        assertEquals(expected, actual);
+        assertEquals(technicians, technicianDAO.readTechnicians());
     }
 
     @Test
