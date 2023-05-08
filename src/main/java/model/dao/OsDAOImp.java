@@ -55,6 +55,7 @@ public class OsDAOImp implements OsDAO {
      * @param os - Os a ser adicionada.
      */
     public void insertOsInQueue(Os os) throws IOException { //adicionar os a fila
+        os.setStatus(IN_PROGRESS);
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
         if (fileQueue.exists()){
             Reader reader = Files.newBufferedReader(Paths.get("osQueue.json"));
@@ -113,10 +114,10 @@ public class OsDAOImp implements OsDAO {
         return queue1;
         }
 
-    public Queue<Os> readOsCanceled() throws IOException {
+    public ArrayList<Os> readOsCanceled() throws IOException {
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
         Reader reader = Files.newBufferedReader(Paths.get("osCanceled.json"));
-        Queue<Os> osCanceleds = gson.fromJson(reader, new TypeToken<ArrayList<Os>>(){}.getType());
+        ArrayList<Os> osCanceleds = gson.fromJson(reader, new TypeToken<ArrayList<Os>>(){}.getType());
         return osCanceleds;
     }
 
@@ -126,6 +127,38 @@ public class OsDAOImp implements OsDAO {
         ArrayList<Os> osFinisheds = gson.fromJson(reader, new TypeToken<ArrayList<Os>>(){}.getType());
         return osFinisheds;
     }
+
+    public void deleteOsInQueue() throws IOException {
+        Gson gson = new GsonBuilder().setPrettyPrinting().create();
+        Queue<Os> queueFromJson = readOsQueue();
+        queueFromJson.remove();
+        String queueToJson = gson.toJson(queueFromJson);
+        FileWriter writer = new FileWriter("osQueue.json");
+        writer.write(queueToJson);
+        writer.close();
+    }
+
+    public void deleteOsInCanceledList(Os os) throws IOException {
+        Gson gson = new GsonBuilder().setPrettyPrinting().create();
+        ArrayList<Os> canceledFromJson = readOsCanceled();
+        canceledFromJson.remove(os);
+        String canceledToJson = gson.toJson(canceledFromJson);
+        FileWriter writer = new FileWriter("osCanceled.json");
+        writer.write(canceledToJson);
+        writer.close();
+    }
+
+    public void deleteOsInFinishedList(Os os) throws IOException {
+        Gson gson = new GsonBuilder().setPrettyPrinting().create();
+        ArrayList<Os> finishedFromJson = readOsFinished();
+        finishedFromJson.remove(os);
+        String finishedToJson = gson.toJson(finishedFromJson);
+        FileWriter writer = new FileWriter("osFinished.json");
+        writer.write(finishedToJson);
+        writer.close();
+    }
+
+
 
 }
 

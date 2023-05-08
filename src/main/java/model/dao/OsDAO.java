@@ -21,6 +21,6 @@ public interface OsDAO {
     void finishOs(Technician technician);
 
     Queue<Os> readOsQueue() throws IOException;
-    Queue<Os> readOsCanceled() throws IOException;
+    ArrayList<Os> readOsCanceled() throws IOException;
     ArrayList<Os> readOsFinished() throws IOException;
 }
