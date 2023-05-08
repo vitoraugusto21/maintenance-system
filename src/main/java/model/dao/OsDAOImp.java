@@ -1,13 +1,20 @@
 package model.dao;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.reflect.TypeToken;
+import model.entities.Attendant;
+import model.entities.Client;
 import model.entities.Os;
 import model.entities.Technician;
 
 import java.io.File;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.LinkedList;
-import java.util.Queue;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.Reader;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.util.*;
 
 import static model.entities.enums.OsStatus.*;
 
@@ -47,8 +54,26 @@ public class OsDAOImp implements OsDAO {
      *
      * @param os - Os a ser adicionada.
      */
-    public void insertOsInQueue(Os os) { //adicionar os a fila
-        queue.add(os);
+    public void insertOsInQueue(Os os) throws IOException { //adicionar os a fila
+        Gson gson = new GsonBuilder().setPrettyPrinting().create();
+        if (fileQueue.exists()){
+            Reader reader = Files.newBufferedReader(Paths.get("osQueue.json"));
+            Queue<Os> queueFromJson = gson.fromJson(reader, Queue.class);
+            queueFromJson.add(os);
+            String updateJson = gson.toJson(queueFromJson);
+            FileWriter writer = new FileWriter(fileQueue);
+            writer.write(updateJson);
+            writer.flush();
+            writer.close();
+        }
+        else{
+            queue.add(os);
+            String queueJson = gson.toJson(queue);
+            FileWriter writer = new FileWriter(fileQueue);
+            writer.write(queueJson);
+            writer.flush();
+            writer.close();
+        }
     }
 
     /**
@@ -81,14 +106,26 @@ public class OsDAOImp implements OsDAO {
      * @param osQueue - fila que contem a os
      * @return - retorna a OS
      */
-    public Os viewOs(String osId, Queue<Os> osQueue) {
-        for (Os os : osQueue) {
-            if (os.getOsId().equals(osId)) {
-                System.out.println(os);
-
-            }
+    public Queue<Os> readOsQueue() throws IOException {
+        Gson gson = new GsonBuilder().setPrettyPrinting().create();
+        Reader reader = Files.newBufferedReader(Paths.get("osQueue.json"));
+        Queue<Os> queue1 = gson.fromJson(reader, new TypeToken<Queue<Os>>(){}.getType());
+        return queue1;
         }
-        System.out.println("Ordem de serviço não encontrada");
-        return null;
+
+    public Queue<Os> readOsCanceled() throws IOException {
+        Gson gson = new GsonBuilder().setPrettyPrinting().create();
+        Reader reader = Files.newBufferedReader(Paths.get("osCanceled.json"));
+        Queue<Os> osCanceleds = gson.fromJson(reader, new TypeToken<ArrayList<Os>>(){}.getType());
+        return osCanceleds;
     }
+
+    public ArrayList<Os> readOsFinished() throws IOException {
+        Gson gson = new GsonBuilder().setPrettyPrinting().create();
+        Reader reader = Files.newBufferedReader(Paths.get("osFinished.json"));
+        ArrayList<Os> osFinisheds = gson.fromJson(reader, new TypeToken<ArrayList<Os>>(){}.getType());
+        return osFinisheds;
+    }
+
 }
+

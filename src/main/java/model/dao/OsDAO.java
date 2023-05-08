@@ -3,6 +3,8 @@ package model.dao;
 import model.entities.Os;
 import model.entities.Technician;
 
+import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Queue;
 
 /**
@@ -12,11 +14,13 @@ public interface OsDAO {
 
     void takeOs(Technician technician);
 
-    void insertOsInQueue(Os os);
+    void insertOsInQueue(Os os) throws IOException;
 
     void cancelOs(Technician technician);
 
     void finishOs(Technician technician);
 
-    Os viewOs(String osId, Queue<Os> osQueue);
+    Queue<Os> readOsQueue() throws IOException;
+    Queue<Os> readOsCanceled() throws IOException;
+    ArrayList<Os> readOsFinished() throws IOException;
 }
