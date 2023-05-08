@@ -78,9 +78,11 @@ public class Os {
      */
     public long calculateAverageAwait() {
         LocalDate date1 = LocalDate.of(this.getStartTime().getYear(), this.getStartTime().getMonth(), this.getStartTime().getDay());
-        LocalDate date2 = LocalDate.of(this.getEndTime().getYear(), this.getEndTime().getMonth(), this.getEndTime().getDay());
-
-        return ChronoUnit.DAYS.between(date1, date2);
+        if (endTime != null) {
+            LocalDate date2 = LocalDate.of(this.getEndTime().getYear(), this.getEndTime().getMonth(), this.getEndTime().getDay());
+            return ChronoUnit.DAYS.between(date1, date2);
+        }
+        return 0;
     }
 
     public void addPrograms(int quantity) { //adicionar os programas (e quantos) a os

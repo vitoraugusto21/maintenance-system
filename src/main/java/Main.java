@@ -25,13 +25,12 @@ public class Main {
         Technician technician = new Technician("001", "Jano", "555-1234", "jano@example.com", "123 Main St", "password123");
 
         Date startTime = new Date();
-        Os os = new Os("001", "Repair PC", startTime, Payments.PIX, "001", "100");
+        Os os = new Os("002", "Repair PC", startTime, Payments.PIX, "001", "100");
 
         // Add os to technician
         var osDAO = new OsDAOImp();
-        osDAO.insertOsInQueue(os);
         osDAO.takeOs(technician);
-        osDAO.finishOs(technician);
+        //osDAO.finishOs(technician);
 
         var report = new Report(os);
         var reportDAO = new ReportDAOImp();
@@ -39,10 +38,7 @@ public class Main {
         AttendantDAOImp attendantDAOImp = new AttendantDAOImp();
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
         Reader reader = Files.newBufferedReader(Paths.get("attendants.json"));
-        Type type = new TypeToken<Map<String, Attendant>>(){}.getType();
-        Map<String, Attendant> attendantsFromJson = gson.fromJson(reader, type);
-        Attendant attendant= attendantsFromJson.get("003");
-        attendantDAOImp.updateAttendant(attendant, "name", "Kousin");
+        osDAO.cancelOs(technician);
     }
 
 

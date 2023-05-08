@@ -82,10 +82,28 @@ public class OsDAOImp implements OsDAO {
      *
      * @param technician Técnico que está com a Os a ser cancelada.
      */
-    public void cancelOs(Technician technician) { //Cancelar a os, deixando assim o tecnico livre
-        osCanceledList.add(technician.getOs());
+    public void cancelOs(Technician technician) throws IOException { //Cancelar a os, deixando assim o tecnico livre
         technician.getOs().setStatus(CANCELED);
         technician.setOs(null);
+        Gson gson = new GsonBuilder().setPrettyPrinting().create();
+        if (fileCanceled.exists()){
+            Reader reader = Files.newBufferedReader(Paths.get("osCanceled.json"));
+            ArrayList<Os> osCanceleds = gson.fromJson(reader, ArrayList.class);
+            osCanceleds.add(technician.getOs());
+            String updateJson = gson.toJson(osCanceleds);
+            FileWriter writer = new FileWriter(fileCanceled);
+            writer.write(updateJson);
+            writer.flush();
+            writer.close();
+        }
+        else{
+            osCanceledList.add(technician.getOs());
+            String canceledJson = gson.toJson(osCanceledList);
+            FileWriter writer = new FileWriter(fileCanceled);
+            writer.write(canceledJson);
+            writer.flush();
+            writer.close();
+        }
     }
 
     /**

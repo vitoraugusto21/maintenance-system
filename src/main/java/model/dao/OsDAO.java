@@ -16,7 +16,7 @@ public interface OsDAO {
 
     void insertOsInQueue(Os os) throws IOException;
 
-    void cancelOs(Technician technician);
+    void cancelOs(Technician technician) throws IOException;
 
     void finishOs(Technician technician);
 
