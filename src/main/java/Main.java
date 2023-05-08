@@ -5,6 +5,7 @@ import com.google.gson.reflect.TypeToken;
 import model.dao.AttendantDAOImp;
 import model.dao.OsDAOImp;
 import model.dao.ReportDAOImp;
+import model.dao.TechnicianDAOImp;
 import model.entities.*;
 import model.entities.enums.Payments;
 import model.entities.Attendant;
@@ -28,17 +29,18 @@ public class Main {
         Os os = new Os("002", "Repair PC", startTime, Payments.PIX, "001", "100");
 
         // Add os to technician
-        var osDAO = new OsDAOImp();
-        osDAO.takeOs(technician);
-        //osDAO.finishOs(technician);
+        OsDAOImp osDAO = new OsDAOImp();
+        osDAO.insertOsInQueue(os);
+        TechnicianDAOImp technicianDAOImp = new TechnicianDAOImp();
+        //technicianDAOImp.createTechnician(technician);
 
-        var report = new Report(os);
-        var reportDAO = new ReportDAOImp();
-        reportDAO.saveReport(report);
-        AttendantDAOImp attendantDAOImp = new AttendantDAOImp();
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
-        Reader reader = Files.newBufferedReader(Paths.get("attendants.json"));
-        osDAO.cancelOs(technician);
+        Reader reader = Files.newBufferedReader(Paths.get("technicians.json"));
+        Map<String, Technician> technicianMap = gson.fromJson(reader, new TypeToken<Map<String, Technician>>(){}.getType());
+        osDAO.finishOs(technicianMap.get("001"));
+        osDAO.takeOs(technicianMap.get("001"));
+
+
     }
 
 

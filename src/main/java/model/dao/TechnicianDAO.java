@@ -22,6 +22,5 @@ public interface TechnicianDAO {
 
     Technician getTechnicianById(String id) throws IOException;
 
-    void updateTechnicianOs(Os os) throws IOException;
-
+    void updateTechnicianOs(Technician tec, Os os) throws IOException;
 }

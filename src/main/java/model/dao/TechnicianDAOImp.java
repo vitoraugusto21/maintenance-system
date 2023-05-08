@@ -47,7 +47,7 @@ public class TechnicianDAOImp implements TechnicianDAO {
         }
         else {
             technicians.put(technician.getId(), technician);
-            String techniciansJson = gson.toJson(technician);
+            String techniciansJson = gson.toJson(technicians);
             FileWriter writer = new FileWriter(file);
             writer.write(techniciansJson);
             writer.flush();
@@ -115,7 +115,7 @@ public class TechnicianDAOImp implements TechnicianDAO {
     public Map<String, Technician> readTechnicians() throws IOException{
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
         Reader reader = Files.newBufferedReader(Paths.get("technicians.json"));
-        Map<String, Technician> technicians = gson.fromJson(reader, new TypeToken<Map<String, Attendant>>(){}.getType());
+        Map<String, Technician> technicians = gson.fromJson(reader, new TypeToken<Map<String, Technician>>(){}.getType());
         return technicians;
     }
 
@@ -129,7 +129,7 @@ public class TechnicianDAOImp implements TechnicianDAO {
     public Technician getTechnicianById(String id) throws IOException {
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
         Reader reader = Files.newBufferedReader(Paths.get("technicians.json"));
-        Map<String, Technician> technicians = gson.fromJson(reader, new TypeToken<Map<String, Attendant>>(){}.getType());
+        Map<String, Technician> technicians = gson.fromJson(reader, new TypeToken<Map<String, Technician>>(){}.getType());
         return technicians.get(id);
     }
 

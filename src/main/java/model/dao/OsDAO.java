@@ -12,7 +12,7 @@ import java.util.Queue;
  */
 public interface OsDAO {
 
-    void takeOs(Technician technician);
+    void takeOs(Technician technician) throws IOException;
 
     void insertOsInQueue(Os os) throws IOException;
 

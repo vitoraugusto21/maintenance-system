@@ -38,14 +38,21 @@ public class OsDAOImp implements OsDAO {
      *
      * @param technician - Técnico que irá receber a Os.
      */
-    public void takeOs(Technician technician) { //Pega a primeira Os da fila e a define para o tecnico
+    public void takeOs(Technician technician) throws IOException { //Pega a primeira Os da fila e a define para o tecnico
         if (technician.getOs() != null) {
             System.out.println("Finalize a Os atual antes de pegar outra");
+        } else if (fileQueue == null) {
+            System.out.println("Não há Ordens de serviço na fila");
         } else {
-            Os first = queue.peek();
-            queue.remove();
+            Gson gson = new GsonBuilder().setPrettyPrinting().create();
+            Reader reader = Files.newBufferedReader(Paths.get("osQueue.json"));
+            Queue<Os> queueFromJson = readOsQueue();
+            Os first = queueFromJson.peek();
+            deleteOsInQueue();
             technician.setOs(first);
             first.setStatus(IN_PROGRESS);
+            TechnicianDAOImp tec = new TechnicianDAOImp();
+            tec.updateTechnicianOs(technician, technician.getOs());
         }
     }
 
@@ -59,7 +66,7 @@ public class OsDAOImp implements OsDAO {
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
         if (fileQueue.exists()){
             Reader reader = Files.newBufferedReader(Paths.get("osQueue.json"));
-            Queue<Os> queueFromJson = gson.fromJson(reader, Queue.class);
+            Queue<Os> queueFromJson = readOsQueue();
             queueFromJson.add(os);
             String updateJson = gson.toJson(queueFromJson);
             FileWriter writer = new FileWriter(fileQueue);
@@ -85,6 +92,8 @@ public class OsDAOImp implements OsDAO {
     public void cancelOs(Technician technician) throws IOException { //Cancelar a os, deixando assim o tecnico livre
         technician.getOs().setStatus(CANCELED);
         technician.setOs(null);
+        TechnicianDAOImp tec = new TechnicianDAOImp();
+        tec.updateTechnicianOs(technician, technician.getOs());
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
         if (fileCanceled.exists()){
             Reader reader = Files.newBufferedReader(Paths.get("osCanceled.json"));
@@ -114,12 +123,14 @@ public class OsDAOImp implements OsDAO {
     public void finishOs(Technician technician) throws IOException {
         technician.getOs().setStatus(FINISH);
         technician.getOs().setEndTime(new Date()); // Adicionar dia de finalização da os
-        technician.setOs(null);
+        TechnicianDAOImp tec = new TechnicianDAOImp();
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
         if (fileFinished.exists()){
             Reader reader = Files.newBufferedReader(Paths.get("osFinished.json"));
             ArrayList<Os> osFinished = gson.fromJson(reader, ArrayList.class);
             osFinished.add(technician.getOs());
+            technician.setOs(null);
+            tec.updateTechnicianOs(technician, technician.getOs());
             String updateJson = gson.toJson(osFinished);
             FileWriter writer = new FileWriter(fileFinished);
             writer.write(updateJson);
@@ -128,8 +139,10 @@ public class OsDAOImp implements OsDAO {
         }
         else{
             osFinishedList.add(technician.getOs());
+            technician.setOs(null);
+            tec.updateTechnicianOs(technician, technician.getOs());
             String finishedJson = gson.toJson(osFinishedList);
-            FileWriter writer = new FileWriter(fileCanceled);
+            FileWriter writer = new FileWriter(fileFinished);
             writer.write(finishedJson);
             writer.flush();
             writer.close();

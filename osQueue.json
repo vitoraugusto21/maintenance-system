@@ -1,16 +1,1 @@
-[
-  {
-    "osId": "002",
-    "description": "Repair PC",
-    "startTime": "May 8, 2023, 7:58:14 AM",
-    "totalValue": 0.0,
-    "status": "IN_PROGRESS",
-    "typePayment": "PIX",
-    "cleaning": 70,
-    "operationalSystem": 50,
-    "programs": 10,
-    "attendantId": "001",
-    "clientId": "100",
-    "usedParts": []
-  }
-]
+[]
