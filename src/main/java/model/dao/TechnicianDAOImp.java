@@ -4,6 +4,7 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
 import model.entities.Attendant;
+import model.entities.Os;
 import model.entities.Technician;
 
 import java.io.File;
@@ -73,6 +74,16 @@ public class TechnicianDAOImp implements TechnicianDAO {
             case "address" -> techniciansFromJson.get(technician.getId()).setAddress(newAttribute);
             default -> throw new IllegalArgumentException("Invalid attribute name");
         }
+        String techniciansToJson = gson.toJson(techniciansFromJson);
+        FileWriter writer = new FileWriter("technicians.json");
+        writer.write(techniciansToJson);
+        writer.close();
+    }
+
+    public void updateTechnicianOs(Technician tec, Os os) throws IOException {
+        Gson gson = new GsonBuilder().setPrettyPrinting().create();
+        Map<String, Technician> techniciansFromJson = readTechnicians();
+        techniciansFromJson.get(tec.getId()).setOs(os);
         String techniciansToJson = gson.toJson(techniciansFromJson);
         FileWriter writer = new FileWriter("technicians.json");
         writer.write(techniciansToJson);
