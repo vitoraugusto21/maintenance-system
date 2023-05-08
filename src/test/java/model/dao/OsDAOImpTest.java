@@ -1,6 +1,5 @@
 package model.dao;
 
-import model.dao.OsDAOImp;
 import model.entities.Os;
 import model.entities.Technician;
 import org.junit.Test;
@@ -40,7 +39,7 @@ public class OsDAOImpTest {
     public void insertOsTest() {
         Os os = new Os("1");
         OsDAOImp osDAOImp = new OsDAOImp();
-        osDAOImp.insertOs(os);
+        osDAOImp.insertOsInQueue(os);
 
         /* verificar se a os foi adicionada a lista de os do cliente */
         assertTrue(osDAOImp.queue.contains(os));

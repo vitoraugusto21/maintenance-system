@@ -3,6 +3,7 @@ package model.dao;
 import model.entities.Os;
 import model.entities.Technician;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.LinkedList;
@@ -18,6 +19,9 @@ public class OsDAOImp implements OsDAO {
     public Queue<Os> queue = new LinkedList<>();
     public ArrayList<Os> osCanceledList = new ArrayList<>();
     public ArrayList<Os> osFinishedList = new ArrayList<>();
+    File fileQueue = new File(System.getProperty("user.dir") + File.separator + "osQueue.json");
+    File fileCanceled = new File(System.getProperty("user.dir") + File.separator + "osCanceled.json");
+    File fileFinished = new File(System.getProperty("user.dir") + File.separator + "osFinished.json");
 
     public OsDAOImp() {
     }
@@ -43,7 +47,7 @@ public class OsDAOImp implements OsDAO {
      *
      * @param os - Os a ser adicionada.
      */
-    public void insertOs(Os os) { //adicionar os a fila
+    public void insertOsInQueue(Os os) { //adicionar os a fila
         queue.add(os);
     }
 

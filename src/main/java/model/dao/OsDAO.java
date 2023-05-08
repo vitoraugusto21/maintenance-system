@@ -12,7 +12,7 @@ public interface OsDAO {
 
     void takeOs(Technician technician);
 
-    void insertOs(Os os);
+    void insertOsInQueue(Os os);
 
     void cancelOs(Technician technician);
 

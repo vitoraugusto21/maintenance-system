@@ -1,3 +1,4 @@
+
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
@@ -12,7 +13,6 @@ import java.io.Reader;
 import java.lang.reflect.Type;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.Map;
 
@@ -24,12 +24,12 @@ public class Main {
         Manager manager = new Manager("001", "John Doe", "555-1234", "john.doe@example.com", "123 Main St", "password123");
         Technician technician = new Technician("001", "Jano", "555-1234", "jano@example.com", "123 Main St", "password123");
 
-        LocalDateTime startTime = LocalDateTime.now();
+        Date startTime = new Date();
         Os os = new Os("001", "Repair PC", startTime, Payments.PIX, "001", "100");
 
         // Add os to technician
         var osDAO = new OsDAOImp();
-        osDAO.insertOs(os);
+        osDAO.insertOsInQueue(os);
         osDAO.takeOs(technician);
         osDAO.finishOs(technician);
 
