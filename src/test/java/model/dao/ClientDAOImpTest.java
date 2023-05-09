@@ -1,87 +1,74 @@
 package model.dao;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import model.entities.Attendant;
 import model.entities.Client;
 import org.junit.jupiter.api.*;
 
+import java.io.File;
 import java.io.IOException;
+import java.io.Reader;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.Map;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 class ClientDAOImpTest {
 
     ClientDAOImp dao = new ClientDAOImp();
-    Client client = new Client("123456789", "Lucas", "(11)9999-8888", "lucas@test.com", "Rua A, 123", new ArrayList<>());
+    File file = new File(System.getProperty("user.dir") + File.separator + "clientsTest.json");
 
-    @BeforeEach
-    void setUp() {
-        try {
-            dao.createClient(client);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
 
     @AfterEach
     void tearDown() {
-        try {
-            dao.deleteClient(client);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        file.delete();
     }
 
     @Test
-    void testCreateClient() {
-        Client createdClient = null;
-        try {
-            createdClient = dao.getClientById("123456789");
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        assertEquals(client, createdClient);
+    void testCreateClient() throws IOException {
+        Gson gson = new GsonBuilder().setPrettyPrinting().create();
+        Reader reader = Files.newBufferedReader(Paths.get("clientsTest.json"));
+        Map<String, Client> clientsFromJson = gson.fromJson(reader, Map.class);
+        Client client = new Client("001", "Paul Walker", "1234567890", "paulwalker@gmail.com", "123 main.Main St");
+        Client client1 = new Client("002", "Paul Walker", "1234567890", "paulwalker@gmail.com", "123 main.Main St");
+        dao.createClient(client);
+        dao.createClient(client1);
+        assertEquals(clientsFromJson.get("001"), client);
+        assertEquals(clientsFromJson.size(), 2);
     }
 
     @Test
-    void testUpdateClient() {
-        try {
-            dao.updateClient(client, "name", "Lucas da Silva");
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        Client updatedClient = null;
-        try {
-            updatedClient = dao.getClientById("123456789");
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        assertEquals("Lucas da Silva", updatedClient.getName());
+    void testUpdateClient() throws IOException {
+        Gson gson = new GsonBuilder().setPrettyPrinting().create();
+        Reader reader = Files.newBufferedReader(Paths.get("clientsTest.json"));
+        Map<String, Client> clientsFromJson = gson.fromJson(reader, Map.class);
+        Client client = new Client("001", "Paul Walker", "1234567890", "paulwalker@gmail.com", "123 main.Main St");
+        dao.createClient(client);
+        dao.updateClient(clientsFromJson.get("001"), "name", "John Smith");
+        assertEquals("John Smith", clientsFromJson.get("001").getName());
     }
 
     @Test
-    void testDeleteClient() {
-        try {
-            dao.deleteClient(client);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        Client deletedClient = null;
-        try {
-            deletedClient = dao.getClientById("123456789");
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        assertNull(deletedClient);
+    void testDeleteClient() throws IOException {
+        Gson gson = new GsonBuilder().setPrettyPrinting().create();
+        Reader reader = Files.newBufferedReader(Paths.get("clientsTest.json"));
+        Map<String, Client> clientsFromJson = gson.fromJson(reader, Map.class);
+        Client client = new Client("001", "Paul Walker", "1234567890", "paulwalker@gmail.com", "123 main.Main St");
+        dao.createClient(client);
+        dao.deleteClient(clientsFromJson.get("001"));
+        assertNull(clientsFromJson.get("001"));
     }
 
     @Test
-    void testReadClient() {
-        Client readClient = null;
-        try {
-            readClient = dao.getClientById("123456789");
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        assertEquals(client, readClient);
+    void testReadClient() throws IOException {
+        Gson gson = new GsonBuilder().setPrettyPrinting().create();
+        Reader reader = Files.newBufferedReader(Paths.get("clientsTest.json"));
+        Map<String, Client> clientsFromJson = gson.fromJson(reader, Map.class);
+        Client client = new Client("001", "Paul Walker", "1234567890", "paulwalker@gmail.com", "123 main.Main St");
+        dao.createClient(client);
+        assertEquals(clientsFromJson, dao.readClients());
     }
 }

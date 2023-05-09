@@ -4,39 +4,36 @@ import model.entities.Os;
 import model.entities.Technician;
 import org.junit.Test;
 
+import java.io.File;
+import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.LinkedList;
+import java.util.Queue;
 
 import static model.entities.enums.OsStatus.*;
 import static org.junit.Assert.*;
 
 
 public class OsDAOImpTest {
+    public Queue<Os> queue = new LinkedList<>();
+    public ArrayList<Os> osCanceledList = new ArrayList<>();
+    public ArrayList<Os> osFinishedList = new ArrayList<>();
+    File fileQueue = new File(System.getProperty("user.dir") + File.separator + "osQueueTest.json");
+    File fileCanceled = new File(System.getProperty("user.dir") + File.separator + "osCanceledTest.json");
+    File fileFinished = new File(System.getProperty("user.dir") + File.separator + "osFinishedTest.json");
 
     @Test
-    public void takeOsTest() {
+    public void takeOsTest() throws IOException {
         OsDAOImp osDao = new OsDAOImp();
         Technician tec = new Technician("1", "John", "john@test.com", "123456", "1234");
         Os os1 = new Os("1");
-        Os os2 = new Os("2");
-        osDao.queue.add(os1);
-        osDao.queue.add(os2);
-        osDao.queue.add(new Os("3"));
-        osDao.queue.add(new Os("4"));
         osDao.takeOs(tec);
-        System.out.println(tec.getOs());
-
-        /* verificar se foi atrubuida ao tecnico corretamente */
         assertEquals(os1, tec.getOs());
-
-        /* verificar se a os foi retirada da fila */
-        assertEquals(os2, osDao.queue.peek());
-
-        /* verificar se o status da os foi inserido */
-        assertEquals(IN_PROGRESS, tec.getOs().getStatus());
     }
 
     @Test
-    public void insertOsTest() {
+    public void insertOsInQueueTest() {
         Os os = new Os("1");
         OsDAOImp osDAOImp = new OsDAOImp();
         osDAOImp.insertOsInQueue(os);

@@ -45,7 +45,7 @@ public class ClientDAOImp implements ClientDAO {
         }
         else {
             clients.put(client.getId(), client);
-            String clientsJson = gson.toJson(client);
+            String clientsJson = gson.toJson(clients);
             FileWriter writer = new FileWriter(file);
             writer.write(clientsJson);
             writer.flush();

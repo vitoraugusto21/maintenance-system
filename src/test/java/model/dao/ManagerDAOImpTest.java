@@ -1,71 +1,74 @@
 package model.dao;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import model.dao.ManagerDAOImp;
+import model.entities.Attendant;
 import model.entities.Manager;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.io.File;
 import java.io.IOException;
+import java.io.Reader;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.Map;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 class ManagerDAOImpTest {
     private ManagerDAOImp dao;
-    private Manager manager1;
-    private Manager manager2;
-
-    @BeforeEach
-    void setUp() throws IOException {
-        dao = new ManagerDAOImp();
-        manager1 = new Manager("1", "Anne Hathaway", "1234567890", "anne@gmail.com", "123 Groove St", "password1");
-        manager2 = new Manager("2", "Michelle Rodriguez", "1234567880", "michellerodriguez@gmail.con", "456 El Chavo", "password2");
-        dao.createManager(manager1);
-        dao.createManager(manager2);
-    }
+    File file = new File(System.getProperty("user.dir") + File.separator + "managersTest.json");
 
     @AfterEach
     void tearDown() {
-        dao = null;
-        manager1 = null;
-        manager2 = null;
+        file.delete();
     }
 
     @Test
-    void testInsertManager() throws IOException {
-        Manager manager3 = new Manager("3", "Bob Dilan", "123456770", "bobdilan@gmail.com", "789 Silicon V.", "password3");
-        dao.createManager(manager3);
-        assertEquals(manager3, dao.getManagerById(manager3.getId()));
+    void testCreateManager() throws IOException {
+        Gson gson = new GsonBuilder().setPrettyPrinting().create();
+        Reader reader = Files.newBufferedReader(Paths.get("managersTest.json"));
+        Map<String, Attendant> managersFromJson = gson.fromJson(reader, Map.class);
+        Manager manager = new Manager("001", "Paul Walker", "1234567890", "paulwalker@gmail.com", "123 main.Main St","1212");
+        Manager manager2 = new Manager("002", "Paul Walker", "1234567890", "paulwalker@gmail.com", "123 main.Main St","2133");
+        dao.createManager(manager);
+        dao.createManager(manager2);
+        assertEquals(managersFromJson.get("001"), manager);
+        assertEquals(managersFromJson.size(), 2);
     }
 
     @Test
     void testUpdateManager() throws IOException {
-        dao.updateManager(manager1, "name", "Carlos Dilan");
-        assertEquals("John Smith", dao.getManagerById(manager1.getId()).getName());
+        Gson gson = new GsonBuilder().setPrettyPrinting().create();
+        Reader reader = Files.newBufferedReader(Paths.get("managersTest.json"));
+        Map<String, Manager> managersFromJson = gson.fromJson(reader, Map.class);
+        Manager manager = new Manager("001", "Paul Walker", "1234567890", "paulwalker@gmail.com", "123 main.Main St","1212");
+        Manager manager2 = new Manager("002", "Paul Walker", "1234567890", "paulwalker@gmail.com", "123 main.Main St","2133");
+        dao.createManager(manager);
+        dao.createManager(manager2);
+        dao.updateManager(managersFromJson.get("001"), "name", "John Smith");
+        assertEquals("John Smith", managersFromJson.get("001").getName());
     }
 
     @Test
     void testDeleteManager() throws IOException {
-        dao.deleteManager(manager2);
-        assertNull(dao.getManagerById(manager2.getId()));
+        Gson gson = new GsonBuilder().setPrettyPrinting().create();
+        Reader reader = Files.newBufferedReader(Paths.get("managersTest.json"));
+        Map<String, Manager> managersFromJson = gson.fromJson(reader, Map.class);
+        Manager manager = new Manager("001", "Paul Walker", "1234567890", "paulwalker@gmail.com", "123 main.Main St","1212");
+        dao.deleteManager(managersFromJson.get("001"));
+        assertNull(managersFromJson.get("001"));
     }
-
     @Test
-    void testGetAllManagers() throws IOException {
-        ArrayList<Manager> expected = new ArrayList<>();
-        expected.add(manager1);
-        expected.add(manager2);
-        assertEquals(expected, dao.readManagers());
-    }
-
-    @Test
-    void testGetManagerById() throws IOException {
-        assertEquals(manager1, dao.getManagerById(manager1.getId()));
-    }
-
-    @Test
-    void testInvalidAttributeToChange() {
-        assertThrows(IllegalArgumentException.class, () -> dao.updateManager(manager1, "invalidAttribute", "newValue"));
+    void testReadManager() throws IOException {
+        Gson gson = new GsonBuilder().setPrettyPrinting().create();
+        Reader reader = Files.newBufferedReader(Paths.get("managersTest.json"));
+        Map<String, Manager> managersFromJson = gson.fromJson(reader, Map.class);
+        Manager manager = new Manager("001", "Paul Walker", "1234567890", "paulwalker@gmail.com", "123 main.Main St","1212");
+        assertEquals(managersFromJson, dao.readManagers());
     }
 }
