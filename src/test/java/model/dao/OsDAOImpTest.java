@@ -1,11 +1,16 @@
 package model.dao;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import model.entities.Os;
 import model.entities.Technician;
 import org.junit.Test;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.Reader;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.LinkedList;
@@ -33,23 +38,30 @@ public class OsDAOImpTest {
     }
 
     @Test
-    public void insertOsInQueueTest() {
+    public void insertOsInQueueTest() throws IOException {
+        OsDAOImp osDao = new OsDAOImp();
+        Gson gson = new GsonBuilder().setPrettyPrinting().create();
+        Reader reader = Files.newBufferedReader(Paths.get("osQueue.json"));
+        Queue<Os> queueFromJson = osDao.readOsQueue();
         Os os = new Os("1");
-        OsDAOImp osDAOImp = new OsDAOImp();
-        osDAOImp.insertOsInQueue(os);
-
-        /* verificar se a os foi adicionada a lista de os do cliente */
-        assertTrue(osDAOImp.queue.contains(os));
+        osDao.insertOsInQueue(os);
+        assertTrue(osDao.readOsQueue().isEmpty());
     }
 
     @Test
     public void cancelOsTest() {
+        OsDAOImp osDao = new OsDAOImp();
+        Gson gson = new GsonBuilder().setPrettyPrinting().create();
+        Reader reader = Files.newBufferedReader(Paths.get("osQueue.json"));
+        Queue<Os> queueFromJson = osDao.readOsQueue();
+        Os os = new Os("1");
+
         Os os = new Os("1");
         OsDAOImp osDAOImp = new OsDAOImp();
         Technician technician = new Technician("1", "John", "john@test.com", "123456", "1234");
         technician.setOs(os);
         osDAOImp.cancelOs(technician);
-
+        Technician tec = new Technician("1", "John", "john@test.com", "123456", "1234");
         /* verificar se a os saiu do tecnico */
         assertNull(technician.getOs());
 
