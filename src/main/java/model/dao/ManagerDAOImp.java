@@ -64,6 +64,14 @@ public class ManagerDAOImp implements ManagerDAO {
             writer.flush();
             writer.close();
         }
+        else {
+            managers.put(manager.getId(), manager);
+            String managersJson = gson.toJson(managers);
+            FileWriter writer = new FileWriter(file);
+            writer.write(managersJson);
+            writer.flush();
+            writer.close();
+        }
     }
 
     /**

@@ -5,12 +5,22 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8b7eb8de-49c6-4245-aa7f-0644bc29ea04" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/attendantsTest.json" beforeDir="false" afterPath="$PROJECT_DIR$/attendantsTest.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/model/dao/ClientDAOImpTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/model/dao/ClientDAOImpTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/model/dao/StockDAOImpTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/model/dao/StockDAOImpTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/model/dao/TechnicianDAOImpTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/model/dao/TechnicianDAOImpTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/dao/ManagerDAOImp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/dao/ManagerDAOImp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/dao/OsDAOImp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/dao/OsDAOImp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/classpath.index" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/model/dao/ManagerDAOImp$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/model/dao/ManagerDAOImp$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/model/dao/ManagerDAOImp$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/model/dao/ManagerDAOImp$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/model/dao/ManagerDAOImp.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/model/dao/ManagerDAOImp.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/model/dao/OsDAOImp$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/model/dao/OsDAOImp$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/model/dao/OsDAOImp$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/model/dao/OsDAOImp$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/model/dao/OsDAOImp$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/model/dao/OsDAOImp$3.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/model/dao/OsDAOImp.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/model/dao/OsDAOImp.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/model/entities/Invoice.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/model/entities/Invoice.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -29,6 +39,13 @@
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="useMavenConfig" value="true" />
+      </MavenGeneralSettings>
+    </option>
   </component>
   <component name="ProjectId" id="2NyHJYgZ9fdiiqbT9JyDmtQ4zjW" />
   <component name="ProjectViewState">
@@ -153,6 +170,10 @@
           <line>90</line>
           <option name="timeStamp" value="3" />
         </line-breakpoint>
+        <breakpoint enabled="true" type="java-exception">
+          <properties class="java.nio.file.NoSuchFileException" package="java.nio.file" />
+          <option name="timeStamp" value="4" />
+        </breakpoint>
       </breakpoints>
     </breakpoint-manager>
   </component>

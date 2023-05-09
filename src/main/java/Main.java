@@ -19,7 +19,7 @@ public class Main {
         var client = new Client();
         Attendant attendant1 = new Attendant("001", "Paul Walker", "1234567890", "paulwalker@gmail.com", "123 main.Main St");
         Attendant attendant2 = new Attendant("002", "Jane", "555-5678", "jane@example.com", "456 Elm St", "mypassword");
-        Manager manager = new Manager("001", "John Doe", "555-1234", "john.doe@example.com", "123 Main St", "password123");
+        Manager manager1 = new Manager("001", "John Doe", "555-1234", "john.doe@example.com", "123 Main St", "password123");
         Technician technician = new Technician("001", "Jano", "555-1234", "jano@example.com", "123 Main St", "password123");
         Client client1 = new Client("001", "Jano", "555-1234", "jano@example.com", "123 Main St");
 
@@ -28,9 +28,25 @@ public class Main {
 
         // Add os to technician
         AttendantDAOImp attendantDAOImp = new AttendantDAOImp();
-        ClientDAOImp clientDAOImp = new ClientDAOImp();
         attendantDAOImp.createAttendant(attendant2);
+        System.out.println("Criando arquivo attendants.json");
 
+        ClientDAOImp clientDAOImp = new ClientDAOImp();
+        clientDAOImp.createClient(client1);
+        System.out.println("Criando arquivo clients.json");
+
+        ManagerDAOImp managerDAOImp = new ManagerDAOImp();
+        managerDAOImp.createManager(manager1);
+        System.out.println("Criando arquivo managers.json");
+
+        TechnicianDAOImp technicianDAOImp = new TechnicianDAOImp();
+        technicianDAOImp.createTechnician(technician);
+        System.out.println("Criando arquivo technicians.json");
+
+
+//        OsDAOImp osDAOImp = new OsDAOImp();
+//        osDAOImp.takeOs(technician);
+//        osDAOImp.insertOsInQueue(os);
 
 
     }

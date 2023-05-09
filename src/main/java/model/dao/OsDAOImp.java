@@ -13,6 +13,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.Reader;
 import java.nio.file.Files;
+import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.*;
 
@@ -41,13 +42,20 @@ public class OsDAOImp implements OsDAO {
     public void takeOs(Technician technician) throws IOException { //Pega a primeira Os da fila e a define para o tecnico
         if (technician.getOs() != null) {
             System.out.println("Finalize a Os atual antes de pegar outra");
-        } else if (fileQueue == null) {
-            System.out.println("Não há Ordens de serviço na fila");
         } else {
+            Path filePath = fileQueue.toPath();
+            if (!Files.exists(filePath)) {
+                Files.createFile(filePath);
+            }
+
             Gson gson = new GsonBuilder().setPrettyPrinting().create();
-            Reader reader = Files.newBufferedReader(Paths.get("osQueue.json"));
+            Reader reader = Files.newBufferedReader(filePath);
             Queue<Os> queueFromJson = readOsQueue();
             Os first = queueFromJson.peek();
+            if (first == null) {
+                System.out.println("Não há Ordens de serviço na fila");
+                return;
+            }
             deleteOsInQueue();
             technician.setOs(first);
             first.setStatus(IN_PROGRESS);
@@ -64,7 +72,7 @@ public class OsDAOImp implements OsDAO {
     public void insertOsInQueue(Os os) throws IOException { //adicionar os a fila
         os.setStatus(IN_PROGRESS);
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
-        if (fileQueue.exists()){
+        if (fileQueue.getParentFile().exists()){
             Reader reader = Files.newBufferedReader(Paths.get("osQueue.json"));
             Queue<Os> queueFromJson = readOsQueue();
             queueFromJson.add(os);
@@ -90,14 +98,14 @@ public class OsDAOImp implements OsDAO {
      * @param technician Técnico que está com a Os a ser cancelada.
      */
     public void cancelOs(Technician technician) throws IOException { //Cancelar a os, deixando assim o tecnico livre
-        technician.getOs().setStatus(CANCELED);
-        technician.setOs(null);
         TechnicianDAOImp tec = new TechnicianDAOImp();
+        technician.getOs().setStatus(CANCELED);
         tec.updateTechnicianOs(technician, technician.getOs());
+        technician.setOs(null);
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
-        if (fileCanceled.exists()){
-            Reader reader = Files.newBufferedReader(Paths.get("osCanceled.json"));
-            ArrayList<Os> osCanceleds = gson.fromJson(reader, ArrayList.class);
+        if (fileCanceled.getParentFile().exists()){
+            Reader reader = Files.newBufferedReader(fileCanceled.toPath());
+            ArrayList<Os> osCanceleds = gson.fromJson(reader, new TypeToken<ArrayList<Os>>(){}.getType());
             osCanceleds.add(technician.getOs());
             String updateJson = gson.toJson(osCanceleds);
             FileWriter writer = new FileWriter(fileCanceled);
@@ -112,6 +120,7 @@ public class OsDAOImp implements OsDAO {
             writer.write(canceledJson);
             writer.flush();
             writer.close();
+
         }
     }
 
@@ -150,11 +159,7 @@ public class OsDAOImp implements OsDAO {
     }
 
     /**
-     * Mostra a OS
      *
-     * @param osId    - id da os a ser mostrada
-     * @param osQueue - fila que contem a os
-     * @return - retorna a OS
      */
     public Queue<Os> readOsQueue() throws IOException {
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
