@@ -1,4 +1,0 @@
-Relatório: 
-Ordem de Serviço: 001
-Tempo médio de espera: 0
-Custo das peças: 
