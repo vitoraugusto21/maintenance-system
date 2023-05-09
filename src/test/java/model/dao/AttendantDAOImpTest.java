@@ -30,24 +30,17 @@ class AttendantDAOImpTest {
 
     @BeforeEach
     void setUp() throws IOException {
-        dao = new AttendantDAOImp();
+        AttendantDAOImp dao = new AttendantDAOImp();
         attendant1 = new Attendant("001", "Paul Walker", "1234567890", "paulwalker@gmail.com", "123 main.Main St");
         attendant2 = new Attendant("3", "Bob Smith", "123456770", "bobsmith@gmail.com", "789 Oak St");
-        attendants.put(attendant1.getId(), attendant1);
-        attendants.put(attendant2.getId(), attendant2);
-        Gson gson = new GsonBuilder().setPrettyPrinting().create();
-        String attedantsJson = gson.toJson(attendants);
-        FileWriter writer = new FileWriter(file);
-        writer.write(attedantsJson);
-        writer.flush();
-        writer.close();
+        dao.createAttendant(attendant1);
+        dao.createAttendant(attendant2);
     }
 
     @AfterEach
-    void tearDown() {
-        dao = null;
-        attendant1 = null;
-        attendant2 = null;
+    void tearDown() throws IOException {
+        dao.deleteAttendant(attendant1);
+        dao.deleteAttendant(attendant2);
     }
 
     @Test
