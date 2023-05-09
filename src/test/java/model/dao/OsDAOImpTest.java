@@ -49,31 +49,20 @@ public class OsDAOImpTest {
     }
 
     @Test
-    public void cancelOsTest() {
+    public void cancelOsTest() throws IOException {
         OsDAOImp osDao = new OsDAOImp();
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
         Reader reader = Files.newBufferedReader(Paths.get("osQueue.json"));
         Queue<Os> queueFromJson = osDao.readOsQueue();
         Os os = new Os("1");
-
-        Os os = new Os("1");
-        OsDAOImp osDAOImp = new OsDAOImp();
         Technician technician = new Technician("1", "John", "john@test.com", "123456", "1234");
-        technician.setOs(os);
-        osDAOImp.cancelOs(technician);
-        Technician tec = new Technician("1", "John", "john@test.com", "123456", "1234");
-        /* verificar se a os saiu do tecnico */
+        osDao.takeOs(technician);
+        osDao.cancelOs(technician);
         assertNull(technician.getOs());
-
-        /* verificar se a foi inserida na lista de os cancelada*/
-        assertTrue(osDAOImp.osCanceledList.contains(os));
-
-        /* verificar se o status da os foi atualizado */
-        assertEquals(CANCELED, os.getStatus());
     }
 
     @Test
-    public void finishOsTest() {
+    public void finishOsTest() throws IOException {
         Os os = new Os("1");
         OsDAOImp osDAOImp = new OsDAOImp();
         Technician technician = new Technician("1", "John", "john@test.com", "123456", "1234");

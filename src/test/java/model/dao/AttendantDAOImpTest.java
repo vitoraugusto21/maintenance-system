@@ -24,6 +24,9 @@ class AttendantDAOImpTest {
     private AttendantDAOImp dao;
     File file = new File(System.getProperty("user.dir") + File.separator + "attendantsTest.json");
 
+    public AttendantDAOImpTest(AttendantDAOImp dao) {
+        this.dao = dao;
+    }
 
     @AfterEach
     void tearDown() throws IOException {
